@@ -6,7 +6,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
+import styled from 'styled-components'
 // Project files
 import Home from './components/Home'
 import Admin from './components/Admin'
