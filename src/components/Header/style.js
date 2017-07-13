@@ -10,7 +10,7 @@ const Nav = styled.nav`
   width: 100%;
   height: 50px;
   background-color: #fff;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid #bdc3c7;
   margin-bottom: 10px;
 `;
 
