@@ -10,7 +10,7 @@ class Header extends Component {
 
         </Div>
         <Nav>
-          HOME
+          
         </Nav>
       </div>
     );
