@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-
-const Img = styled.img`
-  width: 100%;
-`;
+//import styled from 'styled-components';
+import {Img} from './style';
 
 class Slider extends Component {
   render() {
