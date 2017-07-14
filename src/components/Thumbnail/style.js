@@ -7,7 +7,7 @@ const Div = styled.div`
   border: 1px solid #ecf0f1;
   padding: 10px;
   position: relative;
-  margin-top: -530px;
+  margin-top: -500px;
 `;
 
 const Img = styled.img`
