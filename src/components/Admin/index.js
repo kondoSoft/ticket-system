@@ -5,9 +5,7 @@ import Nav from '../Nav';
 const Container = styled.div`
   padding:0;
   width:100%;
-  height:auto;
 `;
-
 
 class Admin extends Component {
   render() {

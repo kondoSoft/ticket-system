@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import IconButton from '../IconButton'
-// background-color:#0080FF;
+
 const ContainerNav = styled.div`
-  width:180px;
+  width:10%;
+  height:700px;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
   box-shadow: 1px 0px 3px #888888;
-  padding:2px
 `;
 /*Componentes del header del nav lateral*/
 const Header = styled.div`
   width:100%;
   height:80px;
+  background-color:white;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  border-bottom:2px dotted #009EFF;
 `;
 
 const Logo= styled.img`
@@ -29,10 +29,9 @@ const Logo= styled.img`
 const Body = styled.div`
   width:100%;
   height:500px;
-  background-color:rgba(0,128,255,0.6);
   display:flex;
   flex-direction:column;
-  padding:5px;
+  align-items:center;
 `;
 
 class Nav extends Component {
@@ -43,8 +42,8 @@ class Nav extends Component {
           <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
         </Header>
         <Body>
-          <IconButton/>
-          <IconButton/>
+          <IconButton Text='Hotel' Icon='building'/>
+          <IconButton Text='Transporte' Icon='car'/>
         </Body>
       </ContainerNav>
     );
