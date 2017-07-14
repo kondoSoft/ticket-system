@@ -3,3 +3,25 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.slick-prev {
+  margin-left: 60px !important;
+  z-index: 3;
+}
+
+.slick-next {
+  margin-right: 60px !important;
+  z-index: 3;
+}
+
+.slick-prev:before {
+  font-size: 60px !important;
+  content: "\f104" !important;
+  font-family: FontAwesome;
+}
+
+.slick-next:before {
+  font-size: 60px !important;
+  content: "\f105" !important;
+  font-family: FontAwesome;
+}
