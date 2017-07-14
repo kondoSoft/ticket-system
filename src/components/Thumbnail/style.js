@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   width: 274px;
-  height: 419px;
+  height: 246px;
   background-color: #fff;
   border: 1px solid #ecf0f1;
   padding: 10px;
