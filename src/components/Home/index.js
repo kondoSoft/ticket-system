@@ -13,17 +13,18 @@ class Home extends Component {
       <Container>
         <Header/>
         <SimpleSlider/>
+        <Row>
+
+          <Thumbnail
+            image="http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg"
+            names="HOTEL Y TRANSPORTE"
+          />
+          <Thumbnail
+            image="http://lorempixel.com/output/city-q-c-250-220-8.jpg"
+            names="TRANSPORTE"
+          />
+        </Row>
         <Image/>
-          <Row>
-            <Thumbnail
-              image="http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg"
-              names="HOTEL Y TRANSPORTE"
-            />
-            <Thumbnail
-              image="http://lorempixel.com/output/city-q-c-250-220-8.jpg"
-              names="TRANSPORTE"
-            />
-          </Row>
       </Container>
     );
   }
