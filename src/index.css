@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: url(http://lorempixel.com/output/city-q-c-1280-860-1.jpg) no-repeat center fixed !important;
 }
 
 .slick-prev {
