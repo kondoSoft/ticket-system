@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Input from '../Input';
+import Button from '../Button';
 
 const ContainerForm = styled.div`
   background-color:#ccc;
@@ -18,15 +19,6 @@ const ContainerInputs = styled.div`
   margin-bottom:10px;
 `;
 
-const Button = styled.button`
-  width:100px;
-  height:40px;
-  background-color:#005caf;
-  border:none;
-  border-radius:5px;
-  color:white;
-  box-shadow:2px 2px 6px black;
-`;
 
 function formHotel(){
   return(
@@ -44,7 +36,7 @@ function formHotel(){
         <Input name='image' text='Foto del Hotel:' Id='image' type='file'/>
         <Input name='type' text='Tipo de Habitacion:' Id='type' placeholder='Simple, Doble, etc...'/>
       </ContainerInputs>
-      <Button>Guardar</Button>
+      <Button name="Guardar"/>
     </ContainerForm>
   );
 };
