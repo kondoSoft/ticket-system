@@ -1,4 +1,4 @@
-export default tickets = {
+const tickets = {
   hotels:[
     "20170725-23154464":{
       title:"Hyatt",
@@ -51,3 +51,5 @@ export default tickets = {
     }
   }
 }
+
+export default tickets

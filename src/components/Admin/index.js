@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Nav from '../Nav';
 import formHotel from '../formHotels';
+import initialState from '../../state'
 
 const Container = styled.div`
   padding:0;
@@ -22,34 +23,32 @@ const Section = styled.div`
 class Admin extends Component {
   constructor(props){
     super(props);
-    this.state={
-      UI:formHotel,
-      hotel:{
-          title:'',
-          address:'',
-          price:'',
-          image:'',
-          type:'',
-          date:''
-      },
-      transport:{}
-    }
+    this.state=initialState
+    // this.state={
+    //   UIform:formHotel,
+    //   title:'',
+    //   address:'',
+    //   price:'',
+    //   image:'',
+    //   type:'',
+    //   date:''
+    // }
     this.setComponent=this.setComponent.bind(this)
     this.setData=this.setData.bind(this)
   }
 
   setComponent(item){
     this.setState({
-      UI:item
+      UIform:item
     });
   }
 
-  setData(){
-    console.log('Entrando a la funcion');
+  componentWillMount(){
+    this.setComponent(formHotel)
   }
 
-  componentWillMount(){
-    this.setData()
+  setData(data){
+    console.log('Entrando a la funcion');
   }
 
   render() {
@@ -57,7 +56,7 @@ class Admin extends Component {
       <Container>
         <Nav setComponent={this.setComponent}/>
         <Section>
-          { this.state.UI()}
+          { this.state.UIform()}
         </Section>
       </Container>
     );
