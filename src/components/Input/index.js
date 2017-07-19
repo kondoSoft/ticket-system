@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 
+const containerForm= styled.div`
 
-class Admin extends Component {
-  render() {
-    return (
-      <div>
-        Admin
-      </div>
-    );
-  }
+`;
+
+function Input(){
+  return(
+
+  )
 }
 
-export default Admin;
+
+export default Input;

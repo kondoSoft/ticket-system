@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import fontAwesome from 'react-fontawesome';
+
 
 const ContainerButton = styled.div`
   width:90%;
@@ -10,9 +11,10 @@ const ContainerButton = styled.div`
   display:flex;
   flex-direction:row;
   flex-wrap:nowrap;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
   color:#646666;
+  padding:5px;
 
   &.iconButton:hover{
     background-color:#0080FF;
@@ -29,13 +31,13 @@ const Span= styled.span`
   margin-left:10px;
 `;
 
-function IconButton(props){
+function IconLabel(props){
   return (
-    <ContainerButton className='iconButton'>
+    <ContainerButton className='iconButton' onClick={()=> props.setComponent(props.component)}>
       <Icon name={props.Icon}/>
       <Span>{ props.Text }</Span>
     </ContainerButton>
   )
 }
 
-export default IconButton;
+export default IconLabel;
