@@ -11,29 +11,46 @@ const Container = styled.div`
 `;
 
 const Section = styled.div`
-  width:500px;
+  width:90%;
   height:200px;
-  background-color:red;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:10px;
 `;
 
 class Admin extends Component {
   constructor(props){
     super(props);
     this.state={
-      UI:formHotel
+      UI:formHotel,
+      hotel:{
+        add:{
+          title:'',
+          address:'',
+          price:'',
+          date:''
+        },
+        delete:{
+
+        }
+      }
     }
     this.setComponent=this.setComponent.bind(this)
   }
 
   setComponent(item){
-    console.log(item)
     this.setState({
       UI:item
     });
   }
 
+  setData(data){
+    this.setState({
+
+    })
+  }
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Nav setComponent={this.setComponent}/>

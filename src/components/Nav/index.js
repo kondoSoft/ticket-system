@@ -1,19 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconLabel from '../IconLabel';
-import Headers from '../Header';
 import formHotel from '../formHotels';
 import formTransport from '../formTransport';
 import formTicket from '../formTicket'
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-
 const ContainerNav = styled.div`
-  width:10%;
+  width:14%;
   height:700px;
   display:flex;
   flex-direction:column;
