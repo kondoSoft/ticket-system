@@ -14,7 +14,6 @@ class Home extends Component {
         <Header/>
         <SimpleSlider/>
         <Row>
-
           <Thumbnail
             image="http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg"
             names="HOTEL Y TRANSPORTE"
