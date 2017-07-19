@@ -8,22 +8,34 @@ export default tickets = {
       type:''
     },
     "20170725-013246546:":{
-      name:"Marriot",
+      title:"Marriot",
       address:'XXXXX',
       price:321,
       image:'',
       type:''
     },
     "20170725-013246542":{
-      name:"Hyatt",
+      title:"Hyatt",
       address:'XXXXX',
       price:213,
       image:'',
       type:''
     },
   ],
-  transport:{
-  },
+  transport:[
+    "20170725-013246546:":{
+      title:"Hertz",
+      address:'XXXXX',
+      price:321,
+      image:''
+    },
+    "20170725-013246542":{
+      title:"Dollar",
+      address:'XXXXX',
+      price:213,
+      image:''
+    },
+  ],
   tickets:{
 
   },

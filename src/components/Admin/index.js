@@ -25,18 +25,17 @@ class Admin extends Component {
     this.state={
       UI:formHotel,
       hotel:{
-        add:{
           title:'',
           address:'',
           price:'',
+          image:'',
+          type:'',
           date:''
-        },
-        delete:{
-
-        }
-      }
+      },
+      transport:{}
     }
     this.setComponent=this.setComponent.bind(this)
+    this.setData=this.setData.bind(this)
   }
 
   setComponent(item){
@@ -45,11 +44,14 @@ class Admin extends Component {
     });
   }
 
-  setData(data){
-    this.setState({
-
-    })
+  setData(){
+    console.log('Entrando a la funcion');
   }
+
+  componentWillMount(){
+    this.setData()
+  }
+
   render() {
     return (
       <Container>
