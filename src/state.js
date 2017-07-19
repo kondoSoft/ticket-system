@@ -7,7 +7,7 @@ const tickets = {
       image:'',
       type:''
     },
-    "20170725-013246546:":{
+    "20170725-013246546":{
       title:"Marriot",
       address:'XXXXX',
       price:321,

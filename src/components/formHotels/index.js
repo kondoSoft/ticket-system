@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Input from '../Input';
 
 const ContainerForm = styled.div`
-  background-color:#ccc;
+  background-color:#D8D8D8;
   width:100%;
   padding:20px;
   border-radius:5px;
@@ -28,12 +28,16 @@ const Button = styled.button`
   box-shadow:2px 2px 6px black;
 `;
 
+function changeData(data){
+    console.log(data.target.value);
+}
+
 function formHotel(){
   return(
     <ContainerForm>
       <h1>Hotel</h1>
       <ContainerInputs>
-        <Input name='title' text='Nombre:' Id='title' placeholder='Ingrese el nombre del Hotel'/>
+        <Input name='title' text='Nombre:' Id='title' placeholder='Ingrese el nombre del Hotel' changeData={changeData}/>
         <Input name='address' text='Direccion:' Id='address' placeholder='Ingrese la direccion del Hotel'/>
       </ContainerInputs>
       <ContainerInputs>

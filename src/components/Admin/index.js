@@ -34,7 +34,7 @@ class Admin extends Component {
     //   date:''
     // }
     this.setComponent=this.setComponent.bind(this)
-    this.setData=this.setData.bind(this)
+    // this.setData=this.setData.bind(this)
   }
 
   setComponent(item){
@@ -47,16 +47,12 @@ class Admin extends Component {
     this.setComponent(formHotel)
   }
 
-  setData(data){
-    console.log('Entrando a la funcion');
-  }
-
   render() {
     return (
       <Container>
         <Nav setComponent={this.setComponent}/>
         <Section>
-          { this.state.UIform()}
+          {this.state.UIform()}
         </Section>
       </Container>
     );
