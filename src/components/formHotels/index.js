@@ -28,30 +28,26 @@ const Button = styled.button`
   box-shadow:2px 2px 6px black;
 `;
 
-function changeData(data){
-    console.log(data.target.value);
-}
-
-function formHotel(){
+function FormHotels(props){
   return(
     <ContainerForm>
       <h1>Hotel</h1>
-      <ContainerInputs>
-        <Input name='title' text='Nombre:' Id='title' placeholder='Ingrese el nombre del Hotel' changeData={changeData}/>
-        <Input name='address' text='Direccion:' Id='address' placeholder='Ingrese la direccion del Hotel'/>
-      </ContainerInputs>
-      <ContainerInputs>
-        <Input name='price' text='Precio:' Id='price' placeholder='Ingrese el Precio de la Habitacion'/>
-        <Input name='date' text='Fecha:' Id='date' placeholder='Ingrese la Fecha de la noche'/>
-      </ContainerInputs>
-      <ContainerInputs>
-        <Input name='image' text='Foto del Hotel:' Id='image' type='file'/>
-        <Input name='type' text='Tipo de Habitacion:' Id='type' placeholder='Simple, Doble, etc...'/>
-      </ContainerInputs>
-      <Button>Guardar</Button>
+        <ContainerInputs>
+          <Input name='title' text='Nombre:' Id='title' placeholder='Ingrese el nombre del Hotel' inputRef={props.inputRef}/>
+          <Input name='address' text='Direccion:' Id='address' placeholder='Ingrese la direccion del Hotel'/>
+        </ContainerInputs>
+        <ContainerInputs>
+          <Input name='price' text='Precio:' Id='price' placeholder='Ingrese el Precio de la Habitacion'/>
+          <Input name='date' text='Fecha:' Id='date' placeholder='Ingrese la Fecha de la noche'/>
+        </ContainerInputs>
+        <ContainerInputs>
+          <Input name='image' text='Foto del Hotel:' Id='image' type='file'/>
+          <Input name='type' text='Tipo de Habitacion:' Id='type' placeholder='Simple, Doble, etc...'/>
+        </ContainerInputs>
+        <Button>Guardar</Button>
     </ContainerForm>
   );
 };
 
 
-export default formHotel;
+export default FormHotels;

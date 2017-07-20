@@ -7,7 +7,7 @@ const ContainerForm = styled.div`
   height:100px;
 `;
 
-function formTransport(){
+function FormTransport(){
   return(
     <ContainerForm>
       <h1>Transporte</h1>
@@ -16,4 +16,4 @@ function formTransport(){
 };
 
 
-export default formTransport;
+export default FormTransport;

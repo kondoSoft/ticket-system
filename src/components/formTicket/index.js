@@ -7,7 +7,7 @@ const ContainerForm = styled.div`
   height:100px;
 `;
 
-function formTicket(){
+function FormTicket(){
   return(
     <ContainerForm>
       <h1>Ticket</h1>
@@ -16,4 +16,4 @@ function formTicket(){
 };
 
 
-export default formTicket;
+export default FormTicket;

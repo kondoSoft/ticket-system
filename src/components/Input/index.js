@@ -27,10 +27,11 @@ function Input(props){
     font-size:16px;
     font-family:Times;
   `;
+
   return(
     <ContainerInput>
       <Label htmlFor={props.Id}>{props.text}</Label>
-      <Inputs placeholder={props.placeholder} name={props.name} id={props.Id} type={props.type} onChange={(e)=>props.changeData(e)}/>
+      <Inputs placeholder={props.placeholder} name={props.name} id={props.Id} type={props.type} ref={props.inputRef}/>
     </ContainerInput>
   )
 }
