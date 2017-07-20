@@ -32,7 +32,7 @@ class Home extends Component {
   render() {
     const {UI} = this.state
     return (
-      <Div className="test">
+      <Div>
         <Header/>
         <Container>
           {/*<SimpleSlider/>*/}
