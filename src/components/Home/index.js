@@ -12,7 +12,6 @@ import styled from 'styled-components';
 const Div = styled.div`
   width: 100vw;
   height: 100vh;
-  position: fixed;
   background: url("http://lorempixel.com/output/city-q-c-1280-860-1.jpg")no-repeat center fixed !important;
 `
 
@@ -24,8 +23,10 @@ class Home extends Component {
   }
 
   setUI(){
-    const {hotels} = this.state
-    this.setState({UI:hotels})
+    const {hotels, UI} = this.state
+    this.setState({
+      UI:hotels
+    })
   }
 
   render() {
@@ -36,7 +37,7 @@ class Home extends Component {
         <Container>
           {/*<SimpleSlider/>*/}
           <Row>
-            {Object.keys(UI).map((item, i)=><Thumbnail setUI = {this.setUI} image={UI[item].image} names={UI[item].title} key={UI[item].key}/>)}
+            {Object.keys(UI).map((item, i)=><Thumbnail setUI={this.setUI} image={UI[item].image} names={UI[item].title} key={UI[item].key}/>)}
           </Row>
           {/*<Image/>*/}
         </Container>
