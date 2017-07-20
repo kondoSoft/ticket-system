@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import styled from 'styled-components';
-import { Div, Img, P, Caption } from './style';
+import { Div, Img, } from './style';
 import Button from '../Button';
 
-class Thumbnail extends Component {
-  render() {
-    return (
-      <Div>
-        <Button name={this.props.names}/>
-        <Img src={this.props.image}/>
-      </Div>
-    );
-  }
+function Thumbnail (props) {
+  return (
+    <Div onClick={()=> props.setUI(props.elements.key)}>
+      <Button name={props.elements.title}/>
+      <Img src={props.elements.image}/>
+    </Div>
+  )
 }
 
 export default Thumbnail;
