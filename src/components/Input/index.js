@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 
 function Input(props){
-
+  let textInput= null
   const ContainerInput= styled.div`
     width:48%;
   `;

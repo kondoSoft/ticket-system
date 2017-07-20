@@ -42,8 +42,8 @@ class Admin extends Component {
     });
   }
 
-  componentWillMount(){
-    this.setComponent(<FormHotels inputRef={el =>this.inputElement=el} />)
+  componentDidMount(){
+    this.setComponent(<FormHotels />)
   }
 
   render() {

@@ -39,13 +39,14 @@ const Body = styled.div`
 
 
 function Nav(props)  {
+  // console.log(props);
   return (
     <ContainerNav>
       <Header>
         <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
       </Header>
       <Body>
-        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels/>}/>
+        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels getValues={props.getValues}/>}/>
         <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport/>}/>
         <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket/>}/>
       </Body>

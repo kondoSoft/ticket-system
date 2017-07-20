@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 //import styled from 'styled-components';
 import {Img} from './style';
 import Slider from 'react-slick';
 
 class SimpleSlider extends React.Component {
-  constructor(props){
-    super(props)
-  }
   render () {
     const settings = {
       dots: true,
