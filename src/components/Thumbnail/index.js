@@ -5,9 +5,9 @@ import Button from '../Button';
 
 function Thumbnail (props) {
   return (
-    <Div onClick={()=> props.setUI()}>
-      <Button name={props.names}/>
-      <Img src={props.image}/>
+    <Div onClick={()=> props.setUI(props.elements.key)}>
+      <Button name={props.elements.title}/>
+      <Img src={props.elements.image}/>
     </Div>
   )
 }

@@ -22,10 +22,10 @@ class Home extends Component {
     this.setUI = this.setUI.bind(this)
   }
 
-  setUI(){
-    const {hotels, UI} = this.state
+  setUI(key){
+    const UI = this.state
     this.setState({
-      UI:hotels
+      UI: UI[key]
     })
   }
 
@@ -37,7 +37,7 @@ class Home extends Component {
         <Container>
           {/*<SimpleSlider/>*/}
           <Row>
-            {Object.keys(UI).map((item, i)=><Thumbnail setUI={this.setUI} image={UI[item].image} names={UI[item].title} key={UI[item].key}/>)}
+            {Object.keys(UI).map((item)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={UI[item].key}/>)}
           </Row>
           {/*<Image/>*/}
         </Container>
