@@ -4,7 +4,7 @@ import Input from '../Input';
 import Button from '../Button';
 
 const ContainerForm = styled.div`
-  background-color:#ccc;
+  background-color:#D8D8D8;
   width:100%;
   padding:20px;
   border-radius:5px;
@@ -20,7 +20,7 @@ const ContainerInputs = styled.div`
 `;
 
 
-function formHotel(){
+function FormHotels(props){
   return(
     <ContainerForm>
       <h1>Hotel</h1>
@@ -42,4 +42,4 @@ function formHotel(){
 };
 
 
-export default formHotel;
+export default FormHotels;

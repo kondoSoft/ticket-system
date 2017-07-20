@@ -31,7 +31,7 @@ function Input(props){
   return(
     <ContainerInput>
       <Label htmlFor={props.Id}>{props.text}</Label>
-      <Inputs placeholder={props.placeholder} name={props.name} id={props.Id} type={props.type}/>
+      <Inputs placeholder={props.placeholder} name={props.name} id={props.Id} type={props.type} ref={props.inputRef}/>
     </ContainerInput>
   )
 }

@@ -18,8 +18,7 @@ const ContainerInputs = styled.div`
   margin-bottom:10px;
 `;
 
-function formTransport(){
-
+function FormTransport(){
   return(
     <ContainerForm>
       <h1>Transporte</h1>
@@ -51,4 +50,4 @@ function formTransport(){
 //   }
 // }
 
-export default formTransport;
+export default FormTransport;

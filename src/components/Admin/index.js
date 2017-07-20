@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Nav from '../Nav';
-import formHotel from '../formHotels';
+import FormHotels from '../formHotels';
 import initialState from '../../state'
 
 const Container = styled.div`
@@ -34,7 +34,6 @@ class Admin extends Component {
     //   date:''
     // }
     this.setComponent=this.setComponent.bind(this)
-    this.setData=this.setData.bind(this)
   }
 
   setComponent(item){
@@ -44,11 +43,7 @@ class Admin extends Component {
   }
 
   componentWillMount(){
-    this.setComponent(formHotel)
-  }
-
-  setData(data){
-    console.log('Entrando a la funcion');
+    this.setComponent(<FormHotels inputRef={el =>this.inputElement=el} />)
   }
 
   render() {
@@ -56,7 +51,7 @@ class Admin extends Component {
       <Container>
         <Nav setComponent={this.setComponent}/>
         <Section>
-          { this.state.UIform()}
+          {this.state.UIform}
         </Section>
       </Container>
     );

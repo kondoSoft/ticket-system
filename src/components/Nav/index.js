@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconLabel from '../IconLabel';
-import formHotel from '../formHotels';
-import formTransport from '../formTransport';
-import formTicket from '../formTicket'
+import FormHotels from '../formHotels';
+import FormTransport from '../formTransport';
+import FormTicket from '../formTicket'
 
 const ContainerNav = styled.div`
   width:14%;
@@ -45,9 +45,9 @@ function Nav(props)  {
         <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
       </Header>
       <Body>
-        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={formHotel}/>
-        <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={formTransport}/>
-        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={formTicket}/>
+        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels/>}/>
+        <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport/>}/>
+        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket/>}/>
       </Body>
     </ContainerNav>
   );
