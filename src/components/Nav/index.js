@@ -47,7 +47,7 @@ function Nav(props)  {
         <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
       </Header>
       <Body>
-        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels getValues={props.getValues}/>}/>
+        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels setObjectState={props.setObjectState}/>}/>
         <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport/>}/>
         <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket handleChange={props.handleChange} startDate={props.startDate}/>}/>
       </Body>

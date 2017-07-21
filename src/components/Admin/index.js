@@ -39,7 +39,7 @@ class Admin extends Component {
      this.setState({
        [position]:newValue
      })
-     console.log(this.state);
+     console.log(newValue);
   }
 
   componentDidMount(){
@@ -47,19 +47,15 @@ class Admin extends Component {
   }
 
   handleChange(date,donde) {
-    console.log(this.state.startDate);
     this.setState({
       [donde]:date
     })
-    console.log(this.state.startDate);
-
   }
 
   render() {
-    console.log(this.state);
     return (
       <Container>
-        <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate}/>
+        <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate} setObjectState={this.setObjectState}/>
         <Section>
           {this.state.UIform}
         </Section>

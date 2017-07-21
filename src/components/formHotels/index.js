@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-// import styled from 'styled-components';
-// import Input from '../Input';
 import Button from '../Button';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 const ContainerForm = {
   backgroundColor:'#D8D8D8',
@@ -61,6 +63,10 @@ class FormHotels extends Component{
   constructor(props){
     super(props)
     this.getRefs=this.getRefs.bind(this)
+    this.state={
+      startDate:moment()
+    }
+    this.handleChange=this.handleChange.bind(this)
   }
 
   getRefs(event){
@@ -74,7 +80,7 @@ class FormHotels extends Component{
     let type = this.refs.type.value
 
     const hotel={
-      [date]:{
+      [this.state.startDate]:{
         'title':title,
         'address':address,
         'price':price,
@@ -82,6 +88,7 @@ class FormHotels extends Component{
         'type':type
       }
     }
+
     this.props.setObjectState(hotel,'hotels')
 
     this.refs.title.value=null;
@@ -90,6 +97,12 @@ class FormHotels extends Component{
     this.refs.date.value=null;
     this.refs.image.value=null;
     this.refs.type.value=null;
+  }
+
+  handleChange(e){
+    this.setState({
+      startDate:e
+    })
   }
 
   render(){
@@ -104,7 +117,7 @@ class FormHotels extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='address'>Direccion:</label>
-              <input style={Inputs} placeholder='Ingrese la direccion del Hotel' name='address' id='address' id='title' ref='address'/>
+              <input style={Inputs} placeholder='Ingrese la direccion del Hotel' name='address' id='address'  ref='address'/>
             </div>
           </div>
           <div style={ContainerInputs}>
@@ -114,7 +127,7 @@ class FormHotels extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='title'>Fecha:</label>
-              <input style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
+              <DatePicker selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>
