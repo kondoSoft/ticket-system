@@ -1,5 +1,5 @@
 const tickets = {
-  hotels:[
+  hotels:{
     "20170725-23154464":{
       title:"Hyatt",
       address:'XXXXX',
@@ -21,8 +21,8 @@ const tickets = {
       image:'',
       type:''
     },
-  ],
-  transport:[
+  },
+  transport:{
     "20170725-013246546:":{
       title:"Hertz",
       address:'XXXXX',
@@ -35,7 +35,7 @@ const tickets = {
       price:213,
       image:''
     },
-  ],
+  },
   tickets:{
     "001":{
       price:123,

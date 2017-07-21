@@ -24,16 +24,8 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state=initialState
-    // this.state={
-    //   UIform:formHotel,
-    //   title:'',
-    //   address:'',
-    //   price:'',
-    //   image:'',
-    //   type:'',
-    //   date:''
-    // }
-    this.setComponent=this.setComponent.bind(this)
+    this.setComponent=this.setComponent.bind(this);
+    this.setObjectState=this.setObjectState.bind(this)
   }
 
   setComponent(item){
@@ -42,8 +34,16 @@ class Admin extends Component {
     });
   }
 
+  setObjectState(object,position){
+     var newValue = Object.assign({},this.state[position],object);
+     this.setState({
+       [position]:newValue
+     })
+     console.log(this.state);
+  }
+
   componentDidMount(){
-    this.setComponent(<FormHotels />)
+    this.setComponent(<FormHotels setObjectState={this.setObjectState}/>)
   }
 
   render() {
