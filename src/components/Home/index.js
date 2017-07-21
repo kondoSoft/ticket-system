@@ -8,12 +8,7 @@ import Thumbnail from '../Thumbnail';
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
-
-const Div = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: url("http://lorempixel.com/output/city-q-c-1280-860-1.jpg")no-repeat center fixed !important;
-`
+import Return from '../Return'
 
 class Home extends Component {
   constructor(props){
@@ -32,7 +27,7 @@ class Home extends Component {
   render() {
     const {UI} = this.state
     return (
-      <Div>
+      <div>
         <Header/>
         <Container>
           {/*<SimpleSlider/>*/}
@@ -41,7 +36,7 @@ class Home extends Component {
           </Row>
           {/*<Image/>*/}
         </Container>
-    </Div>
+    </div>
     );
   }
 }
