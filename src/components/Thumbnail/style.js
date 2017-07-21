@@ -8,6 +8,8 @@ const Div = styled.div`
   padding: 10px;
   margin-top: 140px;
   cursor: pointer;
+  margin-right: 20px;
+  box-shadow: 1px 1px 10px #000;
 `;
 
 const Img = styled.img`

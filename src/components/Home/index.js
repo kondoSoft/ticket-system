@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import {Container} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Header from '../Header';
-//import SimpleSlider from '../SimpleSlider';
 import Thumbnail from '../Thumbnail';
-//import Image from '../Image';
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
-import Return from '../Return'
+
+const Div = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: url("http://lorempixel.com/output/city-q-c-1680-960-1.jpg")no-repeat center;
+  overflow-x: scroll;
+  position: fixed;
+`
 
 class Home extends Component {
   constructor(props){
@@ -27,16 +32,14 @@ class Home extends Component {
   render() {
     const {UI} = this.state
     return (
-      <div>
+      <Div>
         <Header/>
         <Container>
-          {/*<SimpleSlider/>*/}
           <Row>
             {Object.keys(UI).map((item)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={UI[item].key}/>)}
           </Row>
-          {/*<Image/>*/}
         </Container>
-    </div>
+    </Div>
     );
   }
 }
