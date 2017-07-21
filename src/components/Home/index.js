@@ -13,7 +13,7 @@ const Div = styled.div`
   background: url("http://lorempixel.com/output/city-q-c-1680-960-1.jpg")no-repeat center;
   overflow-x: scroll;
   position: fixed;
-`
+`;
 
 class Home extends Component {
   constructor(props){
@@ -39,7 +39,7 @@ class Home extends Component {
             {Object.keys(UI).map((item)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={UI[item].key}/>)}
           </Row>
         </Container>
-    </Div>
+      </Div>
     );
   }
 }

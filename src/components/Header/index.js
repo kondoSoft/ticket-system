@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import styled from 'styled-components';
-import {Div, Nav} from './style';
+import { Link } from 'react-router-dom';
+import {Div, Nav, Ul, Li} from './style';
 
 class Header extends Component {
   render() {
@@ -10,7 +10,9 @@ class Header extends Component {
 
         </Div>
         <Nav>
-          
+          <Ul>
+            <Link to="/"><Li>{this.props.text}</Li></Link>
+          </Ul>
         </Nav>
       </div>
     );

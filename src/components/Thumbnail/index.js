@@ -1,6 +1,6 @@
 import React from 'react';
 //import styled from 'styled-components';
-import { Div, Img, } from './style';
+import { Div, Img, P } from './style';
 import Button from '../ButtonBlue';
 
 function Thumbnail (props) {

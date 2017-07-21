@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   width: 274px;
-  height: 246px;
+  height: auto;
   background-color: #fff;
   border: 1px solid #ecf0f1;
   padding: 10px;
@@ -14,7 +14,7 @@ const Div = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: 100%;
+  height: 225px;
 `;
 
 const P = styled.p`
