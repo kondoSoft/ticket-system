@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Nav from '../Nav';
 import FormHotels from '../formHotels';
 import initialState from '../../state'
-
+import moment from 'moment';
 const Container = styled.div`
   padding:0;
   width:100%;
@@ -23,17 +23,12 @@ const Section = styled.div`
 class Admin extends Component {
   constructor(props){
     super(props);
-    this.state=initialState
-    // this.state={
-    //   UIform:formHotel,
-    //   title:'',
-    //   address:'',
-    //   price:'',
-    //   image:'',
-    //   type:'',
-    //   date:''
-    // }
+    this.state={
+          initialState,
+          startDate: moment()
+        };
     this.setComponent=this.setComponent.bind(this)
+    this.handleChange = this.handleChange.bind(this);
   }
 
   setComponent(item){
@@ -46,10 +41,20 @@ class Admin extends Component {
     this.setComponent(<FormHotels />)
   }
 
+  handleChange(date,donde) {
+    console.log(this.state.startDate);
+    this.setState({
+      [donde]:date
+    })
+    console.log(this.state.startDate);
+
+  }
+
   render() {
+    console.log(this.state);
     return (
       <Container>
-        <Nav setComponent={this.setComponent}/>
+        <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate}/>
         <Section>
           {this.state.UIform}
         </Section>

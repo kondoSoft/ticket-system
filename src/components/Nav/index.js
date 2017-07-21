@@ -49,7 +49,7 @@ function Nav(props)  {
       <Body>
         <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels getValues={props.getValues}/>}/>
         <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport/>}/>
-        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket/>}/>
+        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket handleChange={props.handleChange} startDate={props.startDate}/>}/>
       </Body>
     </ContainerNav>
   );
