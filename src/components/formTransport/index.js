@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Input from '../Input';
 import Button from '../Button';
-import initialState from '../../state'
+
 const ContainerForm = styled.div`
   background-color:#ccc;
   width:100%;
