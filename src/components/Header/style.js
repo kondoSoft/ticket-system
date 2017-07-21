@@ -19,4 +19,24 @@ const Nav = styled.nav`
   margin-top: 40px;
 `;
 
-export {Div, Nav};
+const Ul = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  margin-right: 100px;
+`;
+
+const Li = styled.li`
+  color: #bdc3c7;
+  padding: 16px 10px 16px 10px;
+  margin-top: -14px;
+
+  &:hover{
+    color: #34495e;
+    transition: .3s;
+    cursor: pointer;
+  }
+`;
+
+export {Div, Nav, Ul, Li};

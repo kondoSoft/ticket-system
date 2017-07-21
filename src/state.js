@@ -1,57 +1,81 @@
 const tickets = {
-  hotels:[
-    "20170725-23154464":{
-      title:"Hyatt",
-      address:'XXXXX',
-      price:123,
-      image:'',
-      type:''
-    },
-    "20170725-013246546":{
-      title:"Marriot",
+  hotels:{
+    hyatt:{
+      title:'HYATT',
       address:'XXXXX',
       price:321,
-      image:'',
-      type:''
+      image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
     },
-    "20170725-013246542":{
-      title:"Hyatt",
-      address:'XXXXX',
-      price:213,
-      image:'',
-      type:''
-    },
-  ],
-  transport:[
-    "20170725-013246546:":{
-      title:"Hertz",
+    marriot:{
+      title: 'MARRIOT',
       address:'XXXXX',
       price:321,
-      image:''
+      image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
     },
-    "20170725-013246542":{
-      title:"Dollar",
+    hotel:{
+      title: 'HOTEL',
       address:'XXXXX',
-      price:213,
-      image:''
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     },
-  ],
-  tickets:{
-    "001":{
-      price:123,
-      section:'Zona baja',
-      fecha:'2017-08-20'
+    hotel1:{
+      title: 'HOTEL1',
+      address:'XXXXX',
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     },
-    "002":{
-      price:123,
-      section:'VIP',
-      fecha:'2017-08-21'
+
+    hotel2:{
+      title: 'HOTEL3',
+      address:'XXXXX',
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     },
-    "003":{
-      price:123,
-      section:'General',
-      fecha:'2017-08-21'
+
+    hotel3:{
+      title: 'HOTEL4',
+      address:'XXXXX',
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
+    },
+
+    hotel4:{
+      title: 'HOTEL5',
+      address:'XXXXX',
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
+    },
+
+    hotel5:{
+      title: 'HOTEL6',
+      address:'XXXXX',
+      price: 321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
+    },
+
+    hotel6:{
+      title: 'HOTEL7',
+      address:'XXXXX',
+      price:321,
+      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     }
+  },
+  transport:{
+    "20170725-013246546:":{
+      title:"HERTZ",
+      address:'XXXXX',
+      price:321,
+      image:'http://lorempixel.com/output/transport-q-c-640-480-9.jpg'
+    },
+    "20170725-013246542":{
+      title:"DOLLAR",
+      address:'XXXXX',
+      price:213,
+      image:'http://lorempixel.com/output/transport-q-c-640-480-1.jpg'
+    },
+  },
+  tickets:{
+
   },
   dashboard:{
 
