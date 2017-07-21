@@ -1,11 +1,11 @@
 import React from 'react';
-// import styled from 'styled-components'
-
-
+import {Inputt} from './style'
 
 function Input(){
   return(
-    <div></div>
+    <div>
+      <Inputt/>
+    </div>
   )
 }
 

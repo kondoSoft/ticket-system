@@ -2,21 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Input from '../Input';
 import Button from '../Button';
-
-const ContainerForm = styled.div`
-  background-color:#ccc;
-  width:100%;
-  padding:20px;
-  border-radius:5px;
-`;
-const ContainerInputs = styled.div`
-  width:100%;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  margin-bottom:10px;
-`;
+import {ContainerForm, ContainerInputs} from './style'
 
 function FormTransport(){
   return(
