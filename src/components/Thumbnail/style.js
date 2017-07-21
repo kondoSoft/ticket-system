@@ -7,10 +7,12 @@ const Div = styled.div`
   border: 1px solid #ecf0f1;
   padding: 10px;
   margin-top: 140px;
+  cursor: pointer;
 `;
 
 const Img = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const P = styled.p`

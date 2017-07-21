@@ -11,6 +11,7 @@ const ContainerNav = styled.div`
   display:flex;
   flex-direction:column;
   box-shadow: 1px 0px 3px #888888;
+  background-color: #fff;
 `;
 /*Componentes del header del nav lateral*/
 const Header = styled.div`
