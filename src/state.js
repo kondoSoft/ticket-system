@@ -52,13 +52,6 @@ const tickets = {
       price: 321,
       image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     },
-
-    hotel6:{
-      title: 'HOTEL7',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    }
   },
   transport:{
     "20170725-013246546:":{

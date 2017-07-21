@@ -23,12 +23,9 @@ const Section = styled.div`
 class Admin extends Component {
   constructor(props){
     super(props);
-    this.state={
-          initialState,
-          startDate: moment()
-        };
-    this.setComponent=this.setComponent.bind(this)
-    this.handleChange = this.handleChange.bind(this);
+    this.state=initialState
+    this.setComponent=this.setComponent.bind(this);
+    this.setObjectState=this.setObjectState.bind(this)
   }
 
   setComponent(item){
@@ -37,8 +34,16 @@ class Admin extends Component {
     });
   }
 
+  setObjectState(object,position){
+     var newValue = Object.assign({},this.state[position],object);
+     this.setState({
+       [position]:newValue
+     })
+     console.log(this.state);
+  }
+
   componentDidMount(){
-    this.setComponent(<FormHotels />)
+    this.setComponent(<FormHotels setObjectState={this.setObjectState}/>)
   }
 
   handleChange(date,donde) {
