@@ -81,16 +81,14 @@ class FormHotels extends Component{
     let type = this.refs.type.value
 
     const hotel={
-      [this.state.startDate]:{
         'title':title,
         'address':address,
         'price':price,
         'image':image,
         'type':type
-      }
     }
 
-    this.props.setObjectState(hotel,'hotels')
+    this.props.setObjectState(hotel,'hotels',this.state.startDate)
 
     this.refs.title.value=null;
     this.refs.address.value=null;

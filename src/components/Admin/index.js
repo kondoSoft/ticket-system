@@ -34,12 +34,10 @@ class Admin extends Component {
     });
   }
 
-  setObjectState(object,position){
-     var newValue = Object.assign({},this.state[position],object);
-     this.setState({
-       [position]:newValue
-     })
-     console.log(newValue);
+  setObjectState(object,position,key){
+    let state = this.state
+    state[position][key]=object
+    this.setState(state)
   }
 
   componentDidMount(){
@@ -49,13 +47,14 @@ class Admin extends Component {
     this.setComponent(<FormHotels setObjectState={this.setObjectState}/>)
   }
 
-  handleChange(date,donde) {
+  handleChange(date,position) {
     this.setState({
-      [donde]:date
+      [position]:date
     })
   }
 
   render() {
+    console.log(this.state);
     return (
       <Container>
         <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate} setObjectState={this.setObjectState}/>

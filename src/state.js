@@ -1,56 +1,67 @@
 const tickets = {
   hotels:{
     hyatt:{
+      key:'hyatt',
       title:'HYATT',
       address:'XXXXX',
       price:321,
       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
+      rooms:{
+        271180:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271181:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271182:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271183:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271184:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271185:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271186:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271187:{
+          type:'Sencilla',
+          price:'340'
+        },
+        271188:{
+          type:'Sencilla',
+          price:'340'
+        },
+        101289:{
+          type:'Sencilla',
+          price:'340'
+        },
+        291190:{
+          type:'Sencilla',
+          price:'340'
+        },
+        281191:{
+          type:'Sencilla',
+          price:'340'
+        },
+      }
     },
     marriot:{
       title: 'MARRIOT',
       address:'XXXXX',
       price:321,
       image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
-    },
-    hotel:{
-      title: 'HOTEL',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    },
-    hotel1:{
-      title: 'HOTEL1',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    },
-
-    hotel2:{
-      title: 'HOTEL3',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    },
-
-    hotel3:{
-      title: 'HOTEL4',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    },
-
-    hotel4:{
-      title: 'HOTEL5',
-      address:'XXXXX',
-      price:321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
-    },
-
-    hotel5:{
-      title: 'HOTEL6',
-      address:'XXXXX',
-      price: 321,
-      image: 'http://lorempixel.com/output/city-q-c-250-220-9.jpg',
     },
   },
   transport:{
