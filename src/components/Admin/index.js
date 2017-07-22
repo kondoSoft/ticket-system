@@ -39,7 +39,7 @@ class Admin extends Component {
      this.setState({
        [position]:newValue
      })
-     console.log(this.state);
+     console.log([newValue]);
   }
 
   componentDidMount(){
@@ -51,12 +51,9 @@ class Admin extends Component {
     this.setState({
       [donde]:date
     })
-    console.log(this.state.startDate);
-
   }
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate}/>
