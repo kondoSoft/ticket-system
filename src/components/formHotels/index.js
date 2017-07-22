@@ -26,6 +26,7 @@ const ContainerInput= {
   width:'48%'
 }
 
+
 const Inputs={
   width: '100%',
   height:'35px',
@@ -127,7 +128,7 @@ class FormHotels extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='title'>Fecha:</label>
-              <DatePicker selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
+              <DatePicker className='datepicker' selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>

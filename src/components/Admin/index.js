@@ -43,6 +43,9 @@ class Admin extends Component {
   }
 
   componentDidMount(){
+    this.setState({
+      startDate:moment()
+    })
     this.setComponent(<FormHotels setObjectState={this.setObjectState}/>)
   }
 

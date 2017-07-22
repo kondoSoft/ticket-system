@@ -25,3 +25,16 @@ body {
   content: "\f105" !important;
   font-family: FontAwesome;
 }
+
+.datepicker{
+  width: 100% !important;
+  height:35px;
+  color:#6E6E6E;
+  border-radius:5px !important;
+  border:none;
+  box-shadow:1px 1px 5px #2E2E2E inset !important;
+  padding-left:10px;
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+}
