@@ -22,11 +22,35 @@ class Home extends Component {
     this.setUI = this.setUI.bind(this)
   }
 
-  setUI(key){
-    const UI = this.state
+  setUI(key, rooms){
+    const state = this.state
+
+    // try{
+    //   this.setState({
+    //     UI: state.UI[key].rooms
+    //   })
+    // }
+    // catch(err){
+    //   this.setState({
+    //     UI: state[key]
+    //   })
+    //     console.log('no existe diantre');
+    // }
+
+    if(rooms){
+      console.log('soyhotel');
+      this.setState({
+        UI: state.UI[key].rooms
+      })
+      return
+    }
     this.setState({
-      UI: UI[key]
+      UI: state[key]
     })
+
+      console.log('no soy hotel');
+
+
   }
 
   render() {
@@ -36,7 +60,7 @@ class Home extends Component {
         <Header/>
         <Container>
           <Row>
-            {Object.keys(UI).map((item)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={UI[item].key}/>)}
+            {Object.keys(UI).map((item,i)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={i}/>)}
           </Row>
         </Container>
       </Div>

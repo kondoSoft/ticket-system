@@ -6,7 +6,7 @@ import Button from '../ButtonBlue';
 function Thumbnail (props) {
 
   return (
-    <Div onClick={()=> props.setUI(props.elements.key)}>
+    <Div onClick={()=> props.setUI(props.elements.key, props.elements.rooms)}>
       <Button name={props.elements.title}/>
       <Img src={props.elements.image}/>
       {props.elements.price ? <P>Price: ${props.elements.price}</P> : ''}

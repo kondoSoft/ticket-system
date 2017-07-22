@@ -1,53 +1,75 @@
-import React from 'react';
-import styled from 'styled-components'
-import Input from '../Input';
+import React,{Component} from 'react';
 import Button from '../Button';
+import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
 
-const ContainerForm = styled.div`
-  background-color:#ccc;
-  width:100%;
-  padding:20px;
-  border-radius:5px;
-`;
-const ContainerInputs = styled.div`
-  width:100%;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  margin-bottom:10px;
-`;
+class FormTransport extends Component{
+  constructor(props){
+    super(props)
+    this.getRefs = this.getRefs.bind(this)
+  }
 
-function FormTransport(){
-  return(
-    <ContainerForm>
-      <h1>Transporte</h1>
-      <ContainerInputs>
-        <Input name="title" placeholder="Ingrese nombre del transporte" id="title" text="Nombre:" />
-        <Input name="address" placeholder="Ingrese la direccion del transporte" id="address" text="Direccion:"/>
-      </ContainerInputs>
-      <ContainerInputs>
-        <Input name="price" placeholder="Ingrese el precio del transporte" id="price" text="Precio:"/>
-        <Input name="image"  id="image" text="Imagen del transporte:" type="file"/>
-      </ContainerInputs>
-      <Button name="Guardar" />
-    </ContainerForm>
-  );
+  getRefs(event){
+    event.preventDefault()
+    // Variables
+    let title = this.refs.title.value
+    let address = this.refs.address.value
+    let price = this.refs.price.value
+    let date = this.refs.date.value
+    let image = this.refs.image.value
+
+    const transport={
+      [date]:{
+        'title':title,
+        'address':address,
+        'price':price,
+        'image':image
+      }
+    }
+    this.props.setObjectState(transport,'transport')
+
+    this.refs.title.value=null;
+    this.refs.address.value=null;
+    this.refs.price.value=null;
+    this.refs.date.value=null;
+    this.refs.image.value=null;
+  }
+
+  render(){
+    return (
+      <div style={ContainerForm}>
+        <h1>Transporte</h1>
+        <form onSubmit={this.getRefs}>
+          <div style={ContainerInputs}>
+            <div style={ContainerInput}>
+              <label style={Label} htmlFor='title'>Nombre:</label>
+              <input style={Inputs} placeholder='Ingrese el nombre del transporte' name='title' id='title' ref='title'/>
+            </div>
+            <div style={ContainerInput}>
+              <label style={Label} htmlFor='address'>Direccion:</label>
+              <input style={Inputs} placeholder='Ingrese la direccion del transporte' name='address' id='address' id='title' ref='address'/>
+            </div>
+          </div>
+          <div style={ContainerInputs}>
+            <div style={ContainerInput}>
+              <label style={Label} htmlFor='price'>Precio:</label>
+              <input style={Inputs} placeholder='Ingrese el precio del transporte' name='price' id='price' ref='price'/>
+            </div>
+            <div style={ContainerInput}>
+              <label style={Label} htmlFor='title'>Fecha:</label>
+              <input style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
+            </div>
+          </div>
+          <div style={ContainerInputs}>
+            <div style={ContainerInput}>
+              <label style={Label} htmlFor='title'>Foto:</label>
+              <input style={InputsF} placeholder='Ingrese la foto del transporte' name='image' id='image' ref='image' type='file'/>
+            </div>
+          </div>
+          <Button name="Guardar"/>
+        </form>
+      </div>
+    );
+  }
 };
-
-// class Datas extends React.Component {
-//   constructor(props){
-//     super(props);
-//     this.state=initialState
-//   }
-//
-//   render() {
-//     return (
-//       <button className="square" onClick={() => this.setState({value: 'X'})}>
-//         {this.state.value}
-//       </button>
-//     );
-//   }
-// }
 
 export default FormTransport;
