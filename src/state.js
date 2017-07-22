@@ -7,51 +7,51 @@ const tickets = {
       price:321,
       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
       rooms:{
-        271180:{
+        '271180':{
           type:'Sencilla',
           price:'340'
         },
-        271181:{
+        '271181':{
           type:'Sencilla',
           price:'340'
         },
-        271182:{
+        '271182':{
           type:'Sencilla',
           price:'340'
         },
-        271183:{
+        '271183':{
           type:'Sencilla',
           price:'340'
         },
-        271184:{
+        '271184':{
           type:'Sencilla',
           price:'340'
         },
-        271185:{
+        '271185':{
           type:'Sencilla',
           price:'340'
         },
-        271186:{
+        '271186':{
           type:'Sencilla',
           price:'340'
         },
-        271187:{
+        '271187':{
           type:'Sencilla',
           price:'340'
         },
-        271188:{
+        '271188':{
           type:'Sencilla',
           price:'340'
         },
-        101289:{
+        '101289':{
           type:'Sencilla',
           price:'340'
         },
-        291190:{
+        '291190':{
           type:'Sencilla',
           price:'340'
         },
-        281191:{
+        '281191':{
           type:'Sencilla',
           price:'340'
         },

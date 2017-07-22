@@ -11,6 +11,7 @@ function Thumbnail (props) {
       <Img src={props.elements.image}/>
       {props.elements.price ? <P>Price: ${props.elements.price}</P> : ''}
       {props.elements.address ? <P>Address: {props.elements.address}</P> : ''}
+      {props.elements.type ? <P>Type: {props.elements.type}</P> : ''}
     </Div>
   )
 }

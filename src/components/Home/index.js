@@ -24,21 +24,7 @@ class Home extends Component {
 
   setUI(key, rooms){
     const state = this.state
-
-    // try{
-    //   this.setState({
-    //     UI: state.UI[key].rooms
-    //   })
-    // }
-    // catch(err){
-    //   this.setState({
-    //     UI: state[key]
-    //   })
-    //     console.log('no existe diantre');
-    // }
-
     if(rooms){
-      console.log('soyhotel');
       this.setState({
         UI: state.UI[key].rooms
       })
@@ -47,10 +33,6 @@ class Home extends Component {
     this.setState({
       UI: state[key]
     })
-
-      console.log('no soy hotel');
-
-
   }
 
   render() {
