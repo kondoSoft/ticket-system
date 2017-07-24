@@ -9,11 +9,11 @@ import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from 
 class FormHotels extends Component{
   constructor(props){
     super(props)
-    this.getRefs=this.getRefs.bind(this)
     this.state={
       startDate:moment()
     }
     this.handleChange=this.handleChange.bind(this)
+    this.getRefs=this.getRefs.bind(this)
   }
 
   getRefs(event){
@@ -31,7 +31,7 @@ class FormHotels extends Component{
         'address':address,
         'price':price,
         'image':image,
-        'type':type
+        'type':type,
     }
 
     this.props.setObjectState(hotel,'hotels',this.state.startDate)
@@ -51,7 +51,6 @@ class FormHotels extends Component{
   }
 
   render(){
-    console.log(this.state);
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>
