@@ -12,10 +12,9 @@ class FormTransport extends Component{
     this.state={
       startDate:moment()
     }
-    this.getRefs = this.getRefs.bind(this)
-    this.state={
-      startDate:moment()
-    }
+    this.handleChange=this.handleChange.bind(this)
+    this.getRefs=this.getRefs.bind(this)
+
   }
 
 
@@ -34,7 +33,7 @@ class FormTransport extends Component{
         'price':price,
         'image':image
     }
-    var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+    var timeStampInMs = Date.now();
 
     this.props.setObjectState(transport,'transport',timeStampInMs)
 
@@ -45,7 +44,11 @@ class FormTransport extends Component{
     this.refs.image.value=null;
 
   }
-
+  handleChange(e){
+    this.setState({
+      startDate:e
+    })
+  }
   render(){
     return (
       <div style={ContainerForm}>
