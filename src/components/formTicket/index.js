@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm,ContainerInputs,ContainerInput, Inputs,Label} from '../styles'
+import Button from '../Button'
 
 class FormTicket extends Component{
   constructor(props){
@@ -13,8 +14,36 @@ class FormTicket extends Component{
     this.state={
       startDate:moment()
     }
+    this.getRefs=this.getRefs.bind(this)
+    this.handleChange=this.handleChange.bind(this)
   }
+
+  getRefs(event){
+
+    event.preventDefault()
+    // Variables
+    let key = this.refs.key.value
+    let price = this.refs.price.value
+    let date = this.refs.date.value
+    let section = this.refs.section.value
+    console.log(this.refs);
+    // const ticket={
+    //     'key':key,
+    //     'price':price,
+    //     'image':section,
+    //     'date':date
+    // }
+    //
+    // this.props.setObjectState(ticket,'tickets',key)
+    //
+    // this.refs.key.value=null;
+    // this.refs.price.value=null;
+    // this.refs.date.value=null;
+    // this.refs.section.value=null;
+  }
+
   handleChange(e){
+    console.log(e);
     this.setState({
       startDate:e
     })
@@ -23,15 +52,27 @@ class FormTicket extends Component{
     return(
       <div style={ContainerForm}>
         <h1>Ticket</h1>
+        <form onSubmit={(e)=>this.getRefs(e)}>
         <div style={ContainerInputs}>
           <div style={ContainerInput}>
+            <label style={Label}>Folio: </label>
+            <input style={Inputs} placeholder="Ingrese precio del ticket" ref='key' />
+          </div>
+          <div style={ContainerInput}>
             <label style={Label}>Precio: </label>
-            <input style={Inputs} name="price" placeholder="Ingrese precio del ticket" id="price" text="Precio:" />
+            <input style={Inputs} placeholder="Ingrese precio del ticket" ref='price' />
+          </div>
+          <div style={ContainerInput}>
+            <label style={Label}>Zona: </label>
+            <input style={Inputs} placeholder="Ingrese precio del ticket" ref='section' />
+          </div>
+          <div style={ContainerInput}>
+            <label style={Label}>Fecha: </label>
+            <DatePicker selected={this.state.startDate} onChange={(e)=>this.handleChange(e)} className='datepicker' placeholder="Ingrese precio del ticket" ref='date' />
           </div>
         </div>
-        <div style={ContainerInputs}>
-          <DatePicker selected={this.state.startDate} onChange={(e)=>this.handleChange(e)} />;
-        </div>
+        <Button name="Guardar"/>
+      </form>
       </div>
     );
   }

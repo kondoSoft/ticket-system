@@ -13,9 +13,6 @@ class FormTransport extends Component{
       startDate:moment()
     }
     this.getRefs = this.getRefs.bind(this)
-    this.state={
-      startDate:moment()
-    }
   }
 
 
