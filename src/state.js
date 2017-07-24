@@ -64,12 +64,20 @@ const tickets = {
     },
   },
   transport:{
-    "20170725-013246546:":{
+    "hertz:":{
       key: "hertz",
       title:"HERTZ",
       address:'XXXXX',
-      price:321,
       image:'http://lorempixel.com/output/transport-q-c-640-480-9.jpg'
+      items: {
+        '271184':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
+          price:'340'
+        },
+        '271185':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
+          price:'340'
+      }
     },
     "20170725-013246542":{
       title:"DOLLAR",
