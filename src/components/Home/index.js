@@ -39,7 +39,7 @@ class Home extends Component {
     const {UI} = this.state
     return (
       <Div>
-        <Header/>
+        <Header icon="shopping-cart"/>
         <Container>
           <Row>
             {Object.keys(UI).map((item,i)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={i}/>)}
