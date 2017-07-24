@@ -105,6 +105,7 @@ class FormHotels extends Component{
   }
 
   render(){
+    console.log(this.state);
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>

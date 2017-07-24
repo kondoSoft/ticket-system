@@ -1,12 +1,17 @@
 import React,{Component} from 'react';
 import Button from '../Button';
 import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
+import moment from 'moment';
 
 class FormTransport extends Component{
   constructor(props){
     super(props)
     this.getRefs = this.getRefs.bind(this)
+    this.state={
+      startDate:moment()
+    }
   }
+  
 
   getRefs(event){
     event.preventDefault()
@@ -25,13 +30,16 @@ class FormTransport extends Component{
         'image':image
       }
     }
-    this.props.setObjectState(transport,'transport')
+    var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+
+    this.props.setObjectState(transport,'transport',timeStampInMs)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.price.value=null;
     this.refs.date.value=null;
     this.refs.image.value=null;
+
   }
 
   render(){
@@ -55,13 +63,13 @@ class FormTransport extends Component{
               <input style={Inputs} placeholder='Ingrese el precio del transporte' name='price' id='price' ref='price'/>
             </div>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Fecha:</label>
+              <label style={Label} htmlFor='date'>Fecha:</label>
               <input style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Foto:</label>
+              <label style={Label} htmlFor='image'>Foto:</label>
               <input style={InputsF} placeholder='Ingrese la foto del transporte' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
