@@ -126,26 +126,45 @@ const tickets = {
     }
   },
   transport:{
-    "20170725-013246546":{
+    "hertz":{
       title:"HERTZ",
       key: 'hertz',
       address:'XXXXX',
       price:'321',
       image:'http://lorempixel.com/output/transport-q-c-640-480-9.jpg',
       items: {
-        '20170724':{
-          title: 'test'
+        '271184':{
+          title: 'rooms5',
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
+          type:'Sencilla',
+          price:'340'
+        },
+        '271185':{
+          title: 'rooms6',
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
+          type:'Sencilla',
+          price:'340'
         },
       }
     },
-    "20170725-013246542":{
+    "dollar":{
       title:"DOLLAR",
+      key: 'dollar',
       address:'XXXXX',
       price:213,
       image:'http://lorempixel.com/output/transport-q-c-640-480-1.jpg',
       items: {
-        '20170724':{
-          title: 'test'
+        '271184':{
+          title: 'rooms5',
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
+          type:'Sencilla',
+          price:'340'
+        },
+        '271185':{
+          title: 'rooms6',
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
+          type:'Sencilla',
+          price:'340'
         },
       }
     },
