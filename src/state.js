@@ -4,7 +4,6 @@ const tickets = {
       key:'hyatt',
       title:'HYATT',
       address:'XXXXX',
-      price:321,
       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
       rooms:{
         271180:{
