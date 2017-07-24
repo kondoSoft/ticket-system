@@ -22,11 +22,11 @@ class Home extends Component {
     this.setUI = this.setUI.bind(this)
   }
 
-  setUI(key, rooms){
+  setUI(key, items){
     const state = this.state
-    if(rooms){
+    if(items){
       this.setState({
-        UI: state.UI[key].rooms
+        UI: state.UI[key].items
       })
       return
     }
