@@ -28,15 +28,15 @@ class FormTransport extends Component{
     let image = this.refs.image.value
 
     const transport={
+        'key':title,
         'title':title,
         'address':address,
-        'price':price,
-        'image':image
+        'image':image,
     }
     var timeStampInMs = Date.now();
 
-    this.props.setObjectState(transport,'transport',timeStampInMs)
-    
+    this.props.setObjectState(transport,'transport',title)
+
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.price.value=null;
