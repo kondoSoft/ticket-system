@@ -79,7 +79,11 @@ const tickets = {
     },
   },
   tickets:{
-
+    "002":{
+      section:"General",
+      price:123,
+      date:"2017/08/08",
+    }
   },
   dashboard:{
 

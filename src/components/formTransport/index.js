@@ -1,10 +1,16 @@
 import React,{Component} from 'react';
 import Button from '../Button';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
 
 class FormTransport extends Component{
   constructor(props){
     super(props)
+    this.state={
+      startDate:moment()
+    }
     this.getRefs = this.getRefs.bind(this)
   }
 
@@ -18,12 +24,10 @@ class FormTransport extends Component{
     let image = this.refs.image.value
 
     const transport={
-      [date]:{
         'title':title,
         'address':address,
         'price':price,
         'image':image
-      }
     }
     this.props.setObjectState(transport,'transport')
 
@@ -56,7 +60,7 @@ class FormTransport extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='title'>Fecha:</label>
-              <input style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
+              <DatePicker className='datepicker' selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>
