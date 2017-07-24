@@ -36,7 +36,7 @@ class FormTransport extends Component{
     var timeStampInMs = Date.now();
 
     this.props.setObjectState(transport,'transport',timeStampInMs)
-
+    
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.price.value=null;
