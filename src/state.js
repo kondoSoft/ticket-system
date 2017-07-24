@@ -9,12 +9,14 @@ const tickets = {
         '271180':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key: '271180'
         },
         '271181':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
           type:'Doble',
-          price:'340'
+          price:'340',
+          key: '271181'
         },
       }
     },

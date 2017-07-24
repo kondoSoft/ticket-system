@@ -6,7 +6,7 @@ import {ButtonBlue} from './style';
 function Button (props) {
   return (
     <div>
-      <ButtonBlue>
+      <ButtonBlue onClick={() => props.setCart()}>
         {props.name}
       </ButtonBlue>
     </div>

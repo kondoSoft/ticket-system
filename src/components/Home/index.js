@@ -20,6 +20,7 @@ class Home extends Component {
     super(props);
     this.state = initialState
     this.setUI = this.setUI.bind(this)
+    this.setCart = this.setCart.bind(this)
   }
 
   setUI(key, items){
@@ -35,6 +36,17 @@ class Home extends Component {
     })
   }
 
+  setCart(){
+    const state = this.state.UI
+    // let newItems = {}
+    // state.cart.push(newItems)
+    this.setState({
+      cart:{items:state}
+
+    })
+    console.log(state);
+  }
+
   render() {
     const {UI} = this.state
     return (
@@ -42,7 +54,7 @@ class Home extends Component {
         <Header icon="shopping-cart"/>
         <Container>
           <Row>
-            {Object.keys(UI).map((item,i)=><Thumbnail setUI={this.setUI} elements={UI[item]} key={i}/>)}
+            {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
           </Row>
         </Container>
       </Div>
