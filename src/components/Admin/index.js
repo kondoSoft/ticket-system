@@ -44,7 +44,7 @@ class Admin extends Component {
     this.setState({
       startDate:moment()
     })
-    this.setComponent(<FormHotels setObjectState={this.setObjectState}/>)
+    this.setComponent(<FormHotels setObjectState={this.setObjectState} elements={this.state.hotels}/>)
   }
 
   handleChange(date,position) {
