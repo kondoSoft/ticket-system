@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import Header from '../Header';
 import Thumbnail from '../Thumbnail';
 import Cart from '../Cart';
+import CartItem from '../CartItem';
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
@@ -22,6 +23,7 @@ class Home extends Component {
     this.state = initialState
     this.setUI = this.setUI.bind(this)
     this.setCart = this.setCart.bind(this)
+    this.SetUICart = this.SetUICart.bind(this)
   }
 
   setUI(key, items){
@@ -44,16 +46,25 @@ class Home extends Component {
     this.setState(state)
   }
 
+  SetUICart(){
+    const state = this.state
+    this.setState({
+      UI:state.Cart
+    })
+  }
+
   render() {
-    const {UI} = this.state
+    const {UI, cart} = this.state
     return (
       <Div>
-        <Header icon="shopping-cart"/>
+        <Header icon="shopping-cart" SetUICart={this.SetUICart}/>
         <Container>
-          <Row>
-            {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
-          </Row>
-          <Cart/>          
+          {this.state.UI ?
+            <Row>
+              {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+            </Row>
+            : <Cart elements={Object.keys(cart.items).map((item,i)=><CartItem elements={cart.items[item]} key={i}/>)}/>
+          }
         </Container>
       </Div>
     );

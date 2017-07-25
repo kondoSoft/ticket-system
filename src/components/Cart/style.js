@@ -15,7 +15,13 @@ const Div = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+`;
+
+const RowEnd = styled.div`
+  display: flex;
+  flex-direction: row;
   justify-content: flex-end;
 `;
 
-export {Div, Row}
+export {Div, Row, RowEnd}

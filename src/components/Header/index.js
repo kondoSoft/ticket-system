@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import {Div, Nav, Ul, Li} from './style';
 import fontAwesome from 'react-fontawesome';
 import styled from 'styled-components';
@@ -17,7 +17,7 @@ class Header extends Component {
         </Div>
         <Nav>
           <Ul>
-            <Link to="/"><Li><Icon name={this.props.icon}/></Li></Link>
+            <Li onClick={()=>this.props.SetUICart()}><Icon name={this.props.icon}/></Li>
           </Ul>
         </Nav>
       </div>
