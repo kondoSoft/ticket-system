@@ -63,6 +63,7 @@ const actione = {
   color:'white',
   boxShadow:'2px 2px 6px black',
   height: '30px',
+  margin:'10px',
 }
 const actiond = {
   backgroundColor: 'red',
@@ -71,6 +72,7 @@ const actiond = {
   color:'white',
   boxShadow:'2px 2px 6px black',
   height: '30px',
+  margin:'10px',
 }
 const ButtonContainer = {
   width:'30%',

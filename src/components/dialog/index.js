@@ -2,8 +2,9 @@ import {Modal,ModalHeader,ModalTitle,ModalClose,ModalBody,ModalFooter} from 'rea
 import React,{Component} from 'react';
 import {menuContainer,table,celda,actiona,actione,actiond}from '../styles/items.js'
 import styled from 'styled-components';
-
-
+import Table from '../TableItems/index.js'
+import TableH from '../TableHeader'
+import FormItems from '../formItems'
 
 class App extends React.Component {
   state = {
@@ -58,10 +59,15 @@ class App extends React.Component {
                 <ModalTitle>Registro de Items</ModalTitle>
               </ModalHeader>
               <ModalBody>
+                <FormItems/>
+                <TableH />
+                <Table />
+                <Table />
+                <Table />
               </ModalBody>
               <ModalFooter>
                 <button className='btn btn-danger' onClick={this.hideModal}>  Cerrar</button>
-                <button className='btn btn-success'>  Guardar Cambios                </button>
+                <button className='btn btn-success'>Guardar Cambios</button>
               </ModalFooter>
             </Body>
       </Container>
