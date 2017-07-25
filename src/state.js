@@ -35,17 +35,20 @@ const tickets = {
         '271180':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key: '271180'
         },
         '271181':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
           type:'Doble',
-          price:'340'
+          price:'340',
+          key: '271181'
         },
         '271182':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-3.jpg',
           type:'Doble',
-          price:'340'
+          price:'340',
+          key: '271182'
         },
       }
     }
@@ -61,12 +64,14 @@ const tickets = {
         '271184':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key:'271184'
         },
         '271185':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key:'271185'
         },
       }
     },
@@ -80,12 +85,14 @@ const tickets = {
         '271184':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key:'271184'
         },
         '271185':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
           type:'Sencilla',
-          price:'340'
+          price:'340',
+          key: '271185'
         },
       }
     },
@@ -101,7 +108,12 @@ const tickets = {
   },
   cart:{
     items:{
-      
+      '271182':{
+        image: 'http://lorempixel.com/output/nightlife-q-c-250-220-3.jpg',
+        type:'Doble',
+        price:'340',
+        key: '271182'
+      },
     }
   },
   UI:{

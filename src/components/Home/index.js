@@ -3,6 +3,7 @@ import {Container} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Header from '../Header';
 import Thumbnail from '../Thumbnail';
+import Cart from '../Cart';
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
@@ -52,6 +53,7 @@ class Home extends Component {
           <Row>
             {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
           </Row>
+          <Cart/>          
         </Container>
       </Div>
     );
