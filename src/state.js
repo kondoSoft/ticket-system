@@ -18,6 +18,12 @@ const tickets = {
           price:'340',
           key: '271181'
         },
+        '271182':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-3.jpg',
+          type:'Doble',
+          price:'340',
+          key: '271182'
+        },
       }
     },
     marriot:{
@@ -33,6 +39,11 @@ const tickets = {
         },
         '271181':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
+          type:'Doble',
+          price:'340'
+        },
+        '271182':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-3.jpg',
           type:'Doble',
           price:'340'
         },
@@ -90,7 +101,7 @@ const tickets = {
   },
   cart:{
     items:{
-
+      
     }
   },
   UI:{

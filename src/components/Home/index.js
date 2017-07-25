@@ -36,15 +36,11 @@ class Home extends Component {
     })
   }
 
-  setCart(){
-    const state = this.state.UI
-    // let newItems = {}
-    // state.cart.push(newItems)
-    this.setState({
-      cart:{items:state}
+  setCart(item){
+    const state = this.state
+    state.cart.items[item.key] = item
 
-    })
-    console.log(state);
+    this.setState(state)
   }
 
   render() {
