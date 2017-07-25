@@ -54,7 +54,6 @@ class Admin extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <Nav setComponent={this.setComponent} handleChange={this.handleChange} startDate={this.state.startDate} setObjectState={this.setObjectState}/>

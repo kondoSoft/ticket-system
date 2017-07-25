@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
 
 
+
 class FormHotels extends Component{
   constructor(props){
     super(props)
@@ -21,27 +22,20 @@ class FormHotels extends Component{
     // Variables
     let title = this.refs.title.value
     let address = this.refs.address.value
-    let price = this.refs.price.value
-    let date = this.refs.date.value
     let image = this.refs.image.value
-    let type = this.refs.type.value
 
     const hotel={
         'title':title,
+        'key':title.toLowerCase(),
         'address':address,
-        'price':price,
         'image':image,
-        'type':type,
     }
 
-    this.props.setObjectState(hotel,'hotels',this.state.startDate)
+    this.props.setObjectState(hotel,'hotels',this.state.startDate.format('x'))
 
     this.refs.title.value=null;
     this.refs.address.value=null;
-    this.refs.price.value=null;
-    this.refs.date.value=null;
     this.refs.image.value=null;
-    this.refs.type.value=null;
   }
 
   handleChange(e){
@@ -67,6 +61,14 @@ class FormHotels extends Component{
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
+              <label style={Label} htmlFor='title'>Foto:</label>
+              <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
+            </div>
+          </div>
+
+          {/*
+          <div style={ContainerInputs}>
+            <div style={ContainerInput}>
               <label style={Label} htmlFor='price'>Precio:</label>
               <input style={Inputs} placeholder='Ingrese el precio de la Habitacion' name='price' id='price' ref='price'/>
             </div>
@@ -85,6 +87,7 @@ class FormHotels extends Component{
               <input style={Inputs} placeholder='Ingrese el tipo de habitacion' name='type' id='type' ref='type'/>
             </div>
           </div>
+          */}
           <Button name="Guardar"/>
         </form>
       </div>
