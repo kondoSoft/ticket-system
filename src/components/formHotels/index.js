@@ -4,8 +4,8 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
-
-
+import Table from '../table'
+import TableH from '../TableHeader'
 class FormHotels extends Component{
   constructor(props){
     super(props)
@@ -88,6 +88,11 @@ class FormHotels extends Component{
           </div>
           <Button name="Guardar"/>
         </form>
+        <TableH />
+        <Table />
+        <Table />
+        <Table />
+        <Table />
       </div>
     );
   }
