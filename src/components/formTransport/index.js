@@ -4,13 +4,16 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
+import Table from '../Table'
+import TableHeader from '../TableHeader'
 
 
 class FormTransport extends Component{
   constructor(props){
     super(props)
     this.state={
-      startDate:moment()
+      startDate:moment(),
+      transport:props.elements
     }
 
     this.handleChange=this.handleChange.bind(this)
@@ -51,6 +54,7 @@ class FormTransport extends Component{
     })
   }
   render(){
+    const transports = this.state.transport
     return (
       <div style={ContainerForm}>
         <h1>Transporte</h1>
@@ -83,6 +87,8 @@ class FormTransport extends Component{
           </div>
           <Button name="Guardar"/>
         </form>
+        <TableHeader titles={this.props.aryHeader}/>
+        {Object.keys(transports).map((item,i)=><Table elements={transports[item]} key={i} />)}
       </div>
     );
   }

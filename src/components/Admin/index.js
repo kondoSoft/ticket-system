@@ -55,7 +55,7 @@ class Admin extends Component {
     if (section == 'ticket'){
       content = <FormTicket setObjectState={this.setObjectState} />
     } else if (section == 'transport') {
-      content = <FormTransport setObjectState={this.setObjectState} />
+      content = <FormTransport setObjectState={this.setObjectState} elements={this.state.transport} />
     }
     return (
       <Container>

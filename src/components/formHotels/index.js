@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-// import Button from '../Button';
-import {ContainerForm,Inputs, InputsF, Label, ContainerInput, ContainerInputs, Button} from '../styles'
+import Button from '../Button';
+import {ContainerForm,Inputs, InputsF, Label, ContainerInput, ContainerInputs} from '../styles'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
 import moment from 'moment'
@@ -58,7 +58,7 @@ class FormHotels extends Component{
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <button> Guardar</button>
+          <Button name='Guardar' />
         </form>
         <TableHeader titles={this.props.aryHeader}/>
         {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} />)}
