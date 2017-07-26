@@ -3,11 +3,16 @@ import Button from '../Button';
 import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
+import moment from 'moment'
 
 class FormHotels extends Component{
   constructor(props){
     super(props)
     this.getRefs=this.getRefs.bind(this)
+    this.state={
+      startDate:moment(),
+      hotels:props.elements
+    }
   }
 
   getRefs(event){
@@ -24,16 +29,15 @@ class FormHotels extends Component{
         'image':image,
     }
 
-    this.props.setObjectState(hotel,'hotels',this.state.startDate.format('x'))
+    this.props.setObjectState(hotel,'hotels',title)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.image.value=null;
   }
 
-
   render(){
-    console.log(this.props);
+    const hotels = this.props.elements
     const aryHeader = ['Nombre','Direccion','Imagen','Acciones']
     return(
       <div style={ContainerForm}>
@@ -58,7 +62,7 @@ class FormHotels extends Component{
           <Button name="Guardar"/>
         </form>
         <TableHeader headerTitles={aryHeader}/>
-        <Table />
+        {Object.keys(hotels).map((item,i)=><Table hotel={hotels[item]} key={i} />)}
       </div>
     );
   }

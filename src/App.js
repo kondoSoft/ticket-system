@@ -16,7 +16,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={Home}/>
-            <Route path="/admin" component={Admin}/>
+            <Route path="/admin/:section?" component={Admin}/>
           </div>
         </Router>
     );
