@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {menuContainer,celdaH,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
-import Cont from '../ButtonContainer/index.js';
+// import Cont from '../ButtonContainer/index.js';
 
 const TablaH=styled.div`
   width:100%;
@@ -15,13 +15,12 @@ const TablaH=styled.div`
 `;
 
 function  TableH(props){
-  const title= props.headerTitles
+  console.log(props);
+  const title= props.titles
   return (
     <TablaH>
-      {title.map((item,i)=><div key={i} style = {celdaH}>{item}</div>)}
+      {/*title.map((item,i)=><div key={i} style = {celdaH}>{item}</div>)*/}
     </TablaH>
-
   )
-
 }
 export default TableH;

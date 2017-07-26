@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {menuContainer,celda,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
-import Cont from '../ButtonContainer'
+import {celda}from '../styles/items.js'
+import ButtonContainer from '../ButtonContainer'
 
 const Tabla=styled.div`
   width:100%;
@@ -19,7 +19,7 @@ function  Table(props){
       <div style = {celda}>{props.hotel.title}</div>
       <div style = {celda}>{props.hotel.address}</div>
       <div style = {celda}>{<img width='50' src={props.hotel.image}/>}</div>
-      <div style = {celda}> <Cont/> </div>
+      <div style = {celda}> <ButtonContainer/> </div>
     </Tabla>
 
   )

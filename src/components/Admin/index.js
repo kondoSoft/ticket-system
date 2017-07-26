@@ -49,11 +49,9 @@ class Admin extends Component {
   }
 
   render() {
-
     let content;
     const {section} = this.props.match.params;
-    content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels}/>
-
+    content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels} />
     if (section == 'ticket'){
       content = <FormTicket setObjectState={this.setObjectState} />
     } else if (section == 'transport') {

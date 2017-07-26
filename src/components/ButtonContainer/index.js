@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import App from '../dialog/index.js'
-import {menuContainer,celda,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
+import App from '../Dialog'
+import {actione,actiond}from '../styles/items.js'
 import React from 'react';
 
 const Cont = styled.div`
@@ -11,9 +11,9 @@ const Cont = styled.div`
   align-items:center;
 `;
 
-function Contenedor() {
+function ButtonContainer() {
   return(
-  <Cont className='botones'>
+  <Cont>
     <App/>
     <button style = {actione}> Editar </button>
     <button style = {actiond}>Eliminar  </button>
@@ -21,4 +21,4 @@ function Contenedor() {
 )
 }
 
-export default Contenedor;
+export default ButtonContainer;

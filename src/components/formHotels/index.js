@@ -38,7 +38,6 @@ class FormHotels extends Component{
 
   render(){
     const hotels = this.props.elements
-    const aryHeader = ['Nombre','Direccion','Imagen','Acciones']
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>
@@ -59,9 +58,9 @@ class FormHotels extends Component{
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <Button name="Guardar"/>
+          <button> Guardar</button>
         </form>
-        <TableHeader headerTitles={aryHeader}/>
+        <TableHeader titles={this.props.aryHeader}/>
         {Object.keys(hotels).map((item,i)=><Table hotel={hotels[item]} key={i} />)}
       </div>
     );
