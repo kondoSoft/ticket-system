@@ -13,13 +13,17 @@ const Tabla=styled.div`
   flex-wrap:wrap;
   justify-content:space-arround;
 `;
+function filterItem(item){
+  if(item != 'key' && item != 'items'){
+    return true
+  }
+}
+
 function  Table(props){
+  let toReturn=Object.keys(props.elements).filter(filterItem)
   return (
     <Tabla>
-      <div style = {celda}>{props.hotel.title}</div>
-      <div style = {celda}>{props.hotel.address}</div>
-      <div style = {celda}>{<img width='50' src={props.hotel.image}/>}</div>
-      <div style = {celda}> <ButtonContainer/> </div>
+      {toReturn.map((data,i) => <div style={celda} key={i}>{props.elements[data]}</div>)}
     </Tabla>
 
   )

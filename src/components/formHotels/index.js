@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import Button from '../Button';
-import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
+// import Button from '../Button';
+import {ContainerForm,Inputs, InputsF, Label, ContainerInput, ContainerInputs, Button} from '../styles'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
 import moment from 'moment'
@@ -37,7 +37,7 @@ class FormHotels extends Component{
   }
 
   render(){
-    const hotels = this.props.elements
+    const hotels = this.state.hotels
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>
@@ -61,7 +61,7 @@ class FormHotels extends Component{
           <button> Guardar</button>
         </form>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table hotel={hotels[item]} key={i} />)}
+        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} />)}
       </div>
     );
   }
