@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
-import {Div, Nav, Ul, Li} from './style';
+import {Div, Nav, Ul, Li, P} from './style';
 import fontAwesome from 'react-fontawesome';
 import styled from 'styled-components';
 
@@ -18,6 +18,7 @@ class Header extends Component {
         <Nav>
           <Ul>
             <Li onClick={()=>this.props.SetUICart()}><Icon name={this.props.icon}/></Li>
+            <Li><P>0</P></Li>
           </Ul>
         </Nav>
       </div>

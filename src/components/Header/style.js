@@ -39,4 +39,12 @@ const Li = styled.li`
   }
 `;
 
-export {Div, Nav, Ul, Li};
+const P = styled.p`
+  background-color: green;
+  color: #fff;
+  border-radius: 50%;
+  padding-left: 1px;
+  margin-left: -20px;
+`
+
+export {Div, Nav, Ul, Li, P};
