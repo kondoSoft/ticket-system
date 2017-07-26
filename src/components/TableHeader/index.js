@@ -15,7 +15,6 @@ const TablaH=styled.div`
 `;
 
 function  TableH(props){
-  console.log(props);
   const title= props.titles
   return (
     <TablaH>
