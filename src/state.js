@@ -62,11 +62,15 @@ const tickets = {
       items: {
         '271184':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
-          price:'340'
+          price:'340',
+          type:'sencilla',
+          key:'271184'
         },
         '271185':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
-          price:'340'
+          price:'340',
+          type:'sencilla',
+          key:'271185'
       }
       }
     },
@@ -120,7 +124,21 @@ const tickets = {
       image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
       key: 'transport'
    }
-  }
+ },
+ history:{
+   'home':{
+     '001':{
+       title:'HOTEL Y TRANSPORTE',
+       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
+       key: 'hotels'
+     },
+     '002':{
+       title: 'TRANSPORTE',
+       image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
+       key: 'transport'
+    }
+   }
+},
 }
 
 export default tickets

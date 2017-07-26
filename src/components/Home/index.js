@@ -3,6 +3,7 @@ import {Container} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Header from '../Header';
 import Thumbnail from '../Thumbnail';
+import TrailCrumb from '../TrailCrumb'
 import Cart from '../Cart';
 import CartItem from '../CartItem';
 import {Row} from '../FlexBox/FlexRow';
@@ -24,6 +25,7 @@ class Home extends Component {
     this.setUI = this.setUI.bind(this)
     this.setCart = this.setCart.bind(this)
     this.SetUICart = this.SetUICart.bind(this)
+    this.setHistory = this.setHistory.bind(this)
   }
 
   setUI(key, items){
@@ -52,6 +54,20 @@ class Home extends Component {
       UI:state.Cart
     })
   }
+// setear state history
+//
+// setHistory(){
+//    obtener state
+//   setear history con stateUI
+// }
+
+setHistory(){
+  const state = this.state
+  this.setState({
+    UI:state.history.home
+  })
+  console.log(state.history.home);
+}
 
   render() {
     const {UI, cart} = this.state
@@ -59,6 +75,7 @@ class Home extends Component {
       <Div>
         <Header icon="shopping-cart" SetUICart={this.SetUICart}/>
         <Container>
+          <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
