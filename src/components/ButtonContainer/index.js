@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import App from '../Dialog'
+import Dialog from '../Dialog'
 import {actione,actiond}from '../styles/items.js'
 import React from 'react';
 
@@ -12,11 +12,10 @@ const Cont = styled.div`
 `;
 
 function ButtonContainer(props) {
-  console.log(props);
   return(
   <Cont>
-    <App/>
-    <button style = {actione} onClick={()=> props.updateHotel(props.keyElement)}> Editar </button>
+    <Dialog component={props.element.key}/>
+    <button style = {actione} onClick={()=> props.updateHotel(props.element)}> Editar </button>
     <button style = {actiond}>Eliminar  </button>
   </Cont>
 )

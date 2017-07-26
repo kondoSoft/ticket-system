@@ -53,18 +53,15 @@ class FormHotels extends Component{
     this.refs.key.value=null;
   }
 
-  updateHotel(key){
-    let hotel= this.state.hotels[key]
-    this.refs.key.value=key
+  updateHotel(element){
+    let hotel= this.state.hotels[element.key]
+    this.refs.key.value=element.key
     this.refs.title.value=hotel.title
     this.refs.address.value=hotel.address
-    console.log(this.refs.key.value);
-    // this.refs.title.value='prueb'
   }
 
   render(){
     const hotels = this.state.hotels
-    console.log('render FormHotels');
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>
