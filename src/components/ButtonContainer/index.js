@@ -11,11 +11,12 @@ const Cont = styled.div`
   align-items:center;
 `;
 
-function ButtonContainer() {
+function ButtonContainer(props) {
+  console.log(props);
   return(
   <Cont>
     <App/>
-    <button style = {actione}> Editar </button>
+    <button style = {actione} onClick={()=> props.updateHotel(props.keyElement)}> Editar </button>
     <button style = {actiond}>Eliminar  </button>
   </Cont>
 )

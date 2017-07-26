@@ -12,7 +12,6 @@ class FormTransport extends Component{
     this.state={
       startDate:moment()
     }
-
     this.handleChange=this.handleChange.bind(this)
     this.getRefs=this.getRefs.bind(this)
 
@@ -24,8 +23,6 @@ class FormTransport extends Component{
     // Variables
     let title = this.refs.title.value
     let address = this.refs.address.value
-    let price = this.refs.price.value
-    let date = this.refs.date.value
     let image = this.refs.image.value
 
     const transport={
@@ -34,14 +31,11 @@ class FormTransport extends Component{
         'address':address,
         'image':image,
     }
-    var timeStampInMs = Date.now();
 
     this.props.setObjectState(transport,'transport',title)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
-    this.refs.price.value=null;
-    this.refs.date.value=null;
     this.refs.image.value=null;
 
   }
@@ -63,16 +57,6 @@ class FormTransport extends Component{
             <div style={ContainerInput}>
               <label style={Label} htmlFor='address'>Direccion:</label>
               <input style={Inputs} placeholder='Ingrese la direccion del transporte' name='address' id='address' id='title' ref='address'/>
-            </div>
-          </div>
-          <div style={ContainerInputs}>
-            <div style={ContainerInput}>
-              <label style={Label} htmlFor='price'>Precio:</label>
-              <input style={Inputs} placeholder='Ingrese el precio del transporte' name='price' id='price' ref='price'/>
-            </div>
-            <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Fecha:</label>
-              <DatePicker className='datepicker' selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>

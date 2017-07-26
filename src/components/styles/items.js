@@ -1,6 +1,3 @@
-import styled from 'styled-components';
-
-
 const modal = {
   width : '90%',
 }
