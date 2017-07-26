@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import IconLabel from '../IconLabel';
-import FormHotels from '../formHotels';
-import FormTransport from '../formTransport';
-import FormTicket from '../formTicket'
+import {Link} from 'react-router-dom';
 
 const ContainerNav = styled.div`
   width:14%;
@@ -38,18 +36,20 @@ const Body = styled.div`
   align-items:center;
 `;
 
+const linkStyle ={
+  width:'90%'
+}
 
 function Nav(props)  {
-  // console.log(props);
   return (
     <ContainerNav>
       <Header>
         <Logo src='https://s3-us-west-2.amazonaws.com/projuv-data/creatuviaje/images/creatuviaje-logo.png'/>
       </Header>
       <Body>
-        <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels setObjectState={props.setObjectState}/>}/>
-        <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport setObjectState={props.setObjectState} />}/>
-        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket setObjectState={props.setObjectState} />}/>
+        <Link style={linkStyle} to='/admin/hotels'><IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} /></Link>
+        <Link style={linkStyle} to='/admin/transport'><IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} /></Link>
+        <Link style={linkStyle} to='/admin/ticket'><IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} /></Link>
       </Body>
     </ContainerNav>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {menuContainer,celdaH,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
-import Cont from '../ButtonContainer/index.js'
+import Cont from '../ButtonContainer/index.js';
+
 const TablaH=styled.div`
   width:100%;
   border:1px;
@@ -12,14 +13,12 @@ const TablaH=styled.div`
   flex-wrap:wrap;
   justify-content:space-arround;
 `;
-function  TableH(){
-  return (
 
+function  TableH(props){
+  const title= props.headerTitles
+  return (
     <TablaH>
-      <div style = {celdaH}>Key</div>
-      <div style = {celdaH}>Nombre</div>
-      <div style = {celdaH}>Direccion</div>
-      <div style = {celdaH}>Accion</div>
+      {title.map((item,i)=><div key={i} style = {celdaH}>{item}</div>)}
     </TablaH>
 
   )
