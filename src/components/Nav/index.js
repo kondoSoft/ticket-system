@@ -48,11 +48,12 @@ function Nav(props)  {
       </Header>
       <Body>
         <IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} component={<FormHotels setObjectState={props.setObjectState}/>}/>
-        <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport/>}/>
-        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket handleChange={props.handleChange} startDate={props.startDate}/>}/>
+        <IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} component={<FormTransport setObjectState={props.setObjectState} />}/>
+        <IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} component={<FormTicket setObjectState={props.setObjectState} />}/>
       </Body>
     </ContainerNav>
   );
 }
+
 
 export default Nav;

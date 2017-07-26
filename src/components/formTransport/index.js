@@ -1,12 +1,23 @@
 import React,{Component} from 'react';
 import Button from '../Button';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
+
 
 class FormTransport extends Component{
   constructor(props){
     super(props)
-    this.getRefs = this.getRefs.bind(this)
+    this.state={
+      startDate:moment()
+    }
+
+    this.handleChange=this.handleChange.bind(this)
+    this.getRefs=this.getRefs.bind(this)
+
   }
+
 
   getRefs(event){
     event.preventDefault()
@@ -18,22 +29,27 @@ class FormTransport extends Component{
     let image = this.refs.image.value
 
     const transport={
-      [date]:{
+        'key':title,
         'title':title,
         'address':address,
-        'price':price,
-        'image':image
-      }
+        'image':image,
     }
-    this.props.setObjectState(transport,'transport')
+    var timeStampInMs = Date.now();
+
+    this.props.setObjectState(transport,'transport',title)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.price.value=null;
     this.refs.date.value=null;
     this.refs.image.value=null;
-  }
 
+  }
+  handleChange(e){
+    this.setState({
+      startDate:e
+    })
+  }
   render(){
     return (
       <div style={ContainerForm}>
@@ -56,12 +72,12 @@ class FormTransport extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='title'>Fecha:</label>
-              <input style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
+              <DatePicker className='datepicker' selected={this.state.startDate} onChange={this.handleChange} style={Inputs} placeholder='Ingrese la fecha' name='data' id='date' ref='date'/>
             </div>
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Foto:</label>
+              <label style={Label} htmlFor='image'>Foto:</label>
               <input style={InputsF} placeholder='Ingrese la foto del transporte' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>

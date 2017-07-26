@@ -18,14 +18,14 @@ const Label = {
 function Select (props){
 
 return(
-  <ContainerInputs>
+  <div>
     <label style={Label} htmlFor="zone">Section</label>
     <select name="zone" id="zone" style={Selector}>
       <option value="VIP">VIP</option>
       <option value="General">General</option>
       <option value="Zona baja" >Zona baja</option>
     </select>
-  </ContainerInputs>
+  </div>
 
 );
 
