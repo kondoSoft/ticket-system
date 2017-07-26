@@ -28,7 +28,7 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  color: #bdc3c7;
+  color: #333;
   padding: 16px 10px 16px 10px;
   margin-top: -14px;
 

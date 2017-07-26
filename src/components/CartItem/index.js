@@ -1,5 +1,5 @@
 import React from 'react';
-import { Img, P, Row, Container, Button} from './style';
+import { Img, P, Container, Button} from './style';
 
 
 function CartItem (props) {

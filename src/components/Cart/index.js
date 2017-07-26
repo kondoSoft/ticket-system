@@ -1,6 +1,5 @@
 import React from 'react';
 import {Div, Row, RowEnd} from './style';
-import CartItem from '../CartItem'
 
 
 function Cart (props) {

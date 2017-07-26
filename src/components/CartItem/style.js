@@ -11,12 +11,6 @@ const P = styled.p`
   font-family: sans-serif;
 `;
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
 const Container = styled.div`
   border: 1px solid #999;
   margin: 10px;
@@ -38,4 +32,4 @@ const Button = styled.a`
   }
 `;
 
-export {Img, P, Row, Container, Button}
+export {Img, P, Container, Button}
