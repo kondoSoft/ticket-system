@@ -15,7 +15,7 @@ function ButtonContainer(props) {
   return(
   <Cont>
     {props.dialog != undefined ? '' :  <Dialog component={props.element} setObjectState={props.setObjectState}/>}
-    <button style = {actione} onClick={()=> props.updateHotel(props.element)}> Editar </button>
+    <button style = {actione} onClick={()=> props.update(props.element)}> Editar </button>
     <button style = {actiond}>Eliminar  </button>
   </Cont>
 )

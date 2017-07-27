@@ -90,7 +90,20 @@ const tickets = {
       section:"General",
       price:123,
       date:"2017/08/08",
-    }
+      key:'002',
+    },
+    "003":{
+      section:"VIP",
+      price:123,
+      date:"2017/08/08",
+      key:'003',
+    },
+    "004":{
+      section:"VIP",
+      price:123,
+      date:"2017/08/08",
+      key:'004'
+    },
   },
   dashboard:{
 

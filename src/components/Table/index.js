@@ -25,9 +25,8 @@ function  Table(props){
   return (
     <Tabla>
       {toReturn.map((data,i) => data=='image' ? <div style={celda} key={i}><img width='50' src={props.elements[data]} /></div> :<div style={celda} key={i}>{props.elements[data]}</div>)}
-      <div style={celda}> <ButtonContainer setObjectState={props.setObjectState} dialog={props.dialog } element={props.elements} updateHotel={props.updateHotel}/></div>
+      <div style={celda}> <ButtonContainer setObjectState={props.setObjectState} dialog={props.dialog } element={props.elements} update={props.update}/></div>
     </Tabla>
-
   )
 
 }
