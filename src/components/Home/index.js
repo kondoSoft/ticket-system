@@ -49,11 +49,14 @@ class Home extends Component {
     this.setState(state)
   }
 
-  setUICart(){
+  setUICart(item){
     const state = this.state
     this.setState({
       UI:state.Cart
     })
+    // let price = [Number(state.cart.items[item].price)]
+    //
+    // console.log(price);
   }
 
   setHistory(){
@@ -75,6 +78,7 @@ class Home extends Component {
     return (
       <Div>
         <Header
+          state={Object.keys(cart.items)}
           icon="shopping-cart"
           setUICart={this.setUICart}
           count={Object.keys(cart.items).length}
@@ -87,6 +91,7 @@ class Home extends Component {
             </Row>
             : <Cart
                 cart={Object.keys(cart.items).length >= 1 ? '' : <h1>Cart is empty</h1>}
+                total={Object.keys(cart.items).map((item, i)=> Number(cart.items[item].price))}
                 elements={Object.keys(cart.items).map((item,i)=><CartItem
                                                                   elements={cart.items[item]}
                                                                   key={i}

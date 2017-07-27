@@ -11,7 +11,7 @@ function Cart (props) {
         {props.elements}
       </Row>
       <RowEnd>
-        <h1>Total: $0.00</h1>
+        <h1>Total ${props.total}</h1>
       </RowEnd>
     </Div>
   )
