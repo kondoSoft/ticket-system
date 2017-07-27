@@ -18,7 +18,7 @@ class Header extends Component {
         <Nav>
           <Ul>
             <Li onClick={()=>this.props.SetUICart()}><Icon name={this.props.icon}/></Li>
-            <Li><P>0</P></Li>
+            <P>{this.props.count}</P>
           </Ul>
         </Nav>
       </div>

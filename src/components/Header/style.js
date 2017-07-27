@@ -28,12 +28,12 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  color: #333;
-  padding: 16px 10px 16px 10px;
-  margin-top: -14px;
+  color: #fff;
+  padding: 10px;
+  background-color: #3498db;
+  border-radius: 50%;
 
   &:hover{
-    color: #34495e;
     transition: .3s;
     cursor: pointer;
   }
@@ -43,8 +43,10 @@ const P = styled.p`
   background-color: green;
   color: #fff;
   border-radius: 50%;
-  padding-left: 1px;
-  margin-left: -20px;
+  padding: 0px 5px 0px 5px;
+  margin: 0px 0px 0px 5px;
+  position: absolute;
+  font-size: 12px;
 `
 
 export {Div, Nav, Ul, Li, P};

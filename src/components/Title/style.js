@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.a`
+const Titles = styled.a`
   background-color: rgba(32, 79, 158, 1);
   color: #fff;
   border-radius: 6px;
@@ -16,4 +16,4 @@ const Button = styled.a`
   }
 `;
 
-export {Button};
+export {Titles};

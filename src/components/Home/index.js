@@ -54,26 +54,19 @@ class Home extends Component {
       UI:state.Cart
     })
   }
-// setear state history
-//
-// setHistory(){
-//    obtener state
-//   setear history con stateUI
-// }
 
 setHistory(){
   const state = this.state
   this.setState({
     UI:state.history.home
   })
-  console.log(state.history.home);
 }
 
   render() {
     const {UI, cart} = this.state
     return (
       <Div>
-        <Header icon="shopping-cart" SetUICart={this.SetUICart}/>
+        <Header icon="shopping-cart" SetUICart={this.SetUICart} count={Object.keys(cart.items).length}/>
         <Container>
           <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
