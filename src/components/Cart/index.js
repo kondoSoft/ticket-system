@@ -6,7 +6,7 @@ function Cart (props) {
 
   return (
     <Div>
-      <h1>Cart is empty</h1>
+      {props.cart}
       <Row>
         {props.elements}
       </Row>

@@ -24,8 +24,9 @@ class Home extends Component {
     this.state = initialState
     this.setUI = this.setUI.bind(this)
     this.setCart = this.setCart.bind(this)
-    this.SetUICart = this.SetUICart.bind(this)
+    this.setUICart = this.setUICart.bind(this)
     this.setHistory = this.setHistory.bind(this)
+    this.removeItemsCart = this.removeItemsCart.bind(this)
   }
 
   setUI(key, items){
@@ -48,32 +49,49 @@ class Home extends Component {
     this.setState(state)
   }
 
-  SetUICart(){
+  setUICart(){
     const state = this.state
     this.setState({
       UI:state.Cart
     })
   }
 
-setHistory(){
-  const state = this.state
-  this.setState({
-    UI:state.history.home
-  })
-}
+  setHistory(){
+    const state = this.state
+    this.setState({
+      UI:state.history.home
+    })
+  }
 
+  removeItemsCart(key){
+    const state = this.state
+    let cart = delete state.cart.items[key]
+
+    this.setState(state)
+  }
   render() {
     const {UI, cart} = this.state
     return (
       <Div>
-        <Header icon="shopping-cart" SetUICart={this.SetUICart} count={Object.keys(cart.items).length}/>
+        <Header
+          icon="shopping-cart"
+          setUICart={this.setUICart}
+          count={Object.keys(cart.items).length}
+        />
         <Container>
           <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
-            : <Cart elements={Object.keys(cart.items).map((item,i)=><CartItem elements={cart.items[item]} key={i}/>)}/>
+            : <Cart
+                cart={Object.keys(cart.items).length >= 1 ? '' : <h1>Cart is empty</h1>}
+                elements={Object.keys(cart.items).map((item,i)=><CartItem
+                                                                  elements={cart.items[item]}
+                                                                  key={i}
+                                                                  removeItemsCart={this.removeItemsCart}
+                                                                />)}
+              />
           }
         </Container>
       </Div>

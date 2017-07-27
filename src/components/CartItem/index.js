@@ -9,7 +9,7 @@ function CartItem (props) {
       <Img src={props.elements.image}/>
       <P>Price: ${props.elements.price}</P>
       <P>Type: {props.elements.type}</P>
-      <P><Button>Remove</Button></P>
+      <P><Button onClick={()=> props.removeItemsCart(props.elements.key)}>Remove</Button></P>
     </Container>
   )
 }
