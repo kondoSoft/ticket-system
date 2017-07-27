@@ -74,7 +74,6 @@ const tickets = {
       title:"DOLLAR",
       key: 'dollar',
       address:'XXXXX',
-      price:213,
       image:'http://lorempixel.com/output/transport-q-c-640-480-1.jpg',
       items: {
         '271184':{

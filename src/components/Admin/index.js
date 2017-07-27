@@ -48,8 +48,8 @@ class Admin extends Component {
     content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels} />
     if (section === 'ticket'){
       content = <FormTicket setObjectState={this.setObjectState} />
-    } else if (section === 'transport') {
-      content = <FormTransport setObjectState={this.setObjectState} />
+    } else if (section == 'transport') {
+      content = <FormTransport setObjectState={this.setObjectState} elements={this.state.transport} />
     }
     return (
       <Container>

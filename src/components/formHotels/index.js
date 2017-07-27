@@ -83,7 +83,7 @@ class FormHotels extends Component{
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <button> Guardar</button>
+          <input type='submit' value='Guardar'/>
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
