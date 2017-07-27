@@ -21,7 +21,7 @@ class FormHotels extends Component{
       hotels:props.elements
     }
     this.getRefs=this.getRefs.bind(this)
-    this.updateHotel = this.updateHotel.bind(this)
+    this.update = this.update.bind(this)
   }
 
   getRefs(event){
@@ -53,7 +53,7 @@ class FormHotels extends Component{
     this.refs.key.value=null;
   }
 
-  updateHotel(element){
+  update(element){
     let hotel= this.state.hotels[element.key]
     this.refs.key.value=element.key
     this.refs.title.value=hotel.title
@@ -87,7 +87,7 @@ class FormHotels extends Component{
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} updateHotel={this.updateHotel}/>)}
+        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} update={this.update}/>)}
       </div>
     );
   }
