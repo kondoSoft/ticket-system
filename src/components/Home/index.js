@@ -69,6 +69,7 @@ class Home extends Component {
 
     this.setState(state)
   }
+
   render() {
     const {UI, cart} = this.state
     return (
