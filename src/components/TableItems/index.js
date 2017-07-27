@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {menuContainer,celda,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
-import Cont from '../ButtonContainer/index.js'
+import {celda,actione,actiond}from '../styles/items.js'
+import Cont from '../ButtonContainer'
 const Tabla=styled.div`
   width:100%;
   border:1px;

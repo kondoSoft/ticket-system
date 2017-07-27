@@ -1,15 +1,15 @@
 import React from 'react';
 import {Selector} from '../styles/Tikects.js'
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const ContainerInputs = styled.div`
-  width:50%;
-  display:flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  margin-bottom:10px;
-`;
+// const ContainerInputs = styled.div`
+//   width:50%;
+//   display:flex;
+//   flex-direction:column;
+//   flex-wrap:wrap;
+//   justify-content:space-between;
+//   margin-bottom:10px;
+// `;
 const Label = {
   color:'black',
   fontSize:'16px',

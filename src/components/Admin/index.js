@@ -26,20 +26,14 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state=initialState
-
     this.setComponent = this.setComponent.bind(this);
     this.setObjectState = this.setObjectState.bind(this);
-    this.updateItem = this.updateItem.bind(this);
   }
 
   setComponent(item){
     this.setState({
       UIform:item
     });
-  }
-
-  updateItem(){
-
   }
 
   setObjectState(object,position,key){
@@ -52,7 +46,7 @@ class Admin extends Component {
     let content;
     const {section} = this.props.match.params;
     content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels} />
-    if (section == 'ticket'){
+    if (section === 'ticket'){
       content = <FormTicket setObjectState={this.setObjectState} />
     } else if (section == 'transport') {
       content = <FormTransport setObjectState={this.setObjectState} elements={this.state.transport} />

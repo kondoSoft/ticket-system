@@ -1,18 +1,27 @@
 import React,{Component} from 'react';
-import Button from '../Button';
+// import Button from '../Button';
 import {ContainerForm,Inputs, InputsF, Label, ContainerInput, ContainerInputs} from '../styles'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
 import moment from 'moment'
+import styled from 'styled-components'
+
+const Hr=styled.div`
+  margin-top:20px;
+  width:100%;
+  height:2px;
+  background-color:#000000;
+`;
 
 class FormHotels extends Component{
   constructor(props){
     super(props)
-    this.getRefs=this.getRefs.bind(this)
     this.state={
       startDate:moment(),
       hotels:props.elements
     }
+    this.getRefs=this.getRefs.bind(this)
+    this.updateHotel = this.updateHotel.bind(this)
   }
 
   getRefs(event){
@@ -21,19 +30,34 @@ class FormHotels extends Component{
     let title = this.refs.title.value
     let address = this.refs.address.value
     let image = this.refs.image.value
-
+    let key;
+    console.log(this.refs.key.value);
+    if (this.refs.key.value == '') {
+      key = this.refs.key.value = title.toLowerCase()
+    }
+    else{
+      key = this.refs.key.value
+    }
     const hotel={
         'title':title,
-        'key':title.toLowerCase(),
+        'key':key,
         'address':address,
         'image':image,
     }
 
-    this.props.setObjectState(hotel,'hotels',title)
+    this.props.setObjectState(hotel,'hotels',key)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
     this.refs.image.value=null;
+    this.refs.key.value=null;
+  }
+
+  updateHotel(element){
+    let hotel= this.state.hotels[element.key]
+    this.refs.key.value=element.key
+    this.refs.title.value=hotel.title
+    this.refs.address.value=hotel.address
   }
 
   render(){
@@ -46,6 +70,7 @@ class FormHotels extends Component{
             <div style={ContainerInput}>
               <label style={Label} htmlFor='title'>Nombre:</label>
               <input style={Inputs} placeholder='Ingrese el nombre del Hotel' name='title' id='title' ref='title'/>
+              <input ref='key' hidden />
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='address'>Direccion:</label>
@@ -58,10 +83,11 @@ class FormHotels extends Component{
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <Button name='Guardar' />
+          <input type='submit' value='Guardar'/>
         </form>
+        <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} />)}
+        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} updateHotel={this.updateHotel}/>)}
       </div>
     );
   }

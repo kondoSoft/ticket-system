@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {menuContainer,celdaH,actiona,actione,actiond,ButtonContainer}from '../styles/items.js'
+import {celdaH}from '../styles/items.js'
 // import Cont from '../ButtonContainer/index.js';
 
 const TablaH=styled.div`
