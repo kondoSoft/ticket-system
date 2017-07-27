@@ -60,7 +60,7 @@ class App extends React.Component {
         <Body isOpen={this.state.isOpen} size='modal-lg' onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal}/>
-            <ModalTitle>{this.props.component.toUpperCase()}</ModalTitle>
+            <ModalTitle>{this.props.component}</ModalTitle>
           </ModalHeader>
           <ModalBody>
             <FormItems/>
