@@ -32,8 +32,8 @@ const Body =styled(Modal)`
 
 
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       isOpen: false,
       isSubOpen: false
@@ -60,12 +60,10 @@ class App extends React.Component {
         <Body isOpen={this.state.isOpen} size='modal-lg' onRequestHide={this.hideModal}>
           <ModalHeader>
             <ModalClose onClick={this.hideModal}/>
-            <ModalTitle>{this.props.component.toUpperCase()}</ModalTitle>
+            <ModalTitle>{this.props.component.title}</ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <FormItems/>
-            <TableH />
-            <Table />
+            <FormItems component={this.props.component} setObjectState={this.props.setObjectState}/>
           </ModalBody>
           <ModalFooter>
             <button className='btn btn-danger' onClick={this.hideModal}>  Cerrar</button>

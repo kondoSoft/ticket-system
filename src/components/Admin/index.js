@@ -26,8 +26,11 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state=initialState
+
     this.setComponent = this.setComponent.bind(this);
     this.setObjectState = this.setObjectState.bind(this);
+    this.setItemObject = this.setItemObject.bind(this);
+    
   }
 
   setComponent(item){
@@ -42,6 +45,10 @@ class Admin extends Component {
     this.setState(state)
   }
 
+  setItemObject(){
+
+  }
+
   render() {
     let content;
     const {section} = this.props.match.params;
@@ -53,7 +60,7 @@ class Admin extends Component {
     }
     return (
       <Container>
-        <Nav setComponent={this.setComponent} setObjectState={this.setObjectState}/>
+        <Nav setComponent={this.setComponent}/>
         <Section>
           {content}
         </Section>

@@ -31,7 +31,6 @@ class FormHotels extends Component{
     let address = this.refs.address.value
     let image = this.refs.image.value
     let key;
-    console.log(this.refs.key.value);
     if (this.refs.key.value == '') {
       key = this.refs.key.value = title.toLowerCase()
     }
@@ -43,6 +42,7 @@ class FormHotels extends Component{
         'key':key,
         'address':address,
         'image':image,
+        'items':{}
     }
 
     this.props.setObjectState(hotel,'hotels',key)
@@ -87,7 +87,7 @@ class FormHotels extends Component{
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} updateHotel={this.updateHotel}/>)}
+        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} updateHotel={this.updateHotel} setObjectState={this.props.setObjectState}/>)}
       </div>
     );
   }
