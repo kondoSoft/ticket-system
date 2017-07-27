@@ -18,9 +18,11 @@ class FormTransport extends Component{
 
     this.handleChange=this.handleChange.bind(this)
     this.getRefs=this.getRefs.bind(this)
-
+    this.setValue=this.setValue.bind(this)
   }
-
+  setValue(event){
+    this.refs.title.value= 'QWERTYUIO'
+  }
 
   getRefs(event){
     event.preventDefault()
@@ -89,6 +91,8 @@ class FormTransport extends Component{
         </form>
         <TableHeader titles={this.props.aryHeader}/>
         {Object.keys(transports).map((item,i)=><Table elements={transports[item]} key={i} />)}
+
+        <button onClick={this.setValue}>Prueba</button>
       </div>
     );
   }
