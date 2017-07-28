@@ -5,7 +5,7 @@ const Div = styled.div`
   height: auto;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
-  margin-top: 140px;
+  margin-top: 30px;
   cursor: pointer;
   margin-right: 20px;
   border-radius: 6px;

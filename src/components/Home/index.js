@@ -3,6 +3,7 @@ import {Container} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import Header from '../Header';
 import Thumbnail from '../Thumbnail';
+import TrailCrumb from '../TrailCrumb'
 import Cart from '../Cart';
 import CartItem from '../CartItem';
 import {Row} from '../FlexBox/FlexRow';
@@ -23,7 +24,9 @@ class Home extends Component {
     this.state = initialState
     this.setUI = this.setUI.bind(this)
     this.setCart = this.setCart.bind(this)
-    this.SetUICart = this.SetUICart.bind(this)
+    this.setUICart = this.setUICart.bind(this)
+    this.setHistory = this.setHistory.bind(this)
+    this.removeItemsCart = this.removeItemsCart.bind(this)
   }
 
   setUI(key, items){
@@ -46,24 +49,59 @@ class Home extends Component {
     this.setState(state)
   }
 
-  SetUICart(){
+  setHistory(){
+    const state = this.state
+    this.setState({
+      UI:state.history.home
+    })
+  }
+
+  removeItemsCart(key){
+    const state = this.state
+    let cart = delete state.cart.items[key]
+
+    this.setState(state)
+  }
+
+  setUICart(item){
     const state = this.state
     this.setState({
       UI:state.Cart
     })
+    // let price = [Number(state.cart.items[item].price)]
+    //
+    // console.log(price);
+  }
+
+  suma(item){
+    const state = this.state
+    let price = [Number(state.cart.items[item].price)]
+
+    let total = 0
+    for (var i = 0; i < price; i++) {
+      total += price[i]
+    }
+    console.log(total);
   }
 
   render() {
     const {UI, cart} = this.state
+    let cartItems = Object.keys(cart.items)
+
     return (
       <Div>
-        <Header icon="shopping-cart" SetUICart={this.SetUICart}/>
+        <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
+          <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
-            : <Cart elements={Object.keys(cart.items).map((item,i)=><CartItem elements={cart.items[item]} key={i}/>)}/>
+            : <Cart
+                cart={cartItems.length >= 1 ? '' : <h1>Cart is empty</h1>}
+                total={cartItems.map((item, i) => this.suma(item))}
+                elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
+              />
           }
         </Container>
       </Div>

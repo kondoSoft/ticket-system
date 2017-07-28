@@ -6,7 +6,7 @@ const Div = styled.div`
   background-color: #fff;
   border: 1px solid #ecf0f1;
   padding: 10px;
-  margin-top: 140px;
+  margin-top: 80px;
   cursor: pointer;
   margin-right: 20px;
   box-shadow: 1px 1px 10px #000;

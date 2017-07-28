@@ -6,12 +6,12 @@ function Cart (props) {
 
   return (
     <Div>
-      <h1>Cart is empty</h1>
+      {props.cart}
       <Row>
         {props.elements}
       </Row>
       <RowEnd>
-        <h1>Total: $0.00</h1>
+        <h1>Total ${props.total}</h1>
       </RowEnd>
     </Div>
   )
