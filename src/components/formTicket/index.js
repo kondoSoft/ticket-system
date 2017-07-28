@@ -65,6 +65,7 @@ class FormTicket extends Component{
   }
   render(){
     const tickets = this.state.tickets
+    // console.log(tickets);
     return(
       <div style={ContainerForm}>
         <h1>Ticket</h1>
@@ -90,7 +91,7 @@ class FormTicket extends Component{
         <Button name="Guardar"/>
       </form>
       <TableHeader titles={this.props.aryHeader}/>
-      {Object.keys(tickets).map((item,i)=><Table elements={tickets[item]} key={i} update={this.update} />)}
+      {Object.keys(tickets).map((item,i)=><Table dialog={false} elements={tickets[item]} key={i} update={this.update} />)}
       </div>
     );
   }

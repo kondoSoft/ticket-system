@@ -26,7 +26,7 @@ class FormItems extends Component {
 
   getInputsVal(event){
     event.preventDefault()
-
+    console.log(this.props);
     let type = this.refs.type.value
     let price = this.refs.price.value
     let date = this.state.startDate
@@ -41,16 +41,14 @@ class FormItems extends Component {
     }
 
     const item={
-        'type':type,
-        'key':key,
-        'price':price,
-        'image':image,
+      'father':this.props.component.key,
+      // 'type':type,
+      'key':key,
+      'price':price,
+      'image':image,
     }
+    this.props.setObjectState(item,'items',key)
 
-    console.log(item);
-
-    // this.props.setObjectState(item,'hotels',key)
-    // console.log(date.format('x'));
   }
 
   render(){
@@ -80,7 +78,7 @@ class FormItems extends Component {
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <Button name="Guardar"/>
+          <input type='submit' value='Guardar'/>
         </form>
         <TableHeader />
         {/*Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i}/>)/*/}

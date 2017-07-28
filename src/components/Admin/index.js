@@ -29,8 +29,6 @@ class Admin extends Component {
 
     this.setComponent = this.setComponent.bind(this);
     this.setObjectState = this.setObjectState.bind(this);
-    this.setItemObject = this.setItemObject.bind(this);
-    
   }
 
   setComponent(item){
@@ -40,13 +38,14 @@ class Admin extends Component {
   }
 
   setObjectState(object,position,key){
+
     let state = this.state
     state[position][key]=object
     this.setState(state)
   }
 
-  setItemObject(){
-
+  searchKey(key){
+    // this.
   }
 
   render() {
