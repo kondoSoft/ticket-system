@@ -19,6 +19,7 @@ class FormTicket extends Component{
     this.handleChange=this.handleChange.bind(this)
     this.getRefs=this.getRefs.bind(this)
     this.update=this.update.bind(this)
+    this.updateDate=this.updateDate.bind(this)
 
   }
 
@@ -49,15 +50,18 @@ class FormTicket extends Component{
       startDate:e
     })
   }
+  updateDate(e){
+    this.setState({
+      startDate:moment(e)
+    })
+  }
 
   update(element){
     let tickets = this.state.tickets[element.key]
     this.refs.folio.value = element.key
     this.refs.price.value = tickets.price
     this.refs.zone.value= tickets.section
-    // this.getRefs.startDate = tickets.date
-    // console.log(tickets.date);
-
+    this.updateDate(tickets.date)
   }
   render(){
     const tickets = this.state.tickets
