@@ -49,16 +49,6 @@ class Home extends Component {
     this.setState(state)
   }
 
-  setUICart(item){
-    const state = this.state
-    this.setState({
-      UI:state.Cart
-    })
-    // let price = [Number(state.cart.items[item].price)]
-    //
-    // console.log(price);
-  }
-
   setHistory(){
     const state = this.state
     this.setState({
@@ -73,16 +63,34 @@ class Home extends Component {
     this.setState(state)
   }
 
+  setUICart(item){
+    const state = this.state
+    this.setState({
+      UI:state.Cart
+    })
+    // let price = [Number(state.cart.items[item].price)]
+    //
+    // console.log(price);
+  }
+
+  suma(item){
+    const state = this.state
+    let price = [Number(state.cart.items[item].price)]
+
+    let total = 0
+    for (var i = 0; i < price; i++) {
+      total += price[i]
+    }
+    console.log(total);
+  }
+
   render() {
     const {UI, cart} = this.state
+    let cartItems = Object.keys(cart.items)
+
     return (
       <Div>
-        <Header
-          state={Object.keys(cart.items)}
-          icon="shopping-cart"
-          setUICart={this.setUICart}
-          count={Object.keys(cart.items).length}
-        />
+        <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
           <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
@@ -90,13 +98,9 @@ class Home extends Component {
               {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
             : <Cart
-                cart={Object.keys(cart.items).length >= 1 ? '' : <h1>Cart is empty</h1>}
-                total={Object.keys(cart.items).map((item, i)=> Number(cart.items[item].price))}
-                elements={Object.keys(cart.items).map((item,i)=><CartItem
-                                                                  elements={cart.items[item]}
-                                                                  key={i}
-                                                                  removeItemsCart={this.removeItemsCart}
-                                                                />)}
+                cart={cartItems.length >= 1 ? '' : <h1>Cart is empty</h1>}
+                total={cartItems.map((item, i) => this.suma(item))}
+                elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
           }
         </Container>
