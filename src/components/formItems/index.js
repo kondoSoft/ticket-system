@@ -26,7 +26,7 @@ class FormItems extends Component {
 
   getInputsVal(event){
     event.preventDefault()
-    console.log(this.props);
+    
     let type = this.refs.type.value
     let price = this.refs.price.value
     let date = this.state.startDate
@@ -42,7 +42,7 @@ class FormItems extends Component {
 
     const item={
       'father':this.props.component.key,
-      // 'type':type,
+      'type':type,
       'key':key,
       'price':price,
       'image':image,

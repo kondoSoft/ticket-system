@@ -38,14 +38,27 @@ class Admin extends Component {
   }
 
   setObjectState(object,position,key){
-
-    let state = this.state
-    state[position][key]=object
-    this.setState(state)
+    // console.log(object);
+    if(object.father){
+      var state = this.searchKey(object.father)
+      state[object.father][position][key]=object
+      this.setState(state)
+    }
+    else{
+      let state = this.state
+      state[position][key]=object
+      this.setState(state)
+    }
   }
 
   searchKey(key){
-    // this.
+    if(key in this.state.hotels){
+      let stateH = this.state.hotels
+      return stateH
+    }
+    else if(key in this.state.transport){
+      let stateT = this.state.transport
+    }
   }
 
   render() {
