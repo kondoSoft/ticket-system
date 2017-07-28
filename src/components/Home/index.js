@@ -43,16 +43,16 @@ class Home extends Component {
   }
 
   addCart(item){
+    this.totalAmount(item)
     const state = this.state
     state.cart.items[item.key] = item
-
     this.setState(state)
   }
 
   removeItemsCart(key){
+    this.res(key)
     const state = this.state
     let cart = delete state.cart.items[key]
-
     this.setState(state)
   }
 
@@ -68,16 +68,23 @@ class Home extends Component {
     this.setState({
       UI:state.Cart
     })
-    // let price = [Number(state.cart.items[item].price)]
-    //
-    // console.log(price);
   }
 
-  suma(item){
-    const state = this.state
-    let price = [Number(state.cart.items[item].price)]
-    let total = price.map((items, i)=>items += price[i])
-    console.log(total);
+  totalAmount(item){
+    let val = Number(item.price)
+    let stateTotal = this.state.cart
+    let total = val += stateTotal['total']
+    stateTotal['total']=total
+    this.setState(stateTotal)
+  }
+
+  res(item){
+    let val = Number(this.state.cart.items[item].price)
+    let stateTotal = this.state.cart
+    let total = stateTotal['total'] -= val
+    stateTotal['total']=total
+    this.setState(stateTotal)
+    console.log(val);
   }
 
   render() {
@@ -95,7 +102,7 @@ class Home extends Component {
             </Row>
             : <Cart
                 cart={cartItems.length >= 1 ? '' : <h1>Cart is empty</h1>}
-                total={cartItems.map((item, i) => this.suma(item))}
+                total={this.state.cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
           }

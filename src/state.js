@@ -9,7 +9,7 @@ const tickets = {
         '271180':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
           type:'Sencilla',
-          price:'340',
+          price:'370',
           key: '271180'
         },
         '271181':{
@@ -62,7 +62,7 @@ const tickets = {
         },
         '271185':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
-          price:'340',
+          price:'380',
           type:'sencilla',
           key:'271185'
       }
@@ -117,7 +117,8 @@ const tickets = {
   },
   cart:{
     items:{
-    }
+    },
+    total:0
   },
   UI:{
     '001':{
