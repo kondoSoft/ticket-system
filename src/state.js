@@ -6,17 +6,17 @@ const tickets = {
       address:'XXXXX',
       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
       items:{
-        '271180':{
+        '1501268590994':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
           type:'Sencilla',
           price:'340',
-          key: '271180'
+          key: '1501268590994'
         },
-        '271181':{
+        '1495047834000':{
           image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
           type:'Doble',
           price:'340',
-          key: '271181'
+          key: '1495047834000'
         },
       }
     },

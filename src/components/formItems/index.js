@@ -16,9 +16,11 @@ class FormItems extends Component {
     }
     this.handleChange=this.handleChange.bind(this)
     this.getInputsVal=this.getInputsVal.bind(this)
+    this.update = this.update.bind(this)
   }
 
   handleChange(e){
+    console.log(e.format('x'));
     this.setState({
       startDate:e
     })
@@ -26,7 +28,7 @@ class FormItems extends Component {
 
   getInputsVal(event){
     event.preventDefault()
-    
+
     let type = this.refs.type.value
     let price = this.refs.price.value
     let date = this.state.startDate
@@ -39,7 +41,6 @@ class FormItems extends Component {
     else{
       key = this.refs.key.value
     }
-
     const item={
       'father':this.props.component.key,
       'type':type,
@@ -49,6 +50,15 @@ class FormItems extends Component {
     }
     this.props.setObjectState(item,'items',key)
 
+    this.refs.type.value=null
+    this.refs.image.value=null
+    this.refs.price.value=null
+  }
+  update(element){
+    // let hotel= this.state.hotels[element.key]
+    this.refs.price.value=element.price
+    this.refs.type.value= element.type
+    // this.refs.address.value=hotel.address
   }
 
   render(){
@@ -81,7 +91,7 @@ class FormItems extends Component {
           <input type='submit' value='Guardar'/>
         </form>
         <TableHeader />
-        {Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i}/>)}
+        {Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i} update={this.update}/>)}
       </div>
     );
   }
