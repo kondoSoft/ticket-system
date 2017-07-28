@@ -23,7 +23,7 @@ class Home extends Component {
     super(props);
     this.state = initialState
     this.setUI = this.setUI.bind(this)
-    this.setCart = this.setCart.bind(this)
+    this.addCart = this.addCart.bind(this)
     this.setUICart = this.setUICart.bind(this)
     this.setHistory = this.setHistory.bind(this)
     this.removeItemsCart = this.removeItemsCart.bind(this)
@@ -42,9 +42,16 @@ class Home extends Component {
     })
   }
 
-  setCart(item){
+  addCart(item){
     const state = this.state
     state.cart.items[item.key] = item
+
+    this.setState(state)
+  }
+
+  removeItemsCart(key){
+    const state = this.state
+    let cart = delete state.cart.items[key]
 
     this.setState(state)
   }
@@ -54,13 +61,6 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
-  }
-
-  removeItemsCart(key){
-    const state = this.state
-    let cart = delete state.cart.items[key]
-
-    this.setState(state)
   }
 
   setUICart(item){
@@ -76,11 +76,7 @@ class Home extends Component {
   suma(item){
     const state = this.state
     let price = [Number(state.cart.items[item].price)]
-
-    let total = 0
-    for (var i = 0; i < price; i++) {
-      total += price[i]
-    }
+    let total = price.map((items, i)=>items += price[i])
     console.log(total);
   }
 
@@ -95,7 +91,7 @@ class Home extends Component {
           <TrailCrumb setHistory={this.setHistory}/>
           {this.state.UI ?
             <Row>
-              {Object.keys(UI).map((item,i)=><Thumbnail setCart={this.setCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+              {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
             : <Cart
                 cart={cartItems.length >= 1 ? '' : <h1>Cart is empty</h1>}

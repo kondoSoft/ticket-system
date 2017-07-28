@@ -12,7 +12,7 @@ function Thumbnail (props) {
       {props.elements.price ? <P>Price: ${props.elements.price}</P> : ''}
       {props.elements.address ? <P>Address: {props.elements.address}</P> : ''}
       {props.elements.type ? <P>Type: {props.elements.type}</P> : ''}
-      {props.elements.type ? <ButtonAdd setCart={() => props.setCart(props.elements)} name='Add to cart'/> : ''}
+      {props.elements.type ? <ButtonAdd addCart={() => props.addCart(props.elements)} name='Add to cart'/> : ''}
     </Div>
   )
 }
