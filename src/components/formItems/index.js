@@ -81,7 +81,7 @@ class FormItems extends Component {
           <input type='submit' value='Guardar'/>
         </form>
         <TableHeader />
-        {/*Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i}/>)/*/}
+        {Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i}/>)}
       </div>
     );
   }
