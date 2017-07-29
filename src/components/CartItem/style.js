@@ -13,7 +13,7 @@ const P = styled.p`
 
 const Container = styled.div`
   border: 1px solid #999;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
   padding: 10px;
   height: auto;
   border-radius: 6px;
@@ -25,6 +25,7 @@ const Button = styled.a`
   border-radius: 6px;
   color: #fff;
   margin-top: 20px;
+  cursor: pointer;
 
   &:hover {
     background-color: #c0392b;

@@ -74,7 +74,7 @@ class Home extends Component {
     let val = Number(item.price)
     let stateTotal = this.state.cart
     let total = val += stateTotal['total']
-    stateTotal['total']=total
+    stateTotal['total'] = total
     this.setState(stateTotal)
   }
 
@@ -82,7 +82,7 @@ class Home extends Component {
     let val = Number(this.state.cart.items[item].price)
     let stateTotal = this.state.cart
     let total = stateTotal['total'] -= val
-    stateTotal['total']=total
+    stateTotal['total'] = total
     this.setState(stateTotal)
     console.log(val);
   }
