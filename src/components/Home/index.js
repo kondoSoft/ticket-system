@@ -62,7 +62,13 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
-    console.log();
+  }
+
+  removeItemsCart(key){
+    const state = this.state
+    delete state.cart.items[key]
+
+    this.setState(state)
   }
 
   setUICart(item){

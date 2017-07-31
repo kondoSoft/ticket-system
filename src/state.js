@@ -6,17 +6,17 @@ const tickets = {
       address:'XXXXX',
       image: 'http://www.blogodisea.com/wp-content/uploads/2014/12/hoteles-encanto.jpg',
       items:{
-        '271180':{
-          image: 'https://cdn.lopezdoriga.com/wp-content/uploads/2016/09/hoteles-1.jpg',
+        '1501268590994':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
           type:'Sencilla',
-          price:'370',
-          key: '271180'
+          price:'340',
+          key: '1501268590994'
         },
-        '271181':{
-          image: 'http://www.misselliestravel.co.uk/images/fanabe-costa-sur/fanabe-costa-sur-3.jpg',
+        '1495047834000':{
+          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
           type:'Doble',
           price:'340',
-          key: '271181'
+          key: '1495047834000'
         },
       }
     },

@@ -15,7 +15,7 @@ const Tabla=styled.div`
 `;
 
 function filterItem(item){
-  if(item != 'key' && item != 'items'){
+  if(item != 'key' && item != 'items' && item != 'father'){
     return true
   }
 }
