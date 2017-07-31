@@ -31,6 +31,7 @@ class Home extends Component {
 
   setUI(key, items){
     const state = this.state
+    this.history()
     if(items){
       this.setState({
         UI: state.UI[key].items
@@ -61,6 +62,7 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
+    console.log();
   }
 
   setUICart(item){
@@ -84,7 +86,12 @@ class Home extends Component {
     let total = stateTotal['total'] -= val
     stateTotal['total'] = total
     this.setState(stateTotal)
-    console.log(val);
+  }
+
+  history(){
+    const state = this.state
+    state.history.home = state.UI
+    this.setState(state)
   }
 
   render() {
@@ -95,14 +102,14 @@ class Home extends Component {
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-          <TrailCrumb setHistory={this.setHistory}/>
+          <TrailCrumb setHistory={this.setHistory} location='hotels'/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
             : <Cart
                 cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
-                total={this.state.cart.total}
+                total={cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
           }
