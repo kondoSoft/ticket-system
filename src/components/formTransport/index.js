@@ -1,7 +1,5 @@
 import React,{Component} from 'react';
 import Button from '../Button';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import {ContainerForm, ContainerInputs, ContainerInput, Inputs, InputsF, Label} from './style'
 import Table from '../Table'
@@ -12,7 +10,6 @@ class FormTransport extends Component{
   constructor(props){
     super(props)
     this.state={
-      startDate:moment(),
       transport:props.elements
     }
     this.handleChange=this.handleChange.bind(this)
@@ -26,13 +23,13 @@ class FormTransport extends Component{
     let address = this.refs.address.value
     let image;
     let key;
-    if (this.refs.key.value == '') {
+    if (this.refs.key.value === '') {
       key = this.refs.key.value = title.toLowerCase()
     }
     else{
       key = this.refs.key.value
     }
-    if (this.refs.image.value == '') {
+    if (this.refs.image.value === '') {
       image=this.refs.imgAux.value
       }
 

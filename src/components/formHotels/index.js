@@ -31,7 +31,7 @@ class FormHotels extends Component{
     let address = this.refs.address.value
     let image = this.refs.image.value
     let key;
-    if (this.refs.key.value == '') {
+    if (this.refs.key.value === '') {
       key = this.refs.key.value = title.toLowerCase()
     }
     else{
