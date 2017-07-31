@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-// import Button from '../Button';
+import Button from '../Button';
 import {ContainerForm,Inputs, InputsF, Label, ContainerInput, ContainerInputs} from '../styles'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
@@ -83,7 +83,7 @@ class FormHotels extends Component{
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <input type='submit' value='Guardar'/>
+          <Button name="Guardar"/>
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
