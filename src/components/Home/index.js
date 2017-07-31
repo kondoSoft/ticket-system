@@ -58,7 +58,7 @@ class Home extends Component {
 
   removeItemsCart(key){
     const state = this.state
-    let cart = delete state.cart.items[key]
+    delete state.cart.items[key]
 
     this.setState(state)
   }

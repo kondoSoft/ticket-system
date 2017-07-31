@@ -1,7 +1,4 @@
 import React,{Component} from 'react';
-import styled from 'styled-components';
-import Input from '../Input/index.js';
-import Selector from '../Select/index.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,6 +6,8 @@ import {ContainerForm,ContainerInputs,ContainerInput, Inputs,Label} from '../sty
 import Button from '../Button'
 import Table from '../Table'
 import TableHeader from '../TableHeader'
+
+
 class FormTicket extends Component{
   constructor(props){
     super(props)

@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 const ContainerForm = {
   backgroundColor:'#D8D8D8',
   width:'100%',

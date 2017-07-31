@@ -38,7 +38,6 @@ class Admin extends Component {
   }
 
   setObjectState(object,position,key){
-    // console.log(object);
     if(object.father){
       var state = this.searchKey(object.father)
       state[object.father][position][key]=object
@@ -58,6 +57,7 @@ class Admin extends Component {
     }
     else if(key in this.state.transport){
       let stateT = this.state.transport
+      return stateT
     }
   }
 
@@ -67,7 +67,7 @@ class Admin extends Component {
     content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels} />
     if (section === 'ticket'){
       content = <FormTicket setObjectState={this.setObjectState} elements={this.state.tickets} />
-    } else if (section == 'transport') {
+    } else if (section === 'transport') {
       content = <FormTransport setObjectState={this.setObjectState} elements={this.state.transport} />
     }
     return (
