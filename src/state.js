@@ -4,16 +4,16 @@ const tickets = {
       key:'hyatt',
       title:'HYATT',
       address:'XXXXX',
-      image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
+      image: 'http://www.blogodisea.com/wp-content/uploads/2014/12/hoteles-encanto.jpg',
       items:{
         '271180':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
+          image: 'https://cdn.lopezdoriga.com/wp-content/uploads/2016/09/hoteles-1.jpg',
           type:'Sencilla',
           price:'370',
           key: '271180'
         },
         '271181':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
+          image: 'http://www.misselliestravel.co.uk/images/fanabe-costa-sur/fanabe-costa-sur-3.jpg',
           type:'Doble',
           price:'340',
           key: '271181'
@@ -24,25 +24,25 @@ const tickets = {
       title: 'MARRIOT',
       key: 'marriot',
       address:'XXXXX',
-      image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
+      image: 'http://media-room5.trivago.com/wp-content/uploads/sites/3/2016/11/25114313/hoteles-todo-incluido-canarias-lanzarote-h10-timanfaya-palace-general-id4.jpg',
       items:{
-        '271180':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
+        '271182':{
+          image: 'https://www.helloholidays.ro/images/offers/LOCAL/3hellofanabecostasurhoteltenerife.JPEG',
           type:'Sencilla',
           price:'340',
-          key: '271180'
-        },
-        '271181':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
-          type:'Doble',
-          price:'340',
-          key: '271181'
-        },
-        '271182':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-3.jpg',
-          type:'Doble',
-          price:'340',
           key: '271182'
+        },
+        '271183':{
+          image: 'http://www.svoiludi.ru/images/tb/10735/costa-adeje-gran-hotel-13862604295766_w990h700.jpg',
+          type:'Doble',
+          price:'340',
+          key: '271183'
+        },
+        '271184':{
+          image: 'http://rajakamar.pgstatics.com/hotel/10279/MjQxLzI0MTUwMS84NDB4NDYwLzEwMDI4NzE2.jpg',
+          type:'Doble',
+          price:'340',
+          key: '271184'
         },
       }
     }
@@ -54,17 +54,17 @@ const tickets = {
       address:'XXXXX',
       image:'http://lorempixel.com/output/transport-q-c-640-480-9.jpg',
       items: {
-        '271184':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
+        '271185':{
+          image: 'https://previews.123rf.com/images/vbaleha/vbaleha1311/vbaleha131100103/23525904-Autob-s-para-transporte-de-turistas-y-grupos-de-turistas-lindo-hotel-Foto-de-archivo.jpg',
           price:'340',
           type:'sencilla',
-          key:'271184'
+          key:'271185'
         },
-        '271185':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
+        '271186':{
+          image: 'https://media-cdn.tripadvisor.com/media/photo-s/05/3e/e4/df/hotel-la-estacion-corferias.jpg',
           price:'380',
           type:'sencilla',
-          key:'271185'
+          key:'271186'
       }
       }
     },
@@ -74,17 +74,17 @@ const tickets = {
       address:'XXXXX',
       image:'http://lorempixel.com/output/transport-q-c-640-480-1.jpg',
       items: {
-        '271184':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-5.jpg',
+        '271187':{
+          image: 'https://previews.123rf.com/images/vbaleha/vbaleha1311/vbaleha131100103/23525904-Autob-s-para-transporte-de-turistas-y-grupos-de-turistas-lindo-hotel-Foto-de-archivo.jpg',
           type:'Sencilla',
           price:'340',
-          key:'271184'
+          key:'271187'
         },
-        '271185':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-6.jpg',
+        '271188':{
+          image: 'https://media-cdn.tripadvisor.com/media/photo-s/05/3e/e4/df/hotel-la-estacion-corferias.jpg',
           type:'Sencilla',
           price:'340',
-          key: '271185'
+          key: '271188'
         },
       }
     },
@@ -123,12 +123,12 @@ const tickets = {
   UI:{
     '001':{
       title:'HOTEL Y TRANSPORTE',
-      image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
+      image: 'http://memoflores.com/fotos-de-hoteles-05.jpg',
       key: 'hotels'
     },
     '002':{
       title: 'TRANSPORTE',
-      image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
+      image: 'http://www.czech-airport-limousine.com/wp-content/uploads/2013/02/Hotel-Limousine-Service01.jpg',
       key: 'transport'
    }
  },
@@ -136,12 +136,12 @@ const tickets = {
    'home':{
      '001':{
        title:'HOTEL Y TRANSPORTE',
-       image: 'http://lorempixel.com/output/nightlife-q-c-250-220-7.jpg',
+       image: 'http://memoflores.com/fotos-de-hoteles-05.jpg',
        key: 'hotels'
      },
      '002':{
        title: 'TRANSPORTE',
-       image: 'http://lorempixel.com/output/city-q-c-250-220-8.jpg',
+       image: 'http://www.czech-airport-limousine.com/wp-content/uploads/2013/02/Hotel-Limousine-Service01.jpg',
        key: 'transport'
     }
    }

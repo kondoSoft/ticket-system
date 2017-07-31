@@ -13,7 +13,7 @@ import styled from 'styled-components';
 const Div = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url("http://lorempixel.com/output/city-q-c-1680-960-1.jpg")no-repeat center;
+  background: url("http://www.planoinformativo.com/stock12/image/2015/Abril/17/ArmandoManzanero2.jpg")no-repeat center;
   overflow-x: scroll;
   position: fixed;
 `;
@@ -101,7 +101,7 @@ class Home extends Component {
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
             : <Cart
-                cart={cartItems.length >= 1 ? '' : <h1>Cart is empty</h1>}
+                cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
                 total={this.state.cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
