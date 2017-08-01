@@ -28,10 +28,14 @@ class Home extends Component {
     this.setUICart = this.setUICart.bind(this)
     this.setHistory = this.setHistory.bind(this)
     this.removeItemsCart = this.removeItemsCart.bind(this)
+    this.setItems = this.setItems.bind(this)
   }
 
   setUI(key, items){
     const state = this.state
+    if (state.status.estado == true) {
+      state.history.items = state.UI
+    }
     if(items){
       this.setState({
         UI: state.UI[key].items
@@ -43,6 +47,7 @@ class Home extends Component {
       UI: state[key]
     })
     state.status.estado=true
+    state.status.home=true
   }
 
   addCart(item){
@@ -64,6 +69,9 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
+    state.status.estado=false
+    state.history.items = ''
+    console.log('reiniciando');
   }
 
   removeItemsCart(key){
@@ -102,18 +110,23 @@ class Home extends Component {
     state.history.home = state.UI
     state.history.location = key
     this.setState(state)
-    console.log(key);
   }
-
-  render() {
+  setItems(items){
+    const state = this.state
+    this.setState({
+      UI:state.history.items
+    })
+    state.status.estado=false
+  }
+  render() {;
     const {UI, cart, history, status} = this.state
     let cartItems = Object.keys(cart.items)
-
+    console.log(UI);
     return (
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-        <TrailCrumb status={status.estado} setHistory={this.setHistory} location={history ? history.location :'hola'}/>
+        <TrailCrumb status={status} setItems={this.setItems} setHistory={this.setHistory} location={history ? history.location :'hola'}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
