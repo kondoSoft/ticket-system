@@ -5,7 +5,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 class CartItem extends React.Component {
 
-  submit = () => {
+  submit(){
     confirmAlert({
       title: 'The room will be eliminated',
       message: 'Are you sure to do this?',
@@ -14,8 +14,7 @@ class CartItem extends React.Component {
       onConfirm: () => this.props.removeItemsCart(this.props.elements.key),
       // onCancel: () => alert('Cancel'),
     })
-  };
-
+  }
 
   render () {
     return (
@@ -23,7 +22,7 @@ class CartItem extends React.Component {
         <Img src={this.props.elements.image}/>
         <P>Price: ${this.props.elements.price}</P>
         <P>Type: {this.props.elements.type}</P>
-        <P><Button onClick={this.submit}>Remove</Button></P>
+        <P><Button onClick={this.submit.bind(this)}>Remove</Button></P>
       </Container>
     );
   }
