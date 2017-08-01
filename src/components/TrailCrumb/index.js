@@ -6,12 +6,13 @@ function TrailCrumb (props) {
   return (
 
     <Div>
-      {props.status == false ? 'Trailcrumb' :
+
        <Ul>
-          <Li onClick={()=>props.setHistory(props.key)}>Home</Li>
-          <Li>{props.location}</Li>
+          <Li onClick = {props.status.home == true ? ()=>props.setHistory(props.key) : '' } >Home </Li>
+
+          {props.location == props.key ? '': props.status.estado == false ? '' : <Li onClick={()=>props.setItems(props.key)}>{props.location}</Li> }
         </Ul>
-      }
+
     </Div>
   )
 }

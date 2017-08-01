@@ -135,11 +135,15 @@ const tickets = {
  history:{
    'home':{
 
+   },'items':{
+
+
    },
    'location':''
 },
 status:{
-'estado': false
+'estado': false,
+'home':false
 },
 }
 
