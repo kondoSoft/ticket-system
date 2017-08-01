@@ -134,18 +134,16 @@ const tickets = {
  },
  history:{
    'home':{
-     '001':{
-       title:'HOTEL Y TRANSPORTE',
-       image: 'http://memoflores.com/fotos-de-hoteles-05.jpg',
-       key: 'hotels'
-     },
-     '002':{
-       title: 'TRANSPORTE',
-       image: 'http://www.czech-airport-limousine.com/wp-content/uploads/2013/02/Hotel-Limousine-Service01.jpg',
-       key: 'transport'
-    }
+
+   },'items':{
+
+
    },
    'location':''
+},
+status:{
+'estado': false,
+'home':false
 },
 }
 
