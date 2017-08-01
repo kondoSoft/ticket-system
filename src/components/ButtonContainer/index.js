@@ -16,7 +16,7 @@ function ButtonContainer(props) {
   <Cont>
     {props.dialog != undefined ? '' :  <Dialog component={props.element} setObjectState={props.setObjectState}/>}
     <button style = {actione} onClick={()=> props.update(props.element)}> Editar </button>
-    <button style = {actiond}>Eliminar  </button>
+    <button style = {actiond} onClick={()=> props.deleteObject(props.element,props.element.key)}>Eliminar  </button>
   </Cont>
 )
 }

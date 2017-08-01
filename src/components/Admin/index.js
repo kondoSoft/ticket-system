@@ -5,6 +5,8 @@ import FormHotels from '../formHotels';
 import initialState from '../../state';
 import FormTransport from '../formTransport';
 import FormTicket from '../formTicket';
+import ReactConfirmAlert, { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Container = styled.div`
   padding:0;
@@ -26,9 +28,9 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state=initialState
-
     this.setComponent = this.setComponent.bind(this);
     this.setObjectState = this.setObjectState.bind(this);
+    this.deleteObject = this.deleteObject.bind(this);
   }
 
   setComponent(item){
@@ -59,20 +61,34 @@ class Admin extends Component {
       let stateT = this.state.transport
       return stateT
     }
+    else{
+      let stateTi = this.state.tickets
+      return stateTi
+    }
   }
 
-  deleteObject(key){
-    
+  deleteObject(element,key){
+    let state=this.searchKey(key)
+    confirmAlert({
+      title: 'Confirmacion',                              // Title dialog
+      message: 'Esta seguro de eliminar: '+key,          // Message dialog
+      confirmLabel: 'Aceptar',                           // Text button confirm
+      cancelLabel: 'Cancelar',                             // Text button cancel
+      onConfirm: () => {
+                        delete state[key]
+                        this.setState(state)
+                      },                                 // Action after Confirm
+    })
   }
 
   render() {
     let content;
     const {section} = this.props.match.params;
-    content = <FormHotels setObjectState={this.setObjectState} elements={this.state.hotels} />
+    content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.hotels} />
     if (section === 'ticket'){
-      content = <FormTicket setObjectState={this.setObjectState} elements={this.state.tickets} />
+      content = <FormTicket deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.tickets} />
     } else if (section === 'transport') {
-      content = <FormTransport setObjectState={this.setObjectState} elements={this.state.transport} />
+      content = <FormTransport deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.transport} />
     }
     return (
       <Container>

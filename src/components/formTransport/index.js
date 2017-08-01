@@ -92,7 +92,7 @@ class FormTransport extends Component{
           <Button name="Guardar"/>
         </form>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(transports).map((item,i)=><Table update={this.update} elements={transports[item]} key={i} />)}
+        {Object.keys(transports).map((item,i)=><Table deleteObject={this.props.deleteObject} update={this.update} elements={transports[item]} key={i} />)}
       </div>
     );
   }

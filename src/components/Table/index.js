@@ -21,11 +21,12 @@ function filterItem(item){
 }
 
 function  Table(props){
+
   let toReturn=Object.keys(props.elements).filter(filterItem)
   return (
     <Tabla>
       {toReturn.map((data,i) => data=='image' ? <div style={celda} key={i}><img width='50' src={props.elements[data]} /></div> :<div style={celda} key={i}>{props.elements[data]}</div>)}
-      <div style={celda}> <ButtonContainer setObjectState={props.setObjectState} dialog={props.dialog } element={props.elements} update={props.update}/></div>
+      <div style={celda}> <ButtonContainer setObjectState={props.setObjectState} deleteObject={props.deleteObject} dialog={props.dialog } element={props.elements} update={props.update}/></div>
     </Tabla>
   )
 
