@@ -6,6 +6,7 @@ import Thumbnail from '../Thumbnail';
 import TrailCrumb from '../TrailCrumb'
 import Cart from '../Cart';
 import CartItem from '../CartItem';
+import FormPay from '../formPay'
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
@@ -31,13 +32,13 @@ class Home extends Component {
 
   setUI(key, items){
     const state = this.state
-    this.history()
     if(items){
       this.setState({
         UI: state.UI[key].items
       })
       return
     }
+    this.history(key)
     this.setState({
       UI: state[key]
     })
@@ -62,9 +63,11 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
+    console.log('hola');
   }
 
   removeItemsCart(key){
+    this.res(key)
     const state = this.state
     delete state.cart.items[key]
 
@@ -94,21 +97,23 @@ class Home extends Component {
     this.setState(stateTotal)
   }
 
-  history(){
+  history(key){
     const state = this.state
     state.history.home = state.UI
+    state.history.location = key
     this.setState(state)
+    console.log(key);
   }
 
   render() {
-    const {UI, cart} = this.state
+    const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
 
     return (
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-          <TrailCrumb setHistory={this.setHistory} location='hotels'/>
+          <TrailCrumb setHistory={this.setHistory} location={history ? history.location :'hola'}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
@@ -119,6 +124,7 @@ class Home extends Component {
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
           }
+          {/* <FormPay/> */}
         </Container>
       </Div>
     );
