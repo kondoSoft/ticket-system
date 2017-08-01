@@ -61,6 +61,10 @@ class Admin extends Component {
     }
   }
 
+  deleteObject(key){
+    
+  }
+
   render() {
     let content;
     const {section} = this.props.match.params;
