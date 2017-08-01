@@ -140,11 +140,11 @@ const tickets = {
 
    },
    'location':''
-},
-status:{
-'estado': false,
-'home':false
-},
+  },
+  status:{
+    'estado': 0,
+    'home':false
+  },
 }
 
 export default tickets
