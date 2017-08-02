@@ -111,6 +111,10 @@ class Home extends Component {
     state.history.location = key
     this.setState(state)
   }
+
+  // cmartinez@creatuviaje.com
+  // Creatur-2313
+
   setItems(items){
     const state = this.state
     this.setState({
