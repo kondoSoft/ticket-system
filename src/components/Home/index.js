@@ -6,7 +6,7 @@ import Thumbnail from '../Thumbnail';
 import TrailCrumb from '../TrailCrumb'
 import Cart from '../Cart';
 import CartItem from '../CartItem';
-import FormPay from '../formPay'
+// import FormPay from '../formPay'
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
@@ -30,6 +30,14 @@ class Home extends Component {
     this.removeItemsCart = this.removeItemsCart.bind(this)
     this.setItems = this.setItems.bind(this)
   }
+
+  fetch('http://admin.creaturviajes.com/ws/tipocambio/')
+  .then((response) => {
+    return response.json()
+  })
+  .then((recurso) => {
+    console.log(recurso);
+  })
 
   setUI(key, items){
     const state = this.state
@@ -59,7 +67,7 @@ class Home extends Component {
   removeItemsCart(key){
     this.res(key)
     const state = this.state
-    let cart = delete state.cart.items[key]
+    delete state.cart.items[key]
     this.setState(state)
   }
 
@@ -120,7 +128,7 @@ class Home extends Component {
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
         <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
-          {/* {this.state.UI ?
+          {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
@@ -129,8 +137,8 @@ class Home extends Component {
                 total={cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
-          } */}
-          <FormPay/>
+          }
+          {/* <FormPay/> */}
         </Container>
       </Div>
     );
