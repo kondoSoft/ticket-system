@@ -135,16 +135,15 @@ const tickets = {
  history:{
    'home':{
 
-   },'items':{
+   },
+   'items':{
 
 
    },
-   'location':''
-  },
-  status:{
-    'estado': 0,
-    'home':false
-  },
+   'location':'',
+   'status':false,
+   'state':0
+  }
 }
 
 export default tickets

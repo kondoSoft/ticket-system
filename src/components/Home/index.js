@@ -33,25 +33,20 @@ class Home extends Component {
 
   setUI(key, items){
     const state = this.state
-    if (state.status.estado == 1) {
-      state.history.items = state.UI
-    }
     if(items){
-      if (state.status.estado==3) {
-        state.status.estado -=1
-      }
       this.setState({
         UI: state.UI[key].items
       })
-      state.status.estado +=1
+      state.history.items = state.UI
+      state.history.state +=1
       return
     }
     this.history(key)
     this.setState({
       UI: state[key]
     })
-    state.status.estado +=1
-    state.status.home=true
+    state.history.state +=1
+    state.history.status=true
   }
 
   addCart(item){
@@ -73,17 +68,9 @@ class Home extends Component {
     this.setState({
       UI:state.history.home
     })
-    state.status.estado=0
-    state.status.home=false
-    state.history.items = ''
-  }
-
-  removeItemsCart(key){
-    this.res(key)
-    const state = this.state
-    delete state.cart.items[key]
-
-    this.setState(state)
+    state.history.state=0
+    state.history.status = false
+    state.history.location = ''
   }
 
   setUICart(item){
@@ -91,6 +78,7 @@ class Home extends Component {
     this.setState({
       UI:state.Cart
     })
+    state.history.status = true
   }
 
   totalAmount(item){
@@ -115,23 +103,23 @@ class Home extends Component {
     state.history.location = key
     this.setState(state)
   }
-  setItems(items){
+
+  setItems(){
     const state = this.state
     this.setState({
       UI:state.history.items
     })
-    state.status.estado -=1
-    console.log(items);
+    state.history.state -=1
   }
 
   render() {;
-    const {UI, cart, history, status} = this.state
+    const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
     return (
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-        <TrailCrumb status={status} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
+        <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
           {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
