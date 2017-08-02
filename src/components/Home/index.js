@@ -120,7 +120,7 @@ class Home extends Component {
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
         <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
-          {this.state.UI ?
+          {/* {this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
@@ -129,8 +129,8 @@ class Home extends Component {
                 total={cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
-          }
-          {/* <FormPay/> */}
+          } */}
+          <FormPay/>
         </Container>
       </Div>
     );
