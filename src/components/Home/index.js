@@ -104,6 +104,9 @@ class Home extends Component {
     this.setState(state)
   }
 
+  // cmartinez@creatuviaje.com
+  // Creatur-2313
+
   setItems(){
     const state = this.state
     this.setState({
