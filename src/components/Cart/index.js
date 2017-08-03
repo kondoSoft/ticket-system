@@ -11,10 +11,11 @@ function Cart (props) {
       <Row>
         {props.elements}
       </Row>
+      {props.formpayment}
       <RowEnd>
         <h1>Total ${props.total}</h1>
       </RowEnd>
-      <Button onClick={props.setPayment()} name="Payment"/>
+      <Button setPayment={()=> props.setPayment()} name="Payment"/>
     </Div>
   )
 }

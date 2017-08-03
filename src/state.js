@@ -113,10 +113,11 @@ const tickets = {
 
   },
   sales:{
-
+    
   },
   cart:{
     items:{
+
     },
     total:0,
   },

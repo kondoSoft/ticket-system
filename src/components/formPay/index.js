@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Div} from './style'
+import {Div} from './style';
 
 class FormPay extends Component{
   constructor(){
@@ -9,18 +9,61 @@ class FormPay extends Component{
   }
 
   test(event){
-    let test = {"message":"hola"}
     event.preventDefault()
-    fetch('http://192.168.1.38:1337/prueba',{
-      method: 'post',
-      body: JSON.stringify(test)
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((recurso) => {
-      this.setState({test:recurso})
-    })
+
+    let cardNumber = this.refs.card_number.value
+    let holderName = this.refs.holder_name.value
+    let expirationYear = this.refs.expiration_year.value
+    let expirationMonth = this.refs.expiration_month.value
+    let cvv2 = this.refs.cvv2.value
+    let city = this.refs.city.value
+    let line3 = this.refs.line3.value
+    let postalCode = this.refs.postal_code.value
+    let line1 = this.refs.line1.value
+    let line2 = this.refs.line2.value
+    let state = this.refs.state.value
+    let countryCode = this.refs.country_code.value
+
+    const openpay = window.OpenPay
+    openpay.setId('mxvvjiqmnh5lhpdhogvo');
+    openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
+    openpay.setSandboxMode(true);
+    console.log();
+    openpay.token.create({
+      "card_number":cardNumber,
+      "holder_name":holderName,
+      "expiration_year":expirationYear,
+      "expiration_month":expirationMonth,
+      "cvv2":cvv2,
+      "address":{
+         "city":city,
+         "line3":line3,
+         "postal_code":postalCode,
+         "line1":line1,
+         "line2":line2,
+         "state":state,
+         "country_code":countryCode
+      }
+    }, (e)=>this.onSuccess(e),(err)=>this.onError(err));
+  }
+
+  onSuccess(res){
+    console.log(res);
+    // let test = {"message":"hola"}
+    // fetch('http://192.168.1.38:1337/prueba',{
+    //   method: 'post',
+    //   body: JSON.stringify(test)
+    // })
+    // .then((response) => {
+    //   return response.json();
+    // })
+    // .then((recurso) => {
+    //   this.setState({test:recurso})
+    // })
+  }
+
+  onError(err){
+    alert(err.data.description)
   }
 
   render(){
@@ -28,40 +71,40 @@ class FormPay extends Component{
       <Div>
         <form onSubmit={this.test}>
             <p>Holder Name:</p>
-            <input data-openpay-card="holder_name" size="50" type="text" ref=""/>
+            <input size="50" type="text" ref="holder_name"/>
 
             <p>Card number:</p>
-            <input data-openpay-card="card_number" size="50" type="text" ref=""/>
+            <input size="50" type="text" ref="card_number"/>
 
             <p>Expiration year:</p>
-            <input data-openpay-card="expiration_year" size="4" type="text" ref=""/>
+            <input  size="4" type="text" ref="expiration_year"/>
 
             <p>Expiration month:</p>
-            <input data-openpay-card="expiration_month" size="4" type="text" ref=""/>
+            <input size="4" type="text" ref="expiration_month"/>
 
             <p>cvv2:</p>
-            <input data-openpay-card="cvv2" size="5" type="text" ref=""/>
+            <input size="5" type="text" ref="cvv2"/>
 
             <p>Street:</p>
-            <input data-openpay-card-address="line1" size="20" type="text" ref=""/>
+            <input size="20" type="text" ref="line1"/>
 
             <p>Number:</p>
-            <input data-openpay-card-address="line2" size="20" type="text" ref=""/>
+            <input size="20" type="text" ref="line2"/>
 
             <p>References:</p>
-            <input data-openpay-card-address="line3" size="20" type="text" ref=""/>
+            <input size="20" type="text" ref="line3"/>
 
             <p>Postal code:</p>
-            <input data-openpay-card-address="postal_code" size="6" type="text" ref=""/>
+            <input size="6" type="text" ref="postal_code"/>
 
             <p>City:</p>
-            <input data-openpay-card-address="city" size="20" type="text" ref=""/>
+            <input size="20" type="text" ref="city"/>
 
             <p>State:</p>
-            <input data-openpay-card-address="state" size="20" type="text" ref=""/>
+            <input size="20" type="text" ref="state"/>
 
             <p>Country code:</p>
-            <input data-openpay-card-address="country_code" size="3" type="text" ref=""/>
+            <input size="3" type="text" ref="country_code"/>
             <button>make card</button>
         </form>
       </Div>

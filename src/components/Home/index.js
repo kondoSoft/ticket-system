@@ -74,12 +74,17 @@ class Home extends Component {
     state.history.location = ''
   }
 
-  setUICart(item){
+  setUICart(){
     const state = this.state
+    let dat = state.history.home['001']
+     if (dat== undefined) {
+       this.history()
+     }
     this.setState({
       UI:state.cart
     })
     state.history.status = true
+
   }
 
   totalAmount(item){
@@ -115,7 +120,11 @@ class Home extends Component {
 
   setPayment(){
     const state = this.state
-    console.log(state);
+    if (Object.keys(state.cart.items).length === 0) {
+      alert('El carrito esta vacio');
+      return
+    }
+     console.log();
   }
 
   render() {;
@@ -131,6 +140,7 @@ class Home extends Component {
                         cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
                         total={cart.total}
                         setPayment={this.setPayment}
+                        formpayment={<FormPay/>}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
                       /> :<Row>
                             {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
