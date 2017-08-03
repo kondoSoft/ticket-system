@@ -2,10 +2,31 @@ import React, {Component} from 'react';
 import {Div} from './style'
 
 class FormPay extends Component{
+  constructor(){
+    super();
+    this.state = {test: []}
+    this.test=this.test.bind(this)
+  }
+
+  test(event){
+    let test = {"message":"hola"}
+    event.preventDefault()
+    fetch('http://192.168.1.38:1337/prueba',{
+      method: 'post',
+      body: JSON.stringify(test)
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((recurso) => {
+      this.setState({test:recurso})
+    })
+  }
+
   render(){
     return (
       <Div>
-        <form id="processCard" name="processCard">
+        <form onSubmit={this.test}>
             <p>Holder Name:</p>
             <input data-openpay-card="holder_name" size="50" type="text" ref=""/>
 
@@ -41,7 +62,7 @@ class FormPay extends Component{
 
             <p>Country code:</p>
             <input data-openpay-card-address="country_code" size="3" type="text" ref=""/>
-            <input id="makeRequestCard" type="button" value="Make Card"/>
+            <button>make card</button>
         </form>
       </Div>
     )

@@ -7,13 +7,13 @@ const tickets = {
       image: 'http://www.blogodisea.com/wp-content/uploads/2014/12/hoteles-encanto.jpg',
       items:{
         '1501268590994':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-1.jpg',
+          image: 'http://www.hotelbalnearivichycatalan.cat/uploads/galleries/hotel/habitacions/habitacio-superior/superior-9.jpg',
           type:'Sencilla',
           price:'340',
           key: '1501268590994'
         },
         '1495047834000':{
-          image: 'http://lorempixel.com/output/nightlife-q-c-250-220-2.jpg',
+          image: 'http://www.hotelbalnearivichycatalan.cat/uploads/galleries/hotel/habitacions/habitacio-deluxe/deluxe-7.jpg',
           type:'Doble',
           price:'340',
           key: '1495047834000'
@@ -65,7 +65,7 @@ const tickets = {
           price:'380',
           type:'sencilla',
           key:'271186'
-      }
+        }
       }
     },
     "dollar":{
@@ -118,7 +118,7 @@ const tickets = {
   cart:{
     items:{
     },
-    total:0
+    total:0,
   },
   UI:{
     '001':{
@@ -137,7 +137,6 @@ const tickets = {
 
    },
    'items':{
-
 
    },
    'location':'',
