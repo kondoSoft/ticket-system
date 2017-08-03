@@ -113,13 +113,14 @@ const tickets = {
 
   },
   sales:{
-    
+
   },
   cart:{
     items:{
 
     },
     total:0,
+    id:'CMV-001'
   },
   UI:{
     '001':{

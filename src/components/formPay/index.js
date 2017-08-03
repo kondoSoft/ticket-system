@@ -4,15 +4,24 @@ import {Div} from './style';
 class FormPay extends Component{
   constructor(){
     super();
-    this.state = {test: []}
+    this.state = {deviceSessionId: ''}
     this.test=this.test.bind(this)
+  }
+
+  componentDidMount(){
+    const openpay = window.OpenPay
+    const deviceSessionId = openpay.deviceData.setup('payment', 'deviceIdHiddenFieldName')
+    this.setState({
+      deviceSessionId:deviceSessionId
+    })
   }
 
   test(event){
     event.preventDefault()
 
+    let deviceSessionId = this.state.deviceSessionId
     let cardNumber = this.refs.card_number.value
-    let holderName = this.refs.holder_name.value
+    let holderName = this.refs.holder_name.value + this.refs.last_name.value
     let expirationYear = this.refs.expiration_year.value
     let expirationMonth = this.refs.expiration_month.value
     let cvv2 = this.refs.cvv2.value
@@ -28,8 +37,8 @@ class FormPay extends Component{
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
     openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
     openpay.setSandboxMode(true);
-    console.log();
-    openpay.token.create({
+
+    let request = {
       "card_number":cardNumber,
       "holder_name":holderName,
       "expiration_year":expirationYear,
@@ -44,22 +53,38 @@ class FormPay extends Component{
          "state":state,
          "country_code":countryCode
       }
-    }, (e)=>this.onSuccess(e),(err)=>this.onError(err));
+    }
+    openpay.token.create( request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err));
   }
 
-  onSuccess(res){
-    console.log(res);
-    // let test = {"message":"hola"}
-    // fetch('http://192.168.1.38:1337/prueba',{
-    //   method: 'post',
-    //   body: JSON.stringify(test)
-    // })
-    // .then((response) => {
-    //   return response.json();
-    // })
-    // .then((recurso) => {
-    //   this.setState({test:recurso})
-    // })
+  onSuccess(res, request){
+
+    let test = {
+      'source_id': 'kqgykn96i7bcs1wwhvgw',
+      'method': 'card',
+      'amount': 10101,
+      'currency': 'MXN',
+      'description': 'Cargo inicial a mi cuenta',
+      'order_id': 'oid-00051',
+      'device_session_id' : 'kR1MiQhz2otdIuUlQkbEyitIqVMiI16f',
+      'customer': {
+        'name': request.holder_name,
+        'last_name': 'Vazquez Juarez',
+        'phone_number': '4423456723',
+        'email': 'juan.vazquez@empresa.com.mx'
+      }
+    }
+    
+    fetch('http://192.168.1.38:1337/payment',{
+      method: 'post',
+      body: JSON.stringify(test)
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((recurso) => {
+      this.setState({test:recurso})
+    })
   }
 
   onError(err){
@@ -69,9 +94,18 @@ class FormPay extends Component{
   render(){
     return (
       <Div>
-        <form onSubmit={this.test}>
-            <p>Holder Name:</p>
+        <form onSubmit={this.test} id="payment">
+            <p>Nombre:</p>
             <input size="50" type="text" ref="holder_name"/>
+
+            <p>Apellidos:</p>
+            <input size="50" type="text" ref="last_name"/>
+
+            <p>Telefono:</p>
+            <input size="50" type="text" ref="phone_number"/>
+
+            <p>Correo:</p>
+            <input size="50" type="text" ref="email"/>
 
             <p>Card number:</p>
             <input size="50" type="text" ref="card_number"/>
@@ -105,6 +139,8 @@ class FormPay extends Component{
 
             <p>Country code:</p>
             <input size="3" type="text" ref="country_code"/>
+
+            <input hidden id="deviceIdHiddenFieldName"/>
             <button>make card</button>
         </form>
       </Div>
