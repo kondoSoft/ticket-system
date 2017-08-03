@@ -58,15 +58,15 @@ class FormPay extends Component{
   }
 
   onSuccess(res, request){
-
+    const deviceSessionId = this.state.deviceSessionId
     let test = {
-      'source_id': 'kqgykn96i7bcs1wwhvgw',
+      'source_id': res.data.id,
       'method': 'card',
       'amount': 10101,
-      'currency': 'MXN',
+      'currency': request.country_code,
       'description': 'Cargo inicial a mi cuenta',
       'order_id': 'oid-00051',
-      'device_session_id' : 'kR1MiQhz2otdIuUlQkbEyitIqVMiI16f',
+      'device_session_id' : deviceSessionId,
       'customer': {
         'name': request.holder_name,
         'last_name': 'Vazquez Juarez',
@@ -74,7 +74,7 @@ class FormPay extends Component{
         'email': 'juan.vazquez@empresa.com.mx'
       }
     }
-    
+    console.log(request);
     fetch('http://192.168.1.38:1337/payment',{
       method: 'post',
       body: JSON.stringify(test)
@@ -107,41 +107,41 @@ class FormPay extends Component{
             <p>Correo:</p>
             <input size="50" type="text" ref="email"/>
 
-            <p>Card number:</p>
+            <p>Número de tarjeta:</p>
             <input size="50" type="text" ref="card_number"/>
 
-            <p>Expiration year:</p>
+            <p>Año de vencimiento:</p>
             <input  size="4" type="text" ref="expiration_year"/>
 
-            <p>Expiration month:</p>
+            <p>Mes de expiración:</p>
             <input size="4" type="text" ref="expiration_month"/>
 
             <p>cvv2:</p>
             <input size="5" type="text" ref="cvv2"/>
 
-            <p>Street:</p>
+            <p>Calle:</p>
             <input size="20" type="text" ref="line1"/>
 
-            <p>Number:</p>
+            <p>Numero:</p>
             <input size="20" type="text" ref="line2"/>
 
-            <p>References:</p>
+            <p>Referencias:</p>
             <input size="20" type="text" ref="line3"/>
 
-            <p>Postal code:</p>
+            <p>Código postal:</p>
             <input size="6" type="text" ref="postal_code"/>
 
-            <p>City:</p>
+            <p>Ciudad:</p>
             <input size="20" type="text" ref="city"/>
 
-            <p>State:</p>
+            <p>Estado:</p>
             <input size="20" type="text" ref="state"/>
 
-            <p>Country code:</p>
+            <p>Código de país:</p>
             <input size="3" type="text" ref="country_code"/>
 
-            <input hidden id="deviceIdHiddenFieldName"/>
-            <button>make card</button>
+            <input hidden id="deviceIdHiddenFieldName"/><br/>
+            <button>Hacer una tarjeta</button>
         </form>
       </Div>
     )
