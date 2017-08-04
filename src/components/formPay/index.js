@@ -150,12 +150,10 @@ class FormPay extends Component{
           </Row>
             <p>Referencias:</p>
             <input style={Input} type="text" ref="line3"/>
-
           <Row>
             <div>
               <p>Código postal:</p>
               <input style={Input} size="20" type="text" ref="postal_code"/>
-
             </div>
             <div>
               <p>Ciudad:</p>

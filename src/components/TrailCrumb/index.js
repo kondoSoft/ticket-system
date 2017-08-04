@@ -6,8 +6,7 @@ function TrailCrumb (props) {
 
     <Div>
        <Ul>
-         Location
-         <Li onClick={props.history.status === true ? ()=>props.setHistory() : '' } >Home</Li>
+         <li onClick={props.history.status === true ? ()=>props.setHistory() : '' } >Home</li>
          {props.location ? <Li onClick={props.history.state >= 2 ? ()=>props.setItems() : ''}>{props.location}</Li> : ''}
          {props.history.state === 2 ? <Li>{props.location === 'hotels' ? 'Rooms':'Vehicles'}</Li>: ''}
       </Ul>

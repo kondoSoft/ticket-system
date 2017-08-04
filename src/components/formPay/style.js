@@ -19,8 +19,8 @@ const Row = styled.div`
 const Button = {
   'padding': '10px',
   'color': '#fff',
-  'background-color': '#424949',
-'  border': '0',
+  'background': '#424949',
+  'border': '0',
   'border-radius': '6px'
 }
 
@@ -28,10 +28,9 @@ const Input ={
   'border': '1px solid #5D6D7E',
   'border-radius': '6px',
   'padding': '5px',
-  'background-color': '#F2F4F4',
+  'background': '#F2F4F4',
   'width': '100%',
-  'margin-top': '-40px',
-  'margin-bottom': '10px'
+  'margin': '-140px 0px 10px 0px'
 }
 
 export {Div, Row, Input, Button}

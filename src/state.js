@@ -21,7 +21,7 @@ const tickets = {
       }
     },
     marriot:{
-      title: 'MARRIOT',
+      title: 'MARRIOTT',
       key: 'marriot',
       address:'XXXXX',
       image: 'http://media-room5.trivago.com/wp-content/uploads/sites/3/2016/11/25114313/hoteles-todo-incluido-canarias-lanzarote-h10-timanfaya-palace-general-id4.jpg',

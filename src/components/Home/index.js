@@ -84,7 +84,6 @@ class Home extends Component {
       UI:state.cart
     })
     state.history.status = true
-
   }
 
   totalAmount(item){
@@ -128,14 +127,13 @@ class Home extends Component {
   render() {;
     const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
-
     return (
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
           <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
           {UI.items ? <Cart
-                        cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
+                        cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
                         total={cart.total}
                         formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>: ''}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
