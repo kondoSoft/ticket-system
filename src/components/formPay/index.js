@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Div} from './style';
-import Button from '../Button';
+import {Div, Row, Input, Button} from './style';
 
 class FormPay extends Component{
   constructor(){
@@ -89,7 +88,7 @@ class FormPay extends Component{
       return response.json();
     })
     .then((recurso) => {
-      console.log(recurso);
+      // console.log(recurso);
     })
   }
 
@@ -99,57 +98,82 @@ class FormPay extends Component{
 
   render(){
     return (
-      <div>
+      <Div>
         <form onSubmit={this.test} id="payment">
-            <p>Nombre:</p>
-            <input size="50" type="text" ref="holder_name"/>
-
-            <p>Apellidos:</p>
-            <input size="50" type="text" ref="last_name"/>
-
-            <p>Telefono:</p>
-            <input size="50" type="text" ref="phone_number"/>
-
-            <p>Correo:</p>
-            <input size="50" type="text" ref="email"/>
-
-            <p>Número de tarjeta:</p>
-            <input size="50" type="text" ref="card_number"/>
-
-            <p>Año de vencimiento:</p>
-            <input  size="4" type="text" ref="expiration_year"/>
-
-            <p>Mes de expiración:</p>
-            <input size="4" type="text" ref="expiration_month"/>
-
-            <p>cvv2:</p>
-            <input size="5" type="text" ref="cvv2"/>
-
-            <p>Calle:</p>
-            <input size="20" type="text" ref="line1"/>
-
-            <p>Numero:</p>
-            <input size="20" type="text" ref="line2"/>
-
+          <Row>
+            <div>
+              <p>Nombre:</p>
+              <input style={Input} size="42" type="text" ref="holder_name"/>
+            </div>
+            <div>
+              <p>Apellidos:</p>
+              <input style={Input} size="42" type="text" ref="last_name"/>
+            </div>
+          </Row>
+          <Row>
+            <div>
+              <p>Telefono:</p>
+              <input style={Input} size="42" type="text" ref="phone_number"/>
+            </div>
+            <div>
+              <p>Correo:</p>
+              <input style={Input} size="42" type="text" ref="email"/>
+            </div>
+          </Row>
+          <Row>
+            <div>
+              <p>Número de tarjeta:</p>
+              <input style={Input} size="25" type="text" ref="card_number"/>
+            </div>
+            <div>
+              <p>Año de vencimiento:</p>
+              <input  style={Input} size="15" type="text" ref="expiration_year"/>
+            </div>
+            <div>
+              <p>Mes de expiración:</p>
+              <input style={Input} size="15" type="text" ref="expiration_month"/>
+            </div>
+            <div>
+              <p>cvv2:</p>
+              <input style={Input} size="15" type="text" ref="cvv2"/>
+            </div>
+          </Row>
+          <Row>
+            <div>
+              <p>Calle:</p>
+              <input style={Input} size="65" type="text" ref="line1"/>
+            </div>
+            <div>
+              <p>Numero:</p>
+              <input style={Input} size="20" type="text" ref="line2"/>
+            </div>
+          </Row>
             <p>Referencias:</p>
-            <input size="20" type="text" ref="line3"/>
+            <input style={Input} type="text" ref="line3"/>
 
-            <p>Código postal:</p>
-            <input size="6" type="text" ref="postal_code"/>
+          <Row>
+            <div>
+              <p>Código postal:</p>
+              <input style={Input} size="20" type="text" ref="postal_code"/>
 
-            <p>Ciudad:</p>
-            <input size="20" type="text" ref="city"/>
-
-            <p>Estado:</p>
-            <input size="20" type="text" ref="state"/>
-
-            <p>Código de país:</p>
-            <input size="3" type="text" ref="country_code"/>
-
+            </div>
+            <div>
+              <p>Ciudad:</p>
+              <input style={Input} size="20" type="text" ref="city"/>
+            </div>
+            <div>
+              <p>Estado:</p>
+              <input style={Input} size="20" type="text" ref="state"/>
+            </div>
+            <div>
+              <p>Código de país:</p>
+              <input style={Input} size="20" type="text" ref="country_code"/>
+            </div>
+          </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button onClick={()=> this.props.setPayment()}>Pagar</button>
+            <button style={Button} onClick={()=> this.props.setPayment()}>Pagar</button>
         </form>
-      </div>
+      </Div>
     )
   }
 }

@@ -77,7 +77,7 @@ class Home extends Component {
   setUICart(){
     const state = this.state
     let dat = state.history.home['001']
-     if (dat== undefined) {
+     if (dat === undefined) {
        this.history()
      }
     this.setState({
@@ -121,12 +121,8 @@ class Home extends Component {
   setPayment(){
     const state = this.state
     state.cart.id += 1
-    if (Object.keys(state.cart.items).length === 0) {
-      alert('El carrito esta vacio');
-      return
-    }
+
     this.setState(state)
-     console.log(state.cart.id);
   }
 
   render() {;
