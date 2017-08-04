@@ -18,7 +18,7 @@ const Div = styled.div`
   overflow-x: scroll;
   position: fixed;
 `;
-
+var type;
 class Home extends Component {
   constructor(props){
     super(props);
@@ -47,10 +47,13 @@ class Home extends Component {
     })
     state.history.state +=1
     state.history.status=true
+    type =key
+    console.log(type);
   }
 
   addCart(item){
     this.totalAmount(item)
+    item.description=type
     const state = this.state
     state.cart.items[item.key] = item
     this.setState(state)
@@ -123,7 +126,7 @@ class Home extends Component {
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
         <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
-          {/* {this.state.UI ?
+          { this.state.UI ?
             <Row>
               {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
             </Row>
@@ -132,8 +135,7 @@ class Home extends Component {
                 total={cart.total}
                 elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
               />
-          } */}
-          <FormPay/>
+          }
         </Container>
       </Div>
     );
