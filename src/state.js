@@ -121,7 +121,7 @@ const tickets = {
       description:'hotel'
     },
     "003":{
-      section:"General"
+      section:"General",
       price:123,
       date:"2017/08/08",
       key:'003',
