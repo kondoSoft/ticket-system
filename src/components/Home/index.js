@@ -120,7 +120,7 @@ class Home extends Component {
 
   setPayment(){
     const state = this.state
-    let cart = state.cart.id += 1
+    state.cart.id += 1
     if (Object.keys(state.cart.items).length === 0) {
       alert('El carrito esta vacio');
       return
@@ -141,8 +141,7 @@ class Home extends Component {
           {UI.items ? <Cart
                         cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
                         total={cart.total}
-                        setPayment={this.setPayment}
-                        formpayment={<FormPay amount={cart.total} orderId={cart.id}/>}
+                        formpayment={<FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
                       /> :<Row>
                             {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}

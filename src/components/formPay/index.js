@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Div} from './style';
+import Button from '../Button';
 
 class FormPay extends Component{
   constructor(){
@@ -88,9 +89,9 @@ class FormPay extends Component{
     .then((response) => {
       return response.json();
     })
-    .then((recurso) => {
-      this.setState({test:recurso})
-    })
+    // .then((recurso) => {
+    //   this.setState({test:recurso})
+    // })
   }
 
   onError(err){
@@ -99,7 +100,7 @@ class FormPay extends Component{
 
   render(){
     return (
-      <Div>
+      <div>
         <form onSubmit={this.test} id="payment">
             <p>Nombre:</p>
             <input size="50" type="text" ref="holder_name"/>
@@ -147,9 +148,9 @@ class FormPay extends Component{
             <input size="3" type="text" ref="country_code"/>
 
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button>Hacer una tarjeta</button>
+            <button onClick={()=> this.props.setPayment()}>Pagar</button>
         </form>
-      </Div>
+      </div>
     )
   }
 }

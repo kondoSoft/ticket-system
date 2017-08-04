@@ -6,7 +6,7 @@ import {ButtonBlue} from '../styles/Button.js';
 function Button (props) {
   return (
     <div>
-      <ButtonBlue onClick={props.addCart ? ()=> props.addCart() : props.setPayment ? ()=> props.setPayment() : ''}>
+      <ButtonBlue onClick={props.addCart ? ()=> props.addCart() : ''}>
         {props.name}
       </ButtonBlue>
     </div>

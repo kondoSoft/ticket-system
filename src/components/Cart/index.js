@@ -15,7 +15,6 @@ function Cart (props) {
       <RowEnd>
         <h1>Total ${props.total}</h1>
       </RowEnd>
-      <Button setPayment={()=> props.setPayment()} name="Payment"/>
     </Div>
   )
 }
