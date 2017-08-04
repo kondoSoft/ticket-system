@@ -124,7 +124,10 @@ class Home extends Component {
       alert('El carrito esta vacio');
       return
     }
-     console.log();
+    // this.setState({
+    //   cart: state.cart
+    // })
+     console.log(state.cart.id +=1);
   }
 
   render() {;
@@ -140,7 +143,7 @@ class Home extends Component {
                         cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
                         total={cart.total}
                         setPayment={this.setPayment}
-                        formpayment={<FormPay/>}
+                        formpayment={<FormPay amount={cart.total} orderId={cart.id}/>}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
                       /> :<Row>
                             {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}

@@ -19,9 +19,9 @@ class FormPay extends Component{
   test(event){
     event.preventDefault()
 
-    let deviceSessionId = this.state.deviceSessionId
     let cardNumber = this.refs.card_number.value
-    let holderName = this.refs.holder_name.value + this.refs.last_name.value
+    let holderName = this.refs.holder_name.value
+    let lastName = this.refs.last_name.value
     let expirationYear = this.refs.expiration_year.value
     let expirationMonth = this.refs.expiration_month.value
     let cvv2 = this.refs.cvv2.value
@@ -32,6 +32,8 @@ class FormPay extends Component{
     let line2 = this.refs.line2.value
     let state = this.refs.state.value
     let countryCode = this.refs.country_code.value
+    let phoneNumber = this.refs.phone_number.value
+    let email = this.refs.email.value
 
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
@@ -41,6 +43,9 @@ class FormPay extends Component{
     let request = {
       "card_number":cardNumber,
       "holder_name":holderName,
+      "last_name":lastName,
+      "phone_number":phoneNumber,
+      "email":email,
       "expiration_year":expirationYear,
       "expiration_month":expirationMonth,
       "cvv2":cvv2,
@@ -54,7 +59,8 @@ class FormPay extends Component{
          "country_code":countryCode
       }
     }
-    openpay.token.create( request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err));
+
+    openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err));
   }
 
   onSuccess(res, request){
@@ -62,19 +68,19 @@ class FormPay extends Component{
     let test = {
       'source_id': res.data.id,
       'method': 'card',
-      'amount': 10101,
-      'currency': request.country_code,
+      'amount': this.props.amount,
+      'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
-      'order_id': 'oid-00051',
+      'order_id': 'CMV-'+this.props.orderId,
       'device_session_id' : deviceSessionId,
       'customer': {
         'name': request.holder_name,
-        'last_name': 'Vazquez Juarez',
-        'phone_number': '4423456723',
-        'email': 'juan.vazquez@empresa.com.mx'
+        'last_name': request.last_name,
+        'phone_number': request.phone_number,
+        'email': request.email
       }
     }
-    console.log(request);
+    console.log('cliente ', test);
     fetch('http://192.168.1.38:1337/payment',{
       method: 'post',
       body: JSON.stringify(test)

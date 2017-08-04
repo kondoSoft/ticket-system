@@ -120,7 +120,7 @@ const tickets = {
 
     },
     total:0,
-    id:'CMV-001'
+    id: 0
   },
   UI:{
     '001':{
