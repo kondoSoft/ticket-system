@@ -113,7 +113,20 @@ const tickets = {
 
   },
   sales:{
-
+    "002":{
+      section:"General",
+      price:123,
+      date:"2017/08/08",
+      key:'002',
+      description:'hotel'
+    },
+    "003":{
+      section:"General"
+      price:123,
+      date:"2017/08/08",
+      key:'003',
+      description:'Transporte'
+    },
   },
   cart:{
     items:{

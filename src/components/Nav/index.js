@@ -50,6 +50,7 @@ function Nav(props)  {
         <Link style={linkStyle} to='/admin/hotels'><IconLabel Text='Hotel' Icon='building' setComponent={props.setComponent} /></Link>
         <Link style={linkStyle} to='/admin/transport'><IconLabel Text='Transporte' Icon='car' setComponent={props.setComponent} /></Link>
         <Link style={linkStyle} to='/admin/ticket'><IconLabel Text='Tickets' Icon='ticket' setComponent={props.setComponent} /></Link>
+        <Link style={linkStyle} to='/admin/sales'><IconLabel Text='Sales' Icon='history ' setComponent={props.setComponent} /></Link>
       </Body>
     </ContainerNav>
   );
