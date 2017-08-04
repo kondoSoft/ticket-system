@@ -11,10 +11,10 @@ function Cart (props) {
       <Row>
         {props.elements}
       </Row>
-      {props.formpayment}
       <RowEnd>
         <h1>Total ${props.total}</h1>
       </RowEnd>
+      {props.formpayment}
     </Div>
   )
 }

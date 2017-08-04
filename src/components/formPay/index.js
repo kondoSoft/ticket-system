@@ -81,7 +81,6 @@ class FormPay extends Component{
         'email': request.email
       }
     }
-    console.log('cliente ', test);
     fetch('http://192.168.1.38:1337/payment',{
       method: 'post',
       body: JSON.stringify(test)
@@ -89,9 +88,9 @@ class FormPay extends Component{
     .then((response) => {
       return response.json();
     })
-    // .then((recurso) => {
-    //   this.setState({test:recurso})
-    // })
+    .then((recurso) => {
+      console.log(recurso);
+    })
   }
 
   onError(err){
