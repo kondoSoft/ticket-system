@@ -120,14 +120,13 @@ class Home extends Component {
 
   setPayment(){
     const state = this.state
+    let cart = state.cart.id += 1
     if (Object.keys(state.cart.items).length === 0) {
       alert('El carrito esta vacio');
       return
     }
-    // this.setState({
-    //   cart: state.cart
-    // })
-     console.log(state.cart.id +=1);
+    this.setState(state)
+     console.log(state.cart.id);
   }
 
   render() {;
