@@ -122,6 +122,8 @@ class Home extends Component {
     state.cart.id += 1
 
     this.setState(state)
+
+    console.log(state.cart.id);
   }
 
   render() {;

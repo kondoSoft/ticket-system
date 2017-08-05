@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {Div, Row, Input, Button} from './style';
+import {Div, Row, styles} from './style';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 class FormPay extends Component{
   constructor(){
     super();
     this.state = {deviceSessionId: ''}
     this.test=this.test.bind(this)
+    // this.submit=this.submit.bind(this)
   }
 
   componentDidMount(){
@@ -96,6 +99,17 @@ class FormPay extends Component{
     alert(err.data.description)
   }
 
+  // submit(){
+  //   confirmAlert({
+  //     title: 'El cargo a su tarjeta es de $' + this.props.amount,
+  //     message: '¿Estás seguro de hacer esto?',
+  //     confirmLabel: 'Aceptar',
+  //     cancelLabel: 'Cancelar',
+  //     onConfirm: ()=> this.props.setPayment(),
+  //     // onCancel: () => alert('Cancel'),
+  //   })
+  // }
+
   render(){
     return (
       <Div>
@@ -103,73 +117,73 @@ class FormPay extends Component{
           <Row>
             <div>
               <p>Nombre:</p>
-              <input style={Input} size="42" type="text" ref="holder_name"/>
+              <input style={styles.input} size="42" type="text" ref="holder_name"/>
             </div>
             <div>
               <p>Apellidos:</p>
-              <input style={Input} size="42" type="text" ref="last_name"/>
+              <input style={styles.input} size="42" type="text" ref="last_name"/>
             </div>
           </Row>
           <Row>
             <div>
               <p>Telefono:</p>
-              <input style={Input} size="42" type="text" ref="phone_number"/>
+              <input style={styles.input} size="42" type="text" ref="phone_number"/>
             </div>
             <div>
               <p>Correo:</p>
-              <input style={Input} size="42" type="text" ref="email"/>
+              <input style={styles.input} size="42" type="text" ref="email"/>
             </div>
           </Row>
           <Row>
             <div>
               <p>Número de tarjeta:</p>
-              <input style={Input} size="25" type="text" ref="card_number"/>
+              <input style={styles.input} size="25" type="text" ref="card_number"/>
             </div>
             <div>
               <p>Año de vencimiento:</p>
-              <input  style={Input} size="15" type="text" ref="expiration_year"/>
+              <input  style={styles.input} size="15" type="text" ref="expiration_year"/>
             </div>
             <div>
               <p>Mes de expiración:</p>
-              <input style={Input} size="15" type="text" ref="expiration_month"/>
+              <input style={styles.input} size="15" type="text" ref="expiration_month"/>
             </div>
             <div>
               <p>cvv2:</p>
-              <input style={Input} size="15" type="text" ref="cvv2"/>
+              <input style={styles.input} size="15" type="text" ref="cvv2"/>
             </div>
           </Row>
           <Row>
             <div>
               <p>Calle:</p>
-              <input style={Input} size="65" type="text" ref="line1"/>
+              <input style={styles.input} size="65" type="text" ref="line1"/>
             </div>
             <div>
               <p>Numero:</p>
-              <input style={Input} size="20" type="text" ref="line2"/>
+              <input style={styles.input} size="20" type="text" ref="line2"/>
             </div>
           </Row>
             <p>Referencias:</p>
-            <input style={Input} type="text" ref="line3"/>
+            <input style={styles.input} type="text" ref="line3"/>
           <Row>
             <div>
               <p>Código postal:</p>
-              <input style={Input} size="20" type="text" ref="postal_code"/>
+              <input style={styles.input} size="20" type="text" ref="postal_code"/>
             </div>
             <div>
               <p>Ciudad:</p>
-              <input style={Input} size="20" type="text" ref="city"/>
+              <input style={styles.input} size="20" type="text" ref="city"/>
             </div>
             <div>
               <p>Estado:</p>
-              <input style={Input} size="20" type="text" ref="state"/>
+              <input style={styles.input} size="20" type="text" ref="state"/>
             </div>
             <div>
               <p>Código de país:</p>
-              <input style={Input} size="20" type="text" ref="country_code"/>
+              <input style={styles.input} size="20" type="text" ref="country_code"/>
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={Button} onClick={()=> this.props.setPayment()}>Pagar</button>
+            <button style={styles.button} onClick={()=> this.props.setPayment()}>Pagar</button>
         </form>
       </Div>
     )
