@@ -22,11 +22,11 @@ const styles = {
     'color': '#fff',
     'background': '#424949',
     'border': '0',
-    'border-radius': '6px'
+    'borderRadius': '6px'
   },
   input:{
     'border': '1px solid #5D6D7E',
-    'border-radius': '6px',
+    'borderRadius': '6px',
     'padding': '5px',
     'background': '#F2F4F4',
     'width': '100%',

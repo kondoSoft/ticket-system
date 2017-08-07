@@ -51,10 +51,12 @@ class Home extends Component {
   }
 
   addCart(item){
-    this.totalAmount(item)
     const state = this.state
-    state.cart.items[item.key] = item
-    this.setState(state)
+    if (!(item.key in this.state.cart.items)){
+      state.cart.items[item.key] = item
+      this.setState(state);
+      this.totalAmount(item)
+    }
   }
 
   removeItemsCart(key){
@@ -84,6 +86,8 @@ class Home extends Component {
       UI:state.cart
     })
     state.history.status = true
+    // this.totalAmount(cart[item])
+    // console.log(cart[item]);
   }
 
   totalAmount(item){
@@ -125,8 +129,6 @@ class Home extends Component {
     state.cart.id += 1
 
     this.setState(state)
-
-    console.log(state.cart.id);
   }
 
   render() {;
@@ -134,9 +136,9 @@ class Home extends Component {
     let cartItems = Object.keys(cart.items)
     return (
       <Div>
-        <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
+        <Header icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-          <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
+          <TrailCrumb cart={cart.items} history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
           {UI.items ? <Cart
                         cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
                         total={cart.total}
