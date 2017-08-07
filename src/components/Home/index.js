@@ -86,8 +86,6 @@ class Home extends Component {
       UI:state.cart
     })
     state.history.status = true
-    // this.totalAmount(cart[item])
-    // console.log(cart[item]);
   }
 
   totalAmount(item){

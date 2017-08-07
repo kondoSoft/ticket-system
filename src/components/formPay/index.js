@@ -8,7 +8,7 @@ class FormPay extends Component{
     super();
     this.state = {deviceSessionId: ''}
     this.test=this.test.bind(this)
-    // this.submit=this.submit.bind(this)
+    this.submit=this.submit.bind(this)
   }
 
   componentDidMount(){
@@ -96,19 +96,27 @@ class FormPay extends Component{
   }
 
   onError(err){
-    alert(err.data.description)
+    // alert(err.data.description)
+    confirmAlert({
+      title: 'Campos Requeridos',
+      message: err.data.description,
+      confirmLabel: 'Aceptar',
+      cancelLabel: 'Cancelar',
+      // onConfirm: ()=> alert('Aceptar'),
+      // onCancel: () => alert('Cancel'),
+    })
   }
 
-  // submit(){
-  //   confirmAlert({
-  //     title: 'El cargo a su tarjeta es de $' + this.props.amount,
-  //     message: '¿Estás seguro de hacer esto?',
-  //     confirmLabel: 'Aceptar',
-  //     cancelLabel: 'Cancelar',
-  //     onConfirm: ()=> this.props.setPayment(),
-  //     // onCancel: () => alert('Cancel'),
-  //   })
-  // }
+  submit(){
+    confirmAlert({
+      title: 'El cargo a su tarjeta es de $' + this.props.amount,
+      // message: '¿Estás seguro de hacer esto?',
+      confirmLabel: 'Aceptar',
+      cancelLabel: 'Cancelar',
+      onConfirm: ()=> this.props.setPayment(),
+      // onCancel: () => alert('Cancel'),
+    })
+  }
 
   render(){
     return (
@@ -183,7 +191,7 @@ class FormPay extends Component{
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={styles.button} onClick={()=> this.props.setPayment()}>Pagar</button>
+            <button style={styles.button} onClick={this.submit}>Pagar</button>
         </form>
       </Div>
     )
