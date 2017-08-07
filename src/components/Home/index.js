@@ -129,7 +129,7 @@ class Home extends Component {
     this.setState(state)
   }
 
-  render() {;
+  render() {
     const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
     return (

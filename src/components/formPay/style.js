@@ -34,6 +34,11 @@ const styles = {
     ':hover':{
       'border': '1px solid red !important'
     }
+  },
+  p:{
+    'fontSize':'12px',
+    'color': '#c0392b',
+    'margin':'-10px 0px 0px 5px'
   }
 };
 

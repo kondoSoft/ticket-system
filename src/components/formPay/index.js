@@ -6,7 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 class FormPay extends Component{
   constructor(){
     super();
-    this.state = {deviceSessionId: ''}
+    this.state = {deviceSessionId: '', validation:[]}
     this.test=this.test.bind(this)
     this.submit=this.submit.bind(this)
   }
@@ -62,8 +62,7 @@ class FormPay extends Component{
          "country_code":countryCode
       }
     }
-
-    openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err));
+    openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err, request));
   }
 
   onSuccess(res, request){
@@ -95,16 +94,14 @@ class FormPay extends Component{
     })
   }
 
-  onError(err){
-    // alert(err.data.description)
-    confirmAlert({
-      title: 'Campos Requeridos',
-      message: err.data.description,
-      confirmLabel: 'Aceptar',
-      cancelLabel: 'Cancelar',
-      // onConfirm: ()=> alert('Aceptar'),
-      // onCancel: () => alert('Cancel'),
+  onError(err, request){
+    alert(err.data.description.split(","))
+    let validation = err.data.description.split(",")
+    this.setState({
+      validation:validation
     })
+    console.log(validation);
+    console.log('state validation: ', this.state.validation);
   }
 
   submit(){
@@ -119,6 +116,7 @@ class FormPay extends Component{
   }
 
   render(){
+    const {validation} = this.state
     return (
       <Div>
         <form onSubmit={this.test} id="payment">
@@ -126,6 +124,7 @@ class FormPay extends Component{
             <div>
               <p>Nombre:</p>
               <input style={styles.input} size="42" type="text" ref="holder_name"/>
+              <p style={styles.p}>{validation[0]}</p>
             </div>
             <div>
               <p>Apellidos:</p>
@@ -191,7 +190,7 @@ class FormPay extends Component{
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={styles.button} onClick={this.submit}>Pagar</button>
+            <button style={styles.button} onClick={validation.length === 0 ? '' : this.submit}>Pagar</button>
         </form>
       </Div>
     )
