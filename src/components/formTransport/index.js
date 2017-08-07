@@ -79,7 +79,7 @@ class FormTransport extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='address'>Direccion:</label>
-              <input style={Inputs} placeholder='Ingrese la direccion del transporte' name='address' id='address' id='title' ref='address'/>
+              <input style={Inputs} placeholder='Ingrese la direccion del transporte' ref='address'/>
             </div>
           </div>
           <div style={ContainerInputs}>

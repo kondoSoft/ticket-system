@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
 import 'react-datepicker/dist/react-datepicker.css';
-import Button from '../Button';
+// import Button from '../Button';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import Table from '../Table'
@@ -35,7 +35,7 @@ class FormItems extends Component {
     let image = this.refs.image.value
     let key;
 
-    if (this.refs.key.value == '') {
+    if (this.refs.key.value === '') {
       key = this.refs.key.value = date.format('x')
     }
     else{

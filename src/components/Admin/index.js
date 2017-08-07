@@ -5,7 +5,7 @@ import FormHotels from '../formHotels';
 import initialState from '../../state';
 import FormTransport from '../formTransport';
 import FormTicket from '../formTicket';
-import ReactConfirmAlert, { confirmAlert } from 'react-confirm-alert';
+import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Container = styled.div`

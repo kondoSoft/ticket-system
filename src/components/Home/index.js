@@ -29,6 +29,7 @@ class Home extends Component {
     this.setHistory = this.setHistory.bind(this)
     this.removeItemsCart = this.removeItemsCart.bind(this)
     this.setItems = this.setItems.bind(this)
+    this.setPayment = this.setPayment.bind(this)
   }
 
   setUI(key, items){
@@ -59,7 +60,7 @@ class Home extends Component {
   removeItemsCart(key){
     this.res(key)
     const state = this.state
-    let cart = delete state.cart.items[key]
+    delete state.cart.items[key]
     this.setState(state)
   }
 
@@ -73,10 +74,14 @@ class Home extends Component {
     state.history.location = ''
   }
 
-  setUICart(item){
+  setUICart(){
     const state = this.state
+    let dat = state.history.home['001']
+     if (dat === undefined) {
+       this.history()
+     }
     this.setState({
-      UI:state.Cart
+      UI:state.cart
     })
     state.history.status = true
   }
@@ -115,6 +120,15 @@ class Home extends Component {
     state.history.state -=1
   }
 
+  setPayment(){
+    const state = this.state
+    state.cart.id += 1
+
+    this.setState(state)
+
+    console.log(state.cart.id);
+  }
+
   render() {;
     const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
@@ -122,18 +136,17 @@ class Home extends Component {
       <Div>
         <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-        <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
-          {/* {this.state.UI ?
-            <Row>
-              {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
-            </Row>
-            : <Cart
-                cart={cartItems.length >= 1 ? '': <h1>Cart is empty</h1>}
-                total={cart.total}
-                elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
-              />
-          } */}
-          <FormPay/>
+          <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
+          {UI.items ? <Cart
+                        cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
+                        total={cart.total}
+                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>: ''}
+                        elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
+                      /> :<Row>
+                            {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+                          </Row>
+          }
+          {/* <FormPay/> */}
         </Container>
       </Div>
     );
