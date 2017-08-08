@@ -10,13 +10,15 @@ import {
 import Home from './components/Home'
 import Admin from './components/Admin'
 
+
 class App extends Component {
+
   render() {
     return (
         <Router>
           <div>
             <Route exact path="/" component={Home}/>
-            <Route path="/admin/:section?" component={Admin}/>
+            <Route path="/admin/:section?" component={Admin} />
           </div>
         </Router>
     );

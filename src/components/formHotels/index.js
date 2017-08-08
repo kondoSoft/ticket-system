@@ -17,11 +17,16 @@ class FormHotels extends Component{
   constructor(props){
     super(props)
     this.state={
-      startDate:moment(),
-      hotels:props.elements
+      hotels:this.props.elements
     }
     this.getRefs=this.getRefs.bind(this)
     this.update = this.update.bind(this)
+  }
+  componentWillMount(){
+    console.log('ejecutando will del formulario');
+    this.setState({
+      hotels:this.props.elements
+    })
   }
 
   getRefs(event){
@@ -61,7 +66,9 @@ class FormHotels extends Component{
   }
 
   render(){
+    console.log('rrrrrrender');
     const hotels = this.state.hotels
+    console.log(hotels);
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>

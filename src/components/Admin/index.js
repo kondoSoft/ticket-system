@@ -7,6 +7,7 @@ import FormTransport from '../formTransport';
 import FormTicket from '../formTicket';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import firebase from '../../firebase';
 
 const Container = styled.div`
   padding:0;
@@ -27,16 +28,22 @@ const Section = styled.div`
 class Admin extends Component {
   constructor(props){
     super(props);
-    this.state=initialState
-    this.setComponent = this.setComponent.bind(this);
+    this.state={
+      hotels:{},
+      transport:{},
+      tickets:{},
+      sales:0
+    }
     this.setObjectState = this.setObjectState.bind(this);
     this.deleteObject = this.deleteObject.bind(this);
   }
 
-  setComponent(item){
-    this.setState({
-      UIform:item
-    });
+  componentDidMount(){
+    console.log('ejecutando did mount');
+      let database = firebase.database().ref()
+      database.on('value',(snap)=>{
+        this.setState(snap.val())
+      })
   }
 
   setObjectState(object,position,key){
@@ -82,9 +89,9 @@ class Admin extends Component {
   }
 
   render() {
-    let content;
+    // let content;
     const {section} = this.props.match.params;
-    content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.hotels} />
+    let content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.hotels} />
     if (section === 'ticket'){
       content = <FormTicket deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.tickets} />
     } else if (section === 'transport') {
