@@ -47,7 +47,7 @@ class FormHotels extends Component{
         'key':key,
         'address':address,
         'image':image,
-        'items':{}
+        'items':''
     }
 
     this.props.setObjectState(hotel,'hotels',key)

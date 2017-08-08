@@ -53,9 +53,11 @@ class Admin extends Component {
       this.setState(state)
     }
     else{
-      let state = this.state
-      state[position][key]=object
-      this.setState(state)
+      let objeto={
+        [key]:object
+      }
+      console.log(objeto);
+      firebase.database().ref().child('hotels').set(objeto)
     }
   }
 
