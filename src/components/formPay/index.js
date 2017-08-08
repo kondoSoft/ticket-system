@@ -9,6 +9,7 @@ class FormPay extends Component{
     this.state = {deviceSessionId: '', validation: [], request: {}}
     this.test=this.test.bind(this)
     this.submit=this.submit.bind(this)
+    this.validateCard=this.validateCard.bind(this)
   }
 
   componentDidMount(){
@@ -42,6 +43,8 @@ class FormPay extends Component{
     let phoneNumber = this.refs.phone_number.value
     let email = this.refs.email.value
 
+    this.validateCard()
+
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
     openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
@@ -66,6 +69,7 @@ class FormPay extends Component{
          "country_code":countryCode
       }
     }
+    this.state.validation = ''
     openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err, request));
   }
 
@@ -94,7 +98,7 @@ class FormPay extends Component{
       return response.json();
     })
     .then((recurso) => {
-      // console.log(recurso);
+      console.log(recurso);
     })
   }
 
@@ -105,7 +109,6 @@ class FormPay extends Component{
     state.request = request
     this.setState(state)
     // alert(validation)
-    // console.log(validation);
   }
 
   submit(){
@@ -117,9 +120,18 @@ class FormPay extends Component{
     })
   }
 
+  validateCard(){
+    // const openpay = window.OpenPay
+    // openpay.card.validateCardNumber('5555555555554444');
+    // openpay.card.validateCardNumber('378282246310005');
+    // openpay.card.validateCVC('123');
+    // openpay.card.validateCVC('1234');
+    // openpay.card.validateCVC('A23');
+    console.log('validateCard');
+  }
+
   render(){
     const {validation, request} = this.state
-
     return (
       <Div>
         <form onSubmit={this.test} id="payment">
@@ -127,11 +139,7 @@ class FormPay extends Component{
             <div>
               <p>Nombre:</p>
               <input style={styles.input} size="42" type="text" ref="holder_name"/>
-              {validation.indexOf(" holder_name is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("holder_name is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              {validation.indexOf(" holder_name is required") > -1 ? <p style={styles.p}>Campo requerido</p> : validation.indexOf("holder_name is required") > -1 ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Apellidos:</p>
@@ -253,7 +261,7 @@ class FormPay extends Component{
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={styles.button} onClick={validation.length === 0 ? '' : this.submit}>Pagar</button>
+            <button style={styles.button} onClick={validation === '' ? this.submit : ''}>Pagar</button>
         </form>
       </Div>
     )
