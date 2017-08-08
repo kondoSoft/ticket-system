@@ -6,7 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 class FormPay extends Component{
   constructor(){
     super();
-    this.state = {deviceSessionId: '', validation:[]}
+    this.state = {deviceSessionId: '', validation: [], request: {}}
     this.test=this.test.bind(this)
     this.submit=this.submit.bind(this)
   }
@@ -21,6 +21,10 @@ class FormPay extends Component{
 
   test(event){
     event.preventDefault()
+    // if (holderName ==='') {
+    //   let last =document.getElementById('validation')
+    //   last.addClass()
+    // }
 
     let cardNumber = this.refs.card_number.value
     let holderName = this.refs.holder_name.value
@@ -82,6 +86,7 @@ class FormPay extends Component{
         'email': request.email
       }
     }
+    this.state.validation = []
     fetch('http://192.168.1.38:1337/payment',{
       method: 'post',
       body: JSON.stringify(test)
@@ -95,13 +100,14 @@ class FormPay extends Component{
   }
 
   onError(err, request){
-    alert(err.data.description.split(","))
+    const state = this.state
     let validation = err.data.description.split(",")
-    this.setState({
-      validation:validation
-    })
-    console.log(validation);
-    console.log('state validation: ', this.state.validation);
+    state.validation = validation
+    state.request = request
+    alert(validation)
+    this.setState(state)
+    // console.log(validation.indexOf(" holder_name is required"));
+    // console.log(validation);
   }
 
   submit(){
@@ -116,7 +122,7 @@ class FormPay extends Component{
   }
 
   render(){
-    const {validation} = this.state
+    const {validation, request} = this.state
     return (
       <Div>
         <form onSubmit={this.test} id="payment">
@@ -124,39 +130,46 @@ class FormPay extends Component{
             <div>
               <p>Nombre:</p>
               <input style={styles.input} size="42" type="text" ref="holder_name"/>
-              <p style={styles.p}>{validation[0]}</p>
+              {validation.indexOf(" holder_name is required") > -1 ? <p style={styles.p}>Rellene el campo</p> : ''}
             </div>
             <div>
               <p>Apellidos:</p>
               <input style={styles.input} size="42" type="text" ref="last_name"/>
+              {request.last_name == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
           </Row>
           <Row>
             <div>
               <p>Telefono:</p>
               <input style={styles.input} size="42" type="text" ref="phone_number"/>
+              {request.phone_number == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Correo:</p>
               <input style={styles.input} size="42" type="text" ref="email"/>
+              {request.email == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
           </Row>
           <Row>
             <div>
               <p>Número de tarjeta:</p>
               <input style={styles.input} size="25" type="text" ref="card_number"/>
+              {request.card_number == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Año de vencimiento:</p>
               <input  style={styles.input} size="15" type="text" ref="expiration_year"/>
+              {request.expiration_year == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Mes de expiración:</p>
               <input style={styles.input} size="15" type="text" ref="expiration_month"/>
+              {request.expiration_month == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>cvv2:</p>
               <input style={styles.input} size="15" type="text" ref="cvv2"/>
+              {request.cvv2 == '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
           </Row>
           <Row>
