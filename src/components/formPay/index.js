@@ -44,11 +44,8 @@ class FormPay extends Component{
     let phoneNumber = this.refs.phone_number.value
     let email = this.refs.email.value
 
-    if (this.validateCard(cvv2, cardNumber) === true || this.validateExpiry(expirationMonth, expirationYear) === true) {
-      alert('tarjeta valida')
-    }else {
-      alert('Tarjeta invalida o expiracion de tarjeta invalida')
-    }
+    this.validateCard(cvv2, cardNumber)
+    this.validateExpiry(expirationMonth, expirationYear)
 
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
@@ -79,6 +76,10 @@ class FormPay extends Component{
 
   onSuccess(res, request){
     const deviceSessionId = this.state.deviceSessionId
+
+    this.state.request = request
+    this.setState(this.state)
+
     let test = {
       'source_id': res.data.id,
       'method': 'card',
@@ -112,7 +113,7 @@ class FormPay extends Component{
     state.validation = validation
     state.request = request
     this.setState(state)
-    // alert(validation)
+    // alert('algunos campos son requeridos')
   }
 
   submit(){
@@ -145,7 +146,7 @@ class FormPay extends Component{
             <div>
               <p>Nombre:</p>
               <input style={styles.input} size="42" type="text" ref="holder_name"/>
-              {validation.indexOf(" holder_name is required") > -1 ? <p style={styles.p}>Campo requerido</p> : validation.indexOf("holder_name is required") > -1 ? <p style={styles.p}>Campo requerido</p> : ''}
+              {request.holder_name === '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Apellidos:</p>
@@ -169,44 +170,22 @@ class FormPay extends Component{
             <div>
               <p>Número de tarjeta:</p>
               <input style={styles.input} size="25" type="text" ref="card_number"/>
-              {validation.indexOf(" card_number is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("card_number is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("card_number length is invalid") > -1 ?
-                <p style={styles.p}>La longitud del número de la tarjeta no es válida</p>:
-                validation.indexOf("card_number must contain only digits") > -1 ?
-                <p style={styles.p}>El número de tarjeta debe contener sólo dígitos</p> : ''
-              }
+              {request.card_number === '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Año de vencimiento:</p>
               <input  style={styles.input} size="15" type="text" ref="expiration_year"/>
-              {validation.indexOf(" expiration_year expiration_month is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("expiration_year expiration_month is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf(" valid expirations year are 01 to 99") > -1 ?
-                <p style={styles.p}>El año de expiraciones válido es de 01 a 99</p> : ''
-              }
+              {request.expiration_year === '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>Mes de expiración:</p>
               <input style={styles.input} size="15" type="text" ref="expiration_month"/>
-              {validation.indexOf(" valid expirations months are 01 to 12") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              {request.expiration_month === '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
             <div>
               <p>cvv2:</p>
               <input style={styles.input} size="15" type="text" ref="cvv2"/>
-              {validation.indexOf(" The CVV2 security code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("The CVV2 security code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("cvv2 must contain only digits") > -1 ?
-                <p style={styles.p}>Cvv2 debe contener sólo dígitos</p> : ''
-              }
+              {request.cvv2 === '' ? <p style={styles.p}>Campo requerido</p> : ''}
             </div>
           </Row>
           <Row>
@@ -230,11 +209,7 @@ class FormPay extends Component{
             <div>
               <p>Código postal:</p>
               <input style={styles.input} size="20" type="text" ref="postal_code"/>
-              {validation.indexOf(" address.postal_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.postal_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              {/* {request.address.postal_code} */}
             </div>
             <div>
               <p>Ciudad:</p>
