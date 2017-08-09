@@ -10,6 +10,7 @@ class FormPay extends Component{
     this.test=this.test.bind(this)
     this.submit=this.submit.bind(this)
     this.validateCard=this.validateCard.bind(this)
+    this.validateExpiry=this.validateExpiry.bind(this)
   }
 
   componentDidMount(){
@@ -43,7 +44,11 @@ class FormPay extends Component{
     let phoneNumber = this.refs.phone_number.value
     let email = this.refs.email.value
 
-    this.validateCard()
+    if (this.validateCard(cvv2, cardNumber) === true || this.validateExpiry(expirationMonth, expirationYear) === true) {
+      alert('tarjeta valida')
+    }else {
+      alert('Tarjeta invalida o expiracion de tarjeta invalida')
+    }
 
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
@@ -69,7 +74,6 @@ class FormPay extends Component{
          "country_code":countryCode
       }
     }
-    this.state.validation = ''
     openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err, request));
   }
 
@@ -120,14 +124,16 @@ class FormPay extends Component{
     })
   }
 
-  validateCard(){
-    // const openpay = window.OpenPay
-    // openpay.card.validateCardNumber('5555555555554444');
-    // openpay.card.validateCardNumber('378282246310005');
-    // openpay.card.validateCVC('123');
-    // openpay.card.validateCVC('1234');
-    // openpay.card.validateCVC('A23');
-    console.log('validateCard');
+  validateCard(cvv2, cardNumber){
+    const openpay = window.OpenPay
+    let test = openpay.card.validateCVC(cvv2, cardNumber);
+    console.log('Validacion de tarjeta', test);
+  }
+
+  validateExpiry(expirationMonth, expirationYear){
+    const openpay = window.OpenPay
+    let expiry = openpay.card.validateExpiry(expirationMonth, '20'+expirationYear);
+    console.log('Expiracion de tarjeta', expiry);
   }
 
   render(){
