@@ -39,7 +39,7 @@ class Admin extends Component {
   }
 
   componentDidMount(){
-    console.log('ejecutando did mount');
+    // console.log('ejecutando did mount');
       let database = firebase.database().ref()
       database.on('value',(snap)=>{
         this.setState(snap.val())
@@ -49,30 +49,25 @@ class Admin extends Component {
   setObjectState(object,position,key){
     if(object.father){
       var state = this.searchKey(object.father)
-      state[object.father][position][key]=object
-      this.setState(state)
+      let instance = firebase.database().ref().child(state).child(object.father).child(position).child(key).set(object)
     }
     else{
-      let objeto={
-        [key]:object
-      }
-      console.log(objeto);
-      firebase.database().ref().child('hotels').set(objeto)
+      let instance = firebase.database().ref().child(position).child(key).set(object)
     }
   }
 
   searchKey(key){
     if(key in this.state.hotels){
-      let stateH = this.state.hotels
-      return stateH
+      let hotel = 'hotels'
+      return hotel
     }
     else if(key in this.state.transport){
-      let stateT = this.state.transport
-      return stateT
+      let transport = 'transport'
+      return transport
     }
     else{
-      let stateTi = this.state.tickets
-      return stateTi
+      let ticket = 'tickets'
+      return ticket
     }
   }
 

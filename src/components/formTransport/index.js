@@ -38,10 +38,11 @@ class FormTransport extends Component{
 
     }
     const transport={
-        'key':key,
-        'title':title,
-        'address':address,
-        'image':image,
+      'key':key,
+      'title':title,
+      'address':address,
+      'image':image,
+      'items':''
     }
 
     this.props.setObjectState(transport,'transport',key)

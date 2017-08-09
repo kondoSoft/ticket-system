@@ -23,7 +23,7 @@ class FormHotels extends Component{
     this.update = this.update.bind(this)
   }
   componentWillMount(){
-    console.log('ejecutando will del formulario');
+    // console.log('ejecutando will del formulario');
     this.setState({
       hotels:this.props.elements
     })
@@ -66,9 +66,7 @@ class FormHotels extends Component{
   }
 
   render(){
-    console.log('rrrrrrender');
     const hotels = this.state.hotels
-    console.log(hotels);
     return(
       <div style={ContainerForm}>
         <h1>Hotel</h1>

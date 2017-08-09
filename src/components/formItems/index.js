@@ -20,7 +20,7 @@ class FormItems extends Component {
   }
 
   handleChange(e){
-    console.log(e.format('x'));
+    // console.log(e.format('x'));
     this.setState({
       startDate:e
     })
@@ -44,7 +44,7 @@ class FormItems extends Component {
     const item={
       'father':this.props.component.key,
       'type':type,
-      'key':key,
+      'key':String(key),
       'price':price,
       'image':image,
     }
