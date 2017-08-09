@@ -47,6 +47,7 @@ class FormPay extends Component{
     this.validateCard(cvv2, cardNumber)
     this.validateExpiry(expirationMonth, expirationYear)
 
+
     const openpay = window.OpenPay
     openpay.setId('mxvvjiqmnh5lhpdhogvo');
     openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
@@ -75,9 +76,10 @@ class FormPay extends Component{
   }
 
   onSuccess(res, request){
-    const deviceSessionId = this.state.deviceSessionId
-
-    this.state.request = request
+    const state = this.state
+    let validation = []
+    state.validation = validation
+    state.request = request
     this.setState(this.state)
 
     let test = {
@@ -87,7 +89,7 @@ class FormPay extends Component{
       'currency': 'MXN',
       'description': 'Cargo inicial a mi cuenta',
       'order_id': 'CMV-'+this.props.orderId,
-      'device_session_id' : deviceSessionId,
+      'device_session_id' : state.deviceSessionId,
       'customer': {
         'name': request.holder_name,
         'last_name': request.last_name,
@@ -113,7 +115,8 @@ class FormPay extends Component{
     state.validation = validation
     state.request = request
     this.setState(state)
-    // alert('algunos campos son requeridos')
+    // alert(validation)
+    console.log(request.address.city);
   }
 
   submit(){
@@ -127,8 +130,8 @@ class FormPay extends Component{
 
   validateCard(cvv2, cardNumber){
     const openpay = window.OpenPay
-    let test = openpay.card.validateCVC(cvv2, cardNumber);
-    console.log('Validacion de tarjeta', test);
+    let card = openpay.card.validateCVC(cvv2, cardNumber);
+    console.log('Validacion de tarjeta', card);
   }
 
   validateExpiry(expirationMonth, expirationYear){
@@ -209,7 +212,13 @@ class FormPay extends Component{
             <div>
               <p>Código postal:</p>
               <input style={styles.input} size="20" type="text" ref="postal_code"/>
-              {/* {request.address.postal_code} */}
+              {validation.indexOf(" address.postal_code is required") > -1 ?
+                <p style={styles.p}>Campo requerido</p> :
+                validation.indexOf("address.postal_code is required") > -1 ?
+                <p style={styles.p}>Campo requerido</p> :
+                validation.indexOf(" address.postal_code la longitud tiene que estar entre 1 y 12") > -1 ?
+                <p style={styles.p}>La longitud tiene que estar entre 1 y 12</p> : ''
+              }
             </div>
             <div>
               <p>Ciudad:</p>
@@ -242,7 +251,7 @@ class FormPay extends Component{
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={styles.button} onClick={validation === '' ? this.submit : ''}>Pagar</button>
+            <button style={styles.button} onClick={validation.length === 0 ? this.submit : ''}>Pagar</button>
         </form>
       </Div>
     )
