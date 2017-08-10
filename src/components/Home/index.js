@@ -111,9 +111,6 @@ class Home extends Component {
     this.setState(state)
   }
 
-  // cmartinez@creatuviaje.com
-  // Creatur-2313
-
   setItems(){
     const state = this.state
     this.setState({
@@ -138,15 +135,15 @@ class Home extends Component {
         <Container>
           <TrailCrumb cart={cart.items} history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
           {UI.items ? <Cart
-                        cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
+                        cart={cartItems.length >= 1 ? '' : <h1>El carrito esta vacío</h1>}
                         total={cart.total}
-                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>: ''}
+                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/> : ''}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
-                      /> :<Row>
-                            {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
-                          </Row>
+                      /> :
+                      <Row>
+                        {Object.keys(UI).map((item,i) => <Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+                      </Row>
           }
-          {/* <FormPay/> */}
         </Container>
       </Div>
     );

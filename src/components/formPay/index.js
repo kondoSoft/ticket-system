@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import {Div, Row, styles} from './style';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css'
 
 class FormPay extends Component{
   constructor(){
     super();
     this.state = {deviceSessionId: '', validation: [], request: {}}
     this.test=this.test.bind(this)
-    this.submit=this.submit.bind(this)
     this.validateCard=this.validateCard.bind(this)
     this.validateExpiry=this.validateExpiry.bind(this)
   }
@@ -23,10 +20,6 @@ class FormPay extends Component{
 
   test(event){
     event.preventDefault()
-    // if (holderName ==='') {
-    //   let last =document.getElementById('validation')
-    //   last.addClass()
-    // }
 
     let cardNumber = this.refs.card_number.value
     let holderName = this.refs.holder_name.value
@@ -44,43 +37,113 @@ class FormPay extends Component{
     let phoneNumber = this.refs.phone_number.value
     let email = this.refs.email.value
 
-    this.validateCard(cvv2, cardNumber)
-    this.validateExpiry(expirationMonth, expirationYear)
-
-
-    const openpay = window.OpenPay
-    openpay.setId('mxvvjiqmnh5lhpdhogvo');
-    openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
-    openpay.setSandboxMode(true);
-
-    let request = {
-      "card_number":cardNumber,
-      "holder_name":holderName,
-      "last_name":lastName,
-      "phone_number":phoneNumber,
-      "email":email,
-      "expiration_year":expirationYear,
-      "expiration_month":expirationMonth,
-      "cvv2":cvv2,
-      "address":{
-         "city":city,
-         "line3":line3,
-         "postal_code":postalCode,
-         "line1":line1,
-         "line2":line2,
-         "state":state,
-         "country_code":countryCode
-      }
+    if (cardNumber === '') {
+      document.getElementById("cardNumber").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("cardNumber").innerHTML = '';
     }
-    openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err, request));
+    if (holderName === '') {
+      document.getElementById("holderName").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("holderName").innerHTML = '';
+    }
+    if (lastName === '') {
+      document.getElementById("lastName").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("lastName").innerHTML = '';
+    }
+    if (expirationYear === '') {
+      document.getElementById("expirationYear").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("expirationYear").innerHTML = '';
+    }
+    if (expirationMonth === '') {
+      document.getElementById("expirationMonth").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("expirationMonth").innerHTML = '';
+    }
+    if (cvv2 === '') {
+      document.getElementById("cvv2").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("cvv2").innerHTML = '';
+    }
+    if (city === '') {
+      document.getElementById("city").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("city").innerHTML = '';
+    }
+    if (postalCode === '') {
+      document.getElementById("postalCode").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("postalCode").innerHTML = '';
+    }
+    if (line1 === '') {
+      document.getElementById("line1").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("line1").innerHTML = '';
+    }
+    if (state === '') {
+      document.getElementById("state").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("state").innerHTML = '';
+    }
+    if (countryCode === '') {
+      document.getElementById("countryCode").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("countryCode").innerHTML = '';
+    }
+    if (phoneNumber === '') {
+      document.getElementById("phoneNumber").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("phoneNumber").innerHTML = '';
+    }
+    if (email === '') {
+      document.getElementById("email").innerHTML = 'Campo requerido';
+    }else {
+      document.getElementById("email").innerHTML = '';
+    }
+
+    let validateCard = this.validateCard(cvv2, cardNumber)
+    let validateExpiry = this.validateExpiry(expirationMonth, expirationYear)
+
+    if (validateCard === true && validateExpiry === true) {
+      const openpay = window.OpenPay
+      openpay.setId('mxvvjiqmnh5lhpdhogvo');
+      openpay.setApiKey('pk_c8b8d91ff30d4bf18ab84a39a063549a');
+      openpay.setSandboxMode(true);
+
+      let request = {
+        "card_number":cardNumber,
+        "holder_name":holderName,
+        "last_name":lastName,
+        "phone_number":phoneNumber,
+        "email":email,
+        "expiration_year":expirationYear,
+        "expiration_month":expirationMonth,
+        "cvv2":cvv2,
+        "address":{
+           "city":city,
+           "line3":line3,
+           "postal_code":postalCode,
+           "line1":line1,
+           "line2":line2,
+           "state":state,
+           "country_code":countryCode
+        }
+      }
+
+      openpay.token.create(request, (e)=>this.onSuccess(e, request),(err)=>this.onError(err, request));
+    }else {
+      alert('Tarjeta no valida (Verifique los datos ingresado de la tarjeta)');
+    }
   }
 
   onSuccess(res, request){
     const state = this.state
-    let validation = []
-    state.validation = validation
-    state.request = request
-    this.setState(this.state)
+    // let validation = []
+    // state.validation = validation
+    // state.request = request
+    // this.setState(this.state)
 
     let test = {
       'source_id': res.data.id,
@@ -110,34 +173,26 @@ class FormPay extends Component{
   }
 
   onError(err, request){
-    const state = this.state
+    // const state = this.state
     let validation = err.data.description.split(",")
-    state.validation = validation
-    state.request = request
-    this.setState(state)
-    // alert(validation)
-    console.log(request.address.city);
-  }
-
-  submit(){
-    confirmAlert({
-      title: 'El cargo a su tarjeta es de $' + this.props.amount,
-      confirmLabel: 'Aceptar',
-      cancelLabel: 'Cancelar',
-      onConfirm: ()=> this.props.setPayment(),
-    })
+    // state.validation = validation
+    // state.request = request
+    // this.setState(state)
+    alert(validation)
   }
 
   validateCard(cvv2, cardNumber){
     const openpay = window.OpenPay
     let card = openpay.card.validateCVC(cvv2, cardNumber);
-    console.log('Validacion de tarjeta', card);
+    // console.log('Validacion de tarjeta', card);
+    return card
   }
 
   validateExpiry(expirationMonth, expirationYear){
     const openpay = window.OpenPay
     let expiry = openpay.card.validateExpiry(expirationMonth, '20'+expirationYear);
-    console.log('Expiracion de tarjeta', expiry);
+    // console.log('Expiracion de tarjeta', expiry);
+    return expiry
   }
 
   render(){
@@ -149,57 +204,53 @@ class FormPay extends Component{
             <div>
               <p>Nombre:</p>
               <input style={styles.input} size="42" type="text" ref="holder_name"/>
-              {request.holder_name === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="holderName"></p>
             </div>
             <div>
               <p>Apellidos:</p>
               <input style={styles.input} size="42" type="text" ref="last_name"/>
-              {request.last_name === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="lastName"></p>
             </div>
           </Row>
           <Row>
             <div>
               <p>Telefono:</p>
               <input style={styles.input} size="42" type="text" ref="phone_number"/>
-              {request.phone_number === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="phoneNumber"></p>
             </div>
             <div>
               <p>Correo:</p>
               <input style={styles.input} size="42" type="text" ref="email"/>
-              {request.email === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="email"></p>
             </div>
           </Row>
           <Row>
             <div>
               <p>Número de tarjeta:</p>
               <input style={styles.input} size="25" type="text" ref="card_number"/>
-              {request.card_number === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="cardNumber"></p>
             </div>
             <div>
               <p>Año de vencimiento:</p>
               <input  style={styles.input} size="15" type="text" ref="expiration_year"/>
-              {request.expiration_year === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="expirationYear"></p>
             </div>
             <div>
               <p>Mes de expiración:</p>
               <input style={styles.input} size="15" type="text" ref="expiration_month"/>
-              {request.expiration_month === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="expirationMonth"></p>
             </div>
             <div>
               <p>cvv2:</p>
               <input style={styles.input} size="15" type="text" ref="cvv2"/>
-              {request.cvv2 === '' ? <p style={styles.p}>Campo requerido</p> : ''}
+              <p style={styles.p} id="cvv2"></p>
             </div>
           </Row>
           <Row>
             <div>
               <p>Calle:</p>
               <input style={styles.input} size="65" type="text" ref="line1"/>
-              {validation.indexOf(" address.line1 is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.line1 is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              <p style={styles.p} id="line1"></p>
             </div>
             <div>
               <p>Numero:</p>
@@ -212,46 +263,26 @@ class FormPay extends Component{
             <div>
               <p>Código postal:</p>
               <input style={styles.input} size="20" type="text" ref="postal_code"/>
-              {validation.indexOf(" address.postal_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.postal_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf(" address.postal_code la longitud tiene que estar entre 1 y 12") > -1 ?
-                <p style={styles.p}>La longitud tiene que estar entre 1 y 12</p> : ''
-              }
+              <p style={styles.p} id="postalCode"></p>
             </div>
             <div>
               <p>Ciudad:</p>
               <input style={styles.input} size="20" type="text" ref="city"/>
-              {validation.indexOf(" address.city is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.city is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              <p style={styles.p} id="city"></p>
             </div>
             <div>
               <p>Estado:</p>
               <input style={styles.input} size="20" type="text" ref="state"/>
-              {validation.indexOf(" address.state is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.state is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> : ''
-              }
+              <p style={styles.p} id="state"></p>
             </div>
             <div>
               <p>Código de país:</p>
               <input style={styles.input} size="20" type="text" ref="country_code"/>
-              {validation.indexOf(" address.country_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.country_code is required") > -1 ?
-                <p style={styles.p}>Campo requerido</p> :
-                validation.indexOf("address.country_code is invalid") > -1 ?
-                <p style={styles.p}>El código del país no es válido</p> : ''
-              }
+              <p style={styles.p} id="countryCode"></p>
             </div>
           </Row>
             <input hidden id="deviceIdHiddenFieldName"/><br/>
-            <button style={styles.button} onClick={validation.length === 0 ? this.submit : ''}>Pagar</button>
+            <button style={styles.button} onClick={()=> this.props.setPayment()}>Pagar</button>
         </form>
       </Div>
     )
