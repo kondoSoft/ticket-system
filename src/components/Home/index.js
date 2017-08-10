@@ -10,6 +10,7 @@ import FormPay from '../formPay'
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
+import firebase from '../../firebase';
 
 const Div = styled.div`
   width: 100vw;
@@ -32,6 +33,13 @@ class Home extends Component {
     this.setPayment = this.setPayment.bind(this)
   }
 
+  componentWillMount(){
+      const database = firebase.database().ref();
+      database.on('value', (snap) => {
+        this.setState(snap.val())
+      })
+  }
+
   setUI(key, items){
     const state = this.state
     if(items){
@@ -51,19 +59,23 @@ class Home extends Component {
   }
 
   addCart(item){
-    const state = this.state
-    if (!(item.key in this.state.cart.items)){
-      state.cart.items[item.key] = item
-      this.setState(state);
-      this.totalAmount(item)
+    const state = firebase.database().ref().child('cart')
+    if (!(item.key in state.child('items'))){
+      // state.cart.items[item.key] = item
+      state.child('items').child(item.key).set(item)
+      // this.setState(state);
+      let total = this.totalAmount(item)
+      console.log(item);
+      // firebase.database().ref().child('cart').child('total').set(total)
     }
   }
 
   removeItemsCart(key){
     this.res(key)
-    const state = this.state
-    delete state.cart.items[key]
-    this.setState(state)
+    const state = this.state.cart
+    delete state.items[key]
+    firebase.database().ref().child('cart').set(state)
+    // this.setState(state)
   }
 
   setHistory(){
@@ -89,11 +101,10 @@ class Home extends Component {
   }
 
   totalAmount(item){
-    let val = Number(item.price)
-    let stateTotal = this.state.cart
-    let total = val += stateTotal['total']
-    stateTotal['total'] = total
-    this.setState(stateTotal)
+    let price = Number(item.price)
+    const state = this.state.cart
+    let total = price + state['total']
+    firebase.database().ref().child('cart').child('total').set(total)
   }
 
   res(item){

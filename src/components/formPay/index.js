@@ -196,7 +196,6 @@ class FormPay extends Component{
   }
 
   render(){
-    const {validation, request} = this.state
     return (
       <Div>
         <form onSubmit={this.test} id="payment">

@@ -38,10 +38,9 @@ class Admin extends Component {
     this.deleteObject = this.deleteObject.bind(this);
   }
 
-  componentDidMount(){
-    // console.log('ejecutando did mount');
-      let database = firebase.database().ref()
-      database.on('value',(snap)=>{
+  componentWillMount(){
+      const database = firebase.database().ref();
+      database.on('value', (snap) => {
         this.setState(snap.val())
       })
   }
