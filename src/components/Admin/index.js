@@ -72,11 +72,19 @@ class Admin extends Component {
   }
 
   deleteObject(element,key){
+    let position;
     if (element.father) {
-      console.log('es un item');
+      position= this.searchKey(element.father)
+      confirmAlert({
+        title: 'Confirmacion',                              // Title dialog
+        message: 'Esta seguro de eliminar: '+key,          // Message dialog
+        confirmLabel: 'Aceptar',                           // Text button confirm
+        cancelLabel: 'Cancelar',                             // Text button cancel
+        onConfirm: () => {  firebase.database().ref().child(position).child('items').child(key).remove() },                                 // Action after Confirm
+      })
     }
     else{
-      let position=this.searchKey(key)
+      position=this.searchKey(key)
       confirmAlert({
         title: 'Confirmacion',                              // Title dialog
         message: 'Esta seguro de eliminar: '+key,          // Message dialog

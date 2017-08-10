@@ -63,7 +63,7 @@ class App extends React.Component {
             <ModalTitle>{this.props.component.title}</ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <FormItems component={this.props.component} setObjectState={this.props.setObjectState}/>
+            <FormItems component={this.props.component} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>
           </ModalBody>
           <ModalFooter>
             <button className='btn btn-danger' onClick={this.hideModal}>  Cerrar</button>

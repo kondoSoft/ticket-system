@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import {ContainerForm,Inputs,InputsF,Label,ContainerInput,ContainerInputs} from '../styles'
 import 'react-datepicker/dist/react-datepicker.css';
-// import Button from '../Button';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import Table from '../Table'
-import TableHeader from '../TableHeader'
+import Table from '../Table';
+import Button from '../Button';
+import TableHeader from '../TableHeader';
 
 class FormItems extends Component {
   constructor(props) {
@@ -54,14 +54,18 @@ class FormItems extends Component {
     this.refs.image.value=null
     this.refs.price.value=null
   }
+
   update(element){
-    // let hotel= this.state.hotels[element.key]
-    this.refs.price.value=element.price
-    this.refs.type.value= element.type
+    // let hotel= this.state.hotels[element.item]
+    this.refs.price.value = element.price
+    this.refs.type.value = element.type
+    this.refs.key.value = element.key
+    this.refs.image.value = element.image
     // this.refs.address.value=hotel.address
   }
 
   render(){
+    console.log(this.props);
     const objectItems = this.state.items
     return(
       <div style={ContainerForm}>
@@ -88,10 +92,10 @@ class FormItems extends Component {
               <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
-          <input type='submit' value='Guardar'/>
+          <Button name="Guardar"/>
         </form>
         <TableHeader />
-        {Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i} update={this.update}/>)}
+        {Object.keys(objectItems).map((item,i)=> <Table dialog={false} elements={objectItems[item]} key={i} update={this.update} deleteObject={this.props.deleteObject}/>)}
       </div>
     );
   }
