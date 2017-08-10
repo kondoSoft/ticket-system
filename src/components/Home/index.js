@@ -51,10 +51,12 @@ class Home extends Component {
   }
 
   addCart(item){
-    this.totalAmount(item)
     const state = this.state
-    state.cart.items[item.key] = item
-    this.setState(state)
+    if (!(item.key in this.state.cart.items)){
+      state.cart.items[item.key] = item
+      this.setState(state);
+      this.totalAmount(item)
+    }
   }
 
   removeItemsCart(key){
@@ -109,9 +111,6 @@ class Home extends Component {
     this.setState(state)
   }
 
-  // cmartinez@creatuviaje.com
-  // Creatur-2313
-
   setItems(){
     const state = this.state
     this.setState({
@@ -125,28 +124,26 @@ class Home extends Component {
     state.cart.id += 1
 
     this.setState(state)
-
-    console.log(state.cart.id);
   }
 
-  render() {;
+  render() {
     const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
     return (
       <Div>
-        <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
+        <Header icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-          <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
+          <TrailCrumb cart={cart.items} history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
           {UI.items ? <Cart
-                        cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
+                        cart={cartItems.length >= 1 ? '' : <h1>El carrito esta vacío</h1>}
                         total={cart.total}
-                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>: ''}
+                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/> : ''}
                         elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
-                      /> :<Row>
-                            {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
-                          </Row>
+                      /> :
+                      <Row>
+                        {Object.keys(UI).map((item,i) => <Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+                      </Row>
           }
-          {/* <FormPay/> */}
         </Container>
       </Div>
     );
