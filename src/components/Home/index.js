@@ -152,13 +152,13 @@ class Home extends Component {
     firebase.database().ref().child('sales').set(salesFirebase)
   }
 
-  // deleteItemsHotels(){
-  //   const state = this.state
-  //   this.setState({
-  //     hotels:state.UI
-  //   })
-  //   console.log(state.UI);
-  // }
+  deleteItemsHotels(){
+    const state = this.state
+    this.setState({
+      hotels:state.UI
+    })
+    console.log(state.UI);
+  }
 
   render() {
     const {UI, cart, history} = this.state

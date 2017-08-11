@@ -32,6 +32,7 @@ class FormHotels extends Component{
   getRefs(event){
     event.preventDefault()
     // Variables
+    let nameImg = document.getElementById("image");
     let title = this.refs.title.value
     let address = this.refs.address.value
     let image = this.refs.image.value
@@ -50,7 +51,7 @@ class FormHotels extends Component{
         'items':''
     }
 
-    this.props.setObjectState(hotel,'hotels',key)
+    this.props.setObjectState(hotel,'hotels', key, nameImg)
 
     this.refs.title.value=null;
     this.refs.address.value=null;

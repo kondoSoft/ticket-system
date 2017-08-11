@@ -45,14 +45,23 @@ class Admin extends Component {
       })
   }
 
-  setObjectState(object,position,key){
+  setObjectState(object,position,key, image){
     if(object.father){
       var state = this.searchKey(object.father)
+
       let instance = firebase.database().ref().child(state).child(object.father).child(position).child(key).set(object)
+
     }
     else{
       let instance = firebase.database().ref().child(position).child(key).set(object)
     }
+    let file = image.files[0]
+    let storageRef = firebase.storage().ref('img/' + file.name)
+    storageRef.put(file)
+  }
+
+  addImage(){
+
   }
 
   searchKey(key){
