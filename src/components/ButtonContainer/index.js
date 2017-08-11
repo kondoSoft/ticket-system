@@ -12,7 +12,6 @@ const Cont = styled.div`
 `;
 
 function ButtonContainer(props) {
-  console.log(props,'props de los botones');
   return(
   <Cont>
     {props.dialog !== undefined ? '' :  <Dialog component={props.element} setObjectState={props.setObjectState} deleteObject={props.deleteObject}/>}

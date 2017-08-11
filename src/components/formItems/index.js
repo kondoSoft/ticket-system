@@ -65,7 +65,6 @@ class FormItems extends Component {
   }
 
   render(){
-    console.log(this.props);
     const objectItems = this.state.items
     return(
       <div style={ContainerForm}>

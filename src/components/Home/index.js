@@ -60,11 +60,10 @@ class Home extends Component {
   }
 
   addCart(item){
-    const state = this.state
+    const state = this.state.cart
     const stateFirebase = firebase.database().ref().child('cartTem')
-    // this.deleteItemsHotels(item)
-    if (!(item.key in state.cart.items)){
-      state.cart.items[item.key] = item
+    if (!(item.key in state.items)){
+      state.items[item.key] = item
       this.setState(state);
       stateFirebase.child('items').child(item.key).set(item)
       this.totalAmount(item)
@@ -153,14 +152,13 @@ class Home extends Component {
     firebase.database().ref().child('sales').set(salesFirebase)
   }
 
-  deleteItemsHotels(item){
-    const state = this.state
-    let arr = Object.keys(state.hotels)
-    let test = state.hotels
-
-    console.log(test);
-
-  }
+  // deleteItemsHotels(){
+  //   const state = this.state
+  //   this.setState({
+  //     hotels:state.UI
+  //   })
+  //   console.log(state.UI);
+  // }
 
   render() {
     const {UI, cart, history} = this.state
