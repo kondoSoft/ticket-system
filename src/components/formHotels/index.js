@@ -93,7 +93,7 @@ class FormHotels extends Component{
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} update={this.update} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>)}
+        {Object.keys(hotels).map((item,i)=><Table image={this.props.imageFire} elements={hotels[item]} key={i} update={this.update} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>)}
       </div>
     );
   }

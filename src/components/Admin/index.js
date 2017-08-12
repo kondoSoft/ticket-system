@@ -46,16 +46,14 @@ class Admin extends Component {
   }
 
   setObjectState(object,position,key, image){
+    let file = image.files[0]
     if(object.father){
       var state = this.searchKey(object.father)
-
       let instance = firebase.database().ref().child(state).child(object.father).child(position).child(key).set(object)
-
     }
     else{
       let instance = firebase.database().ref().child(position).child(key).set(object)
     }
-    let file = image.files[0]
     let storageRef = firebase.storage().ref('img/' + file.name)
     storageRef.put(file)
   }
@@ -106,7 +104,7 @@ class Admin extends Component {
   render() {
     // let content;
     const {section} = this.props.match.params;
-    let content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.hotels} />
+    let content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.hotels} imageFire={firebase.storage().ref().child('img/Detalles.png')}/>
     if (section === 'ticket'){
       content = <FormTicket deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.tickets} />
     } else if (section === 'transport') {
