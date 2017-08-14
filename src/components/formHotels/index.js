@@ -60,10 +60,14 @@ class FormHotels extends Component{
   }
 
   update(element){
+    // let nameImg = document.getElementById("image");
     let hotel= this.state.hotels[element.key]
     this.refs.key.value=element.key
     this.refs.title.value=hotel.title
     this.refs.address.value=hotel.address
+    // this.refs.image.value = hotel.image
+    this.refs.img.src = hotel.image
+    console.log(element);
   }
 
   render(){
@@ -85,15 +89,16 @@ class FormHotels extends Component{
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Foto:</label>
-              <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
+              <label style={Label} htmlFor='title'>Foto:</label><br/>
+              <img width="50" height="40" ref="img" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"/>
+              <input style={InputsF} name='image' id='image' ref='image' type='file'/>
             </div>
           </div>
           <Button name="Guardar"/>
         </form>
         <Hr/>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(hotels).map((item,i)=><Table image={this.props.imageFire} elements={hotels[item]} key={i} update={this.update} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>)}
+        {Object.keys(hotels).map((item,i)=><Table elements={hotels[item]} key={i} update={this.update} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>)}
       </div>
     );
   }

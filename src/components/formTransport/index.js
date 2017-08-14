@@ -65,6 +65,7 @@ class FormTransport extends Component{
     this.refs.title.value = transport.title
     this.refs.address.value = transport.address
     this.refs.imgAux.value = transport.image
+    this.refs.img.src = transport.image
   }
   render(){
     const transports = this.state.transport
@@ -85,7 +86,8 @@ class FormTransport extends Component{
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='image'>Foto:</label>
+              <label style={Label} htmlFor='image'>Foto:</label><br/>
+              <img width="50" height="40" ref="img" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"/>
               <input style={InputsF} placeholder='Ingrese la foto del transporte' name='image' id='image' ref='image' type='file'/>
               <input ref='imgAux' hidden />
             </div>
