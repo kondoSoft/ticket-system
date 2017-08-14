@@ -56,11 +56,11 @@ class FormItems extends Component {
   }
 
   update(element){
-    // let hotel= this.state.hotels[element.item]
+    // let hotel= this.state.hotels[element.key]
     this.refs.price.value = element.price
     this.refs.type.value = element.type
     this.refs.key.value = element.key
-    this.refs.image.value = element.image
+    // this.refs.image.value = element.image
     // this.refs.address.value=hotel.address
   }
 
