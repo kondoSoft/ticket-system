@@ -10,6 +10,7 @@ import FormPay from '../formPay'
 import {Row} from '../FlexBox/FlexRow';
 import initialState from '../../state';
 import styled from 'styled-components';
+import firebase from '../../firebase';
 
 const Div = styled.div`
   width: 100vw;
@@ -30,6 +31,14 @@ class Home extends Component {
     this.removeItemsCart = this.removeItemsCart.bind(this)
     this.setItems = this.setItems.bind(this)
     this.setPayment = this.setPayment.bind(this)
+    this.addSales = this.addSales.bind(this)
+  }
+
+  componentWillMount(){
+      const database = firebase.database().ref();
+      database.on('value', (snap) => {
+        this.setState(snap.val())
+      })
   }
 
   setUI(key, items){
@@ -51,16 +60,21 @@ class Home extends Component {
   }
 
   addCart(item){
-    this.totalAmount(item)
-    const state = this.state
-    state.cart.items[item.key] = item
-    this.setState(state)
+    const state = this.state.cart
+    const stateFirebase = firebase.database().ref().child('cartTem')
+    if (!(item.key in state.items)){
+      state.items[item.key] = item
+      this.setState(state);
+      stateFirebase.child('items').child(item.key).set(item)
+      this.totalAmount(item)
+    }
   }
 
   removeItemsCart(key){
-    this.res(key)
-    const state = this.state
-    delete state.cart.items[key]
+    this.subtractTotalAmount(key)
+    const state = this.state.cart
+    delete state.items[key]
+    firebase.database().ref().child('cartTem').set(state)
     this.setState(state)
   }
 
@@ -87,19 +101,21 @@ class Home extends Component {
   }
 
   totalAmount(item){
-    let val = Number(item.price)
-    let stateTotal = this.state.cart
-    let total = val += stateTotal['total']
-    stateTotal['total'] = total
-    this.setState(stateTotal)
+    let price = Number(item.price)
+    const state = this.state.cart
+    let total = price + state['total']
+    state['total'] = total
+    firebase.database().ref().child('cartTem').child('total').set(total)
+    this.setState(state)
   }
 
-  res(item){
-    let val = Number(this.state.cart.items[item].price)
-    let stateTotal = this.state.cart
-    let total = stateTotal['total'] -= val
-    stateTotal['total'] = total
-    this.setState(stateTotal)
+  subtractTotalAmount(item){
+    const state = this.state.cart
+    let price = Number(state.items[item].price)
+    let total = state['total'] - price
+    state['total'] = total
+    firebase.database().ref().child('cartTem').child('total').set(total)
+    this.setState(state)
   }
 
   history(key){
@@ -108,9 +124,6 @@ class Home extends Component {
     state.history.location = key
     this.setState(state)
   }
-
-  // cmartinez@creatuviaje.com
-  // Creatur-2313
 
   setItems(){
     const state = this.state
@@ -121,32 +134,51 @@ class Home extends Component {
   }
 
   setPayment(){
-    const state = this.state
-    state.cart.id += 1
+    const state = this.state.cart
+    let cartId = state.id += 1
 
     this.setState(state)
-
-    console.log(state.cart.id);
+    firebase.database().ref().child('cartTem').child('id').set(cartId)
+    this.addSales()
   }
 
-  render() {;
+  addSales(){
+    const state = this.state
+    let sales = state.cart.items
+    let salesFirebase = state.cartTem.items
+    this.setState({
+      sales:sales
+    })
+    firebase.database().ref().child('sales').set(salesFirebase)
+  }
+
+  deleteItemsHotels(){
+    const state = this.state
+    this.setState({
+      hotels:state.UI
+    })
+    console.log(state.UI);
+  }
+
+  render() {
     const {UI, cart, history} = this.state
     let cartItems = Object.keys(cart.items)
     return (
       <Div>
-        <Header state={cartItems} icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
+        <Header icon="shopping-cart" setUICart={this.setUICart} count={cartItems.length}/>
         <Container>
-          <TrailCrumb history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
-          {UI.items ? <Cart
-                        cart={cartItems.length >= 1 ? '': <h1>El carrito esta vacío</h1>}
-                        total={cart.total}
-                        formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/>: ''}
-                        elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
-                      /> :<Row>
-                            {Object.keys(UI).map((item,i)=><Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
-                          </Row>
+          <TrailCrumb cart={cart.items} history={history} setItems={this.setItems} setHistory={this.setHistory} location={history.location}/>
+          {UI.items ?
+           <Cart
+            cart={cartItems.length >= 1 ? '' : <h1>El carrito esta vacío</h1>}
+            total={cart.total}
+            formpayment={cartItems.length >= 1 ? <FormPay amount={cart.total} orderId={cart.id} setPayment={this.setPayment}/> : ''}
+            elements={cartItems.map((item,i) => <CartItem elements={cart.items[item]} key={i} removeItemsCart={this.removeItemsCart}/>)}
+          /> :
+          <Row>
+            {Object.keys(UI).map((item,i) => <Thumbnail addCart={this.addCart} setUI={this.setUI} elements={UI[item]} key={i}/>)}
+          </Row>
           }
-          {/* <FormPay/> */}
         </Container>
       </Div>
     );
