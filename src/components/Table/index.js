@@ -20,7 +20,7 @@ function filterItem(item){
   }
 }
 
-function  Table(props){
+function  tableSales(props){
 
   let toReturn=Object.keys(props.elements).filter(filterItem)
   return (
@@ -31,4 +31,4 @@ function  Table(props){
   )
 
 }
-export default Table;
+export default tableSales;

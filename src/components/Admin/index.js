@@ -5,6 +5,7 @@ import FormHotels from '../formHotels';
 import initialState from '../../state';
 import FormTransport from '../formTransport';
 import FormTicket from '../formTicket';
+import FormSales from '../formSales';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import firebase from '../../firebase';
@@ -115,6 +116,9 @@ class Admin extends Component {
       content = <FormTicket deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.tickets} />
     } else if (section === 'transport') {
       content = <FormTransport deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={this.state.transport} />
+    }
+    else if (section === 'sales') {
+      content = <FormSales elements={this.state.sales} setObjectState={this.setObjectState} />
     }
     return (
       <Container>

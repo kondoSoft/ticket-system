@@ -19,7 +19,7 @@ const Div = styled.div`
   overflow-x: scroll;
   position: fixed;
 `;
-
+var type;
 class Home extends Component {
   constructor(props){
     super(props);
@@ -57,9 +57,12 @@ class Home extends Component {
     })
     state.history.state +=1
     state.history.status=true
+    type =key
+    console.log(type);
   }
 
   addCart(item){
+
     const state = this.state.cart
     const stateFirebase = firebase.database().ref().child('cartTem')
     if (!(item.key in state.items)){
@@ -68,6 +71,7 @@ class Home extends Component {
       stateFirebase.child('items').child(item.key).set(item)
       this.totalAmount(item)
     }
+
   }
 
   removeItemsCart(key){

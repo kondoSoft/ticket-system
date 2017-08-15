@@ -14,11 +14,24 @@ const celda = {
   alignItems: 'center',
   margin:'10px',
 }
+const celdad = {
+  borderRadius: '10px',
+  backgroundColor:'white',
+  height:'50px',
+  width:'15%',
+  textAlign: 'center',
+  display:'flex',
+  flexDirection:'row',
+  justifyContent:'center',
+  flexGrow: '1',
+  alignItems: 'center',
+  margin:'10px',
+}
 const celdaH = {
   borderRadius: '10px',
   backgroundColor:'#9E9E9E',
   height:'30px',
-  width:'20%',
+  width:'15%',
   textAlign: 'center',
   display:'flex',
   flexDirection:'row',
@@ -76,4 +89,4 @@ const ButtonContainer = {
   flexGrow: '1'
 }
 
-export {menuContainer,celda,celdaH,actiona,actiond,actione,celdab,ButtonContainer,modal}
+export {menuContainer,celda,celdaH,actiona,actiond,actione,celdab,ButtonContainer,modal,celdad}
