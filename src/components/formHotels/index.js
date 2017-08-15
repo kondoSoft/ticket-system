@@ -17,16 +17,22 @@ class FormHotels extends Component{
   constructor(props){
     super(props)
     this.state={
-      startDate:moment(),
-      hotels:props.elements
+      hotels:this.props.elements
     }
     this.getRefs=this.getRefs.bind(this)
     this.update = this.update.bind(this)
+  }
+  componentWillMount(){
+    // console.log('ejecutando will del formulario');
+    this.setState({
+      hotels:this.props.elements
+    })
   }
 
   getRefs(event){
     event.preventDefault()
     // Variables
+    let nameImg = document.getElementById("image");
     let title = this.refs.title.value
     let address = this.refs.address.value
     let image = this.refs.image.value
@@ -42,10 +48,10 @@ class FormHotels extends Component{
         'key':key,
         'address':address,
         'image':image,
-        'items':{}
+        'items':''
     }
 
-    this.props.setObjectState(hotel,'hotels',key)
+    this.props.setObjectState(hotel,'hotels', key, nameImg)
 
     this.refs.title.value=null;
     this.refs.address.value=null;
@@ -54,10 +60,14 @@ class FormHotels extends Component{
   }
 
   update(element){
+    // this.props.setInputFile()
     let hotel= this.state.hotels[element.key]
     this.refs.key.value=element.key
     this.refs.title.value=hotel.title
     this.refs.address.value=hotel.address
+    this.refs.img.src = hotel.image
+    console.log(element);
+    // document.getElementById("imagen").value = hotel.image
   }
 
   render(){
@@ -79,8 +89,11 @@ class FormHotels extends Component{
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='title'>Foto:</label>
-              <input style={InputsF} placeholder='Ingrese la foto del Hotel' name='image' id='image' ref='image' type='file'/>
+              <label style={Label} htmlFor='title'>Foto:</label><br/>
+              <img width="75" height="60" ref="img" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"/>
+              <input style={InputsF} name='image' id='image' ref='image' type='file'/>
+              {/* <input style={InputsF} id="imagen" ref="image" type="text"/>
+              {this.props.inputFile === false ? <input style={InputsF} name='image' id='image' ref='image' type='file'/> : <input style={InputsF} ref="image" id="imagen" type="text"/>} */}
             </div>
           </div>
           <Button name="Guardar"/>

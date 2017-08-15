@@ -2,8 +2,8 @@ import {Modal,ModalHeader,ModalTitle,ModalClose,ModalBody,ModalFooter} from 'rea
 import React from 'react';
 import {actiona}from '../styles/items.js'
 import styled from 'styled-components';
-import Table from '../TableItems/index.js'
-import TableH from '../TableHeader'
+// import Table from '../TableItems/index.js'
+// import TableH from '../TableHeader'
 import FormItems from '../formItems'
 
 
@@ -63,7 +63,7 @@ class App extends React.Component {
             <ModalTitle>{this.props.component.title}</ModalTitle>
           </ModalHeader>
           <ModalBody>
-            <FormItems component={this.props.component} setObjectState={this.props.setObjectState}/>
+            <FormItems component={this.props.component} setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject}/>
           </ModalBody>
           <ModalFooter>
             <button className='btn btn-danger' onClick={this.hideModal}>  Cerrar</button>

@@ -33,7 +33,7 @@ const Span= styled.span`
 
 function IconLabel(props){
   return (
-    <ContainerButton className='iconButton' onClick={()=> props.setComponent(props.component)} >
+    <ContainerButton className='iconButton'>
       <Icon name={props.Icon}/>
       <Span>{ props.Text }</Span>
     </ContainerButton>

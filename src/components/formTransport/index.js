@@ -38,10 +38,11 @@ class FormTransport extends Component{
 
     }
     const transport={
-        'key':key,
-        'title':title,
-        'address':address,
-        'image':image,
+      'key':key,
+      'title':title,
+      'address':address,
+      'image':image,
+      'items':''
     }
 
     this.props.setObjectState(transport,'transport',key)
@@ -64,6 +65,7 @@ class FormTransport extends Component{
     this.refs.title.value = transport.title
     this.refs.address.value = transport.address
     this.refs.imgAux.value = transport.image
+    this.refs.img.src = transport.image
   }
   render(){
     const transports = this.state.transport
@@ -79,12 +81,13 @@ class FormTransport extends Component{
             </div>
             <div style={ContainerInput}>
               <label style={Label} htmlFor='address'>Direccion:</label>
-              <input style={Inputs} placeholder='Ingrese la direccion del transporte' name='address' id='address' id='title' ref='address'/>
+              <input style={Inputs} placeholder='Ingrese la direccion del transporte' ref='address'/>
             </div>
           </div>
           <div style={ContainerInputs}>
             <div style={ContainerInput}>
-              <label style={Label} htmlFor='image'>Foto:</label>
+              <label style={Label} htmlFor='image'>Foto:</label><br/>
+              <img width="75" height="60" ref="img" src="https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103595_960_720.png"/>
               <input style={InputsF} placeholder='Ingrese la foto del transporte' name='image' id='image' ref='image' type='file'/>
               <input ref='imgAux' hidden />
             </div>
@@ -92,7 +95,7 @@ class FormTransport extends Component{
           <Button name="Guardar"/>
         </form>
         <TableHeader titles={this.props.aryHeader}/>
-        {Object.keys(transports).map((item,i)=><Table deleteObject={this.props.deleteObject} update={this.update} elements={transports[item]} key={i} />)}
+        {Object.keys(transports).map((item,i)=><Table setObjectState={this.props.setObjectState} deleteObject={this.props.deleteObject} update={this.update} elements={transports[item]} key={i} />)}
       </div>
     );
   }

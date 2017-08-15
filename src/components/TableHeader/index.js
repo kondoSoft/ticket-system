@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {celdaH}from '../styles/items.js'
+// import {celdaH}from '../styles/items.js'
 // import Cont from '../ButtonContainer/index.js';
 
 const TablaH=styled.div`
@@ -15,7 +15,7 @@ const TablaH=styled.div`
 `;
 
 function  TableH(props){
-  const title= props.titles
+  // const title= props.titles
   return (
     <TablaH>
       {/*title.map((item,i)=><div key={i} style = {celdaH}>{item}</div>)*/}

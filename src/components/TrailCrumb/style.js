@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Div = styled.div`
-  margin-top: 140px;
+  margin-top: 120px;
   background-color: #eee;
   width: 100%;
   height: 20px;
@@ -18,9 +18,9 @@ const Li = styled.li`
   color: #333;
 
   &:before{
-    padding: 8px;
+    padding: 5px;
     color: #777;
-    content: "/\00a0";
+    content: "\00BB";
   }
 `;
 
