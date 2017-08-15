@@ -97,13 +97,13 @@ class Admin extends Component {
     }
   }
 
-  setInputFile(){
-    const state = this.state
-    let inputFile = true
-    this.setState({
-      inputFile:inputFile
-    })
-  }
+  // setInputFile(){
+  //   const state = this.state
+  //   let inputFile = true
+  //   this.setState({
+  //     inputFile:inputFile
+  //   })
+  // }
 
   render() {
     const state = this.state.hotels

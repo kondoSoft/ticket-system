@@ -60,12 +60,13 @@ class FormHotels extends Component{
   }
 
   update(element){
-    this.props.setInputFile()
+    // this.props.setInputFile()
     let hotel= this.state.hotels[element.key]
     this.refs.key.value=element.key
     this.refs.title.value=hotel.title
     this.refs.address.value=hotel.address
     this.refs.img.src = hotel.image
+    console.log(element);
     // document.getElementById("imagen").value = hotel.image
   }
 
