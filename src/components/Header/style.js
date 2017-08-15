@@ -1,37 +1,27 @@
 import styled from 'styled-components';
 
-const Div = styled.div`
-  width: 100%;
-  height: 40px;
-  background-color: #3498db;
-  position: fixed;
-  z-index: 4;
-`;
-
 const Nav = styled.nav`
   width: 100%;
-  height: 50px;
+  height: 93px;
   background-color: #fff;
   border-bottom: 1px solid #bdc3c7;
   margin-bottom: 10px;
   position: fixed;
   z-index: 4;
-  margin-top: 40px;
 `;
 
 const Ul = styled.ul`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   list-style: none;
-  margin-right: 100px;
+  margin: 0px 100px 0px 100px;
+  padding: 15px;
 `;
 
 const Li = styled.li`
-  color: #fff;
-  padding: 10px;
-  background-color: #3498db;
-  border-radius: 50%;
+  color: #b2b2b2;
+  padding: 20px 10px 20px 10px;
 
   &:hover{
     transition: .3s;
@@ -40,13 +30,13 @@ const Li = styled.li`
 `;
 
 const P = styled.p`
-  background-color: green;
+  background-color: rgba(32, 79, 158, 1);
   color: #fff;
   border-radius: 50%;
-  padding: 0px 5px 0px 5px;
-  margin: 0px 0px 0px 5px;
+  padding: 3px 8px 3px 8px;
+  margin: -60px 0px 0px 95px;
   position: absolute;
   font-size: 12px;
 `
 
-export {Div, Nav, Ul, Li, P};
+export {Nav, Ul, Li, P};

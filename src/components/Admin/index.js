@@ -97,18 +97,18 @@ class Admin extends Component {
     }
   }
 
-  // setInputFile(){
-  //   const state = this.state
-  //   let inputFile = true
-  //   this.setState({
-  //     inputFile:inputFile
-  //   })
-  // }
+  setInputFile(){
+    const state = this.state
+    let inputFile = true
+    this.setState({
+      inputFile:inputFile
+    })
+  }
 
   render() {
     const state = this.state.hotels
     // const imagen = "https://media-cdn.tripadvisor.com/media/photo-s/08/20/75/0d/hotel-contessa.jpg"
-    // const img = firebase.storage().ref().child('img/plantilla.jpg')
+    const img = firebase.storage().ref().child('img/plantilla.jpg')
     const {section} = this.props.match.params;
     let content = <FormHotels deleteObject={this.deleteObject} setObjectState={this.setObjectState} elements={state} inputFile={this.state.inputFile} setInputFile={()=>this.setInputFile()}/>
     if (section === 'ticket'){
@@ -120,7 +120,7 @@ class Admin extends Component {
       <Container>
         <Nav setComponent={this.setComponent}/>
         <Section>
-          {console.log(state)}
+          {/* {console.log(state)} */}
           {/* <img width="60" height="40" src={img}/> */}
           {content}
         </Section>
